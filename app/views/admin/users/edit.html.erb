@@ -1,0 +1,10 @@
+<% form_for(@user, :url => { :action => "update", :id => @user.id }) do |f| %>
+  <%= f.error_messages %>
+  <%= render :partial => 'edit_form' %>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Zobraz', {:action => 'show',:id => @user.id} %> |
+<%= link_to 'Zpět', :action => 'index' %>

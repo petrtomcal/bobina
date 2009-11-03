@@ -1,0 +1,657 @@
+a.link-add, a.link-add:hover {
+  padding-left: 20px;
+  background: url('/images/icons/silk/link_add.png') no-repeat 0 50%;
+}
+
+a.add, a.add:hover {
+  padding-left: 20px;
+  background: url('/images/icons/silk/add.png') no-repeat 0 50%;
+  padding-bottom:1px;
+  text-decoration: none;
+}
+
+a.ftp, a.ftp:hover {
+  padding-left: 20px;
+  background: url('/images/icons/silk/film_add.png') no-repeat 0 50%;
+  padding-bottom:1px;
+  text-decoration: none;
+}
+
+a.link-show, a.link-show:hover {
+  padding-left: 20px;
+  background: url('/images/icons/silk/link.png') no-repeat 0 50%;
+}
+
+a.link-del, a.link-del:hover {
+  padding-left: 15px;
+  background: url('/images/icons/silk/link_delete.png') no-repeat 0 50%;
+  text-decoration: none;
+}
+
+a.link-edit, a.link-edit:hover {
+  padding-left: 15px;
+  background: url('/images/icons/silk/link_edit.png') no-repeat 0 50%;
+  text-decoration: none;
+}
+
+a.group, group:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/group.png') no-repeat top left;
+  padding-bottom:2px;
+  text-decoration: none;
+}
+
+a.person-add, a.person-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/user_add.png') no-repeat top left;
+}
+
+a.person-del, a.person-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/user_delete.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.person-edit, a.person-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/user_edit.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.person, a.person:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/user.png') no-repeat top left;
+}
+
+a.robot-add, a.robot-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/bug_add.png') no-repeat top left;
+}
+
+a.robot-del, a.robot-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/bug_delete.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.robot-edit, a.robot-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/bug_edit.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.robot, a.robot:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/bug.png') no-repeat top left;
+}
+
+a.note, a.note:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/comment.png') no-repeat top left;
+}
+
+a.note-add, a.note-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/comment_add.png') no-repeat top left;
+}
+
+a.note-edit, a.note-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/comment_edit.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.note-del, a.note-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/comment_delete.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.product, a.product:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/cart.png') no-repeat top left;
+}
+
+a.product-add, a.product-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/cart_add.png') no-repeat top left;
+}
+
+a.product-edit, a.product-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/cart_edit.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.product-del, a.product-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/cart_delete.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.pairing_history, a.pairing_history:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/application_cascade.png') no-repeat top left;
+}
+
+a.role, a.role:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/shield.png') no-repeat top left;
+}
+
+a.role-add, a.role-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/shield_add.png') no-repeat top left;
+}
+
+a.role-edit, a.role-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/shield_go.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.role-del, a.role-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/shield_delete.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.key, a.key:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/key.png') no-repeat top left;
+  padding-bottom:2px;
+  text-decoration: none;
+}
+
+a.key-add, a.key-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/key_add.png') no-repeat top left;
+}
+
+a.key-edit, a.key-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/key_go.png') no-repeat top left;
+  text-decoration: none;
+}
+a.key-del, a.key-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/key_delete.png') no-repeat top left;
+  text-decoration: none;
+}
+a.parameter, a.parameter:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/note.png') no-repeat top left;
+}
+a.parameter-edit, a.parameter-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/note_edit.png') no-repeat top left;
+  text-decoration: none;
+}
+a.parameter-del, a.parameter-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/note_delete.png') no-repeat 0 50%;
+  text-decoration: none;
+}
+a.parameter-add, a.parameter-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/note_add.png') no-repeat 0 50%;
+  text-decoration: none;
+}
+a.filter, a.filter:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/book.png') no-repeat 0 50%;
+}
+a.filter-add, a.filter-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/book_add.png') no-repeat 0 50%;
+  text-decoration: none;
+}
+a.filter-edit, a.filter-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/book_edit.png') no-repeat 0 50%;
+  text-decoration: none;
+}
+a.filter-del, a.filter-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/book_delete.png') no-repeat 0 50%;
+  text-decoration: none;
+}
+a.rule, a.rule:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/brick.png') no-repeat 0 50%;
+}
+a.rule-add, a.rule-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/brick_add.png') no-repeat 0 50%;
+  text-decoration: none;
+}
+a.rule-edit, a.rule-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/brick_edit.png') no-repeat 0 50%;
+  text-decoration: none;
+}
+a.rule-del, a.rule-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/brick_delete.png') no-repeat 0 50%;
+  text-decoration: none;
+}
+a.manufacturer, a.manufacturer:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/building.png') no-repeat 0 50%;
+}
+a.manufacturer-add, a.manufacturer-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/building_add.png') no-repeat 0 50%;
+}
+a.manufacturer-edit, a.manufacturer-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/building_edit.png') no-repeat 0 50%;
+  text-decoration: none;
+}
+a.manufacturer-del, a.manufacturer-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/building_delete.png') no-repeat 0 50%;
+  text-decoration: none;
+}
+a.merchant, a.merchant:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/basket.png') no-repeat 0 50%;
+}
+a.merchant-add, a.merchant-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/basket_add.png') no-repeat 0 50%;
+}
+a.merchant-edit, a.merchant-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/basket_edit.png') no-repeat 0 50%;
+  text-decoration: none;
+}
+a.merchant-del, a.merchant-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/basket_delete.png') no-repeat 0 50%;
+  text-decoration: none;
+}
+a.contact, a.contact:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/telephone.png') no-repeat 0 50%;
+}
+a.contact-add, a.contact-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/telephone_add.png') no-repeat 0 50%;
+  text-decoration: none;
+}
+a.contact-edit, a.contact-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/telephone_edit.png') no-repeat 0 50%;
+  text-decoration: none;
+}
+a.contact-del, a.contact-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/telephone_delete.png') no-repeat 0 50%;
+  text-decoration: none;
+}
+
+
+
+/* Icons */
+a.del, a.del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/delete.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.edit, a.edit:hover {
+  padding-left: 25px;
+  text-decoration: none;
+}
+
+a.cancel, a.cancel:hover {
+  padding-left: 20px;
+  background: url('/images/icons/silk/cancel.png') no-repeat bottom left;
+}
+
+a.bookAdd {
+  padding-left: 25px;
+  background: url('/images/icons/silk/book_add.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.person-add, a.person-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/user_add.png') no-repeat top left;
+}
+
+a.person-del, a.person-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/user_delete.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.person-edit, a.person-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/user_edit.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.person, a.person:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/user.png') no-repeat top left;
+  padding-bottom:1px;
+  text-decoration: none;
+}
+
+
+a.world-add, a.world-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/world_add.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.world, a.world:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/world.png') no-repeat top left;
+}
+
+a.world-edit, a.world-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/world_edit.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.world-del, a.world-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/world_delete.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.email, a.email:hover {
+  padding-left: 20px;
+  background: url('/images/icons/silk/email_go.png') no-repeat top left;
+  text-decoration: none;
+}
+
+
+a.component, a.component:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/brick.png') no-repeat top left;
+}
+
+a.component-add, a.component-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/brick_add.png') no-repeat top left;
+}
+
+a.component-edit, a.component-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/brick_edit.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.component-del, a.component-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/brick_delete.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.order, a.order:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/page.png') no-repeat top left;
+}
+
+a.order-add, a.order-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/page_add.png') no-repeat top left;
+}
+
+
+a.order-edit, a.order-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/page_edit.png') no-repeat top left;
+}
+
+a.order-cancel, a.order-cancel:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/page_delete.png') no-repeat top left;
+}
+
+a.order-close, a.order-close:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/lock.png') no-repeat top left;
+}
+
+
+a.order-del, a.order-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/page_delete.png') no-repeat top left;
+}
+
+a.order-statistics, a.order-statistics:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/chart_bar.png') no-repeat top left;
+}
+
+a.note, a.note:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/comment.png') no-repeat top left;
+}
+
+a.note-add, a.note-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/comment_add.png') no-repeat top left;
+}
+
+a.note-edit, a.note-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/comment_edit.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.note-del, a.note-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/comment_delete.png') no-repeat top left;
+  text-decoration: none;
+}
+
+
+a.document, a.document:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/package.png') no-repeat top left;
+}
+
+a.document-add, a.document-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/package_add.png') no-repeat top left;
+}
+
+a.document-edit, a.document-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/pencil.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.document-del, a.document-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/package_delete.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.composition, a.composition:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/package.png') no-repeat top left;
+}
+
+a.composition-add, a.composition-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/package_add.png') no-repeat top left;
+}
+
+a.composition-edit, a.composition-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/pencil.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.composition-del, a.composition-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/package_delete.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.part, a.part:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/plugin.png') no-repeat top left;
+}
+
+a.part-add, a.part-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/plugin_add.png') no-repeat top left;
+}
+
+a.part-edit, a.part-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/pencil.png') no-repeat top left;
+  text-decoration: none;
+  padding-bottom: 1px;
+}
+
+a.part-del, a.part-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/plugin_delete.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.picture, a.picture:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/photo.png') no-repeat top left;
+}
+
+a.picture-add, a.picture-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/photo_add.png') no-repeat top left;
+}
+
+a.picture-edit, a.picture-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/photo_edit.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.picture-del, a.picture-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/photo_delete.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.role, a.role:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/shield.png') no-repeat top left;
+}
+
+a.role-add, a.role-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/shield_add.png') no-repeat top left;
+}
+
+a.role-edit, a.role-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/shield_edit.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.role-del, a.role-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/shield_delete.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.arrow-left, a.arrow-left:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/arrow_left.png') no-repeat top left;
+}
+
+a.toggle-plus, a.toggle-plus:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/bullet_toggle_plus.png') no-repeat top left;
+}
+
+a.toggle-minus, a.toggle-minus:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/bullet_toggle_minus.png') no-repeat top left;
+}
+
+a.help, a.help:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/help.png') no-repeat top left;
+}
+
+a.delete, a.delete:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/delete.png') no-repeat top left;
+  padding-bottom: 1px;
+  text-decoration: none;
+}
+
+a.usergal, a.usergal:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/user.png') no-repeat top left;
+  padding-bottom: 1px;
+  text-decoration: none;
+}
+
+a.groupgal, a.groupgal:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/group.png') no-repeat top left;
+  padding-bottom: 1px;
+  text-decoration: none;
+}
+
+a.message, a.message:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/newspaper.png') no-repeat top left;
+}
+
+
+a.message-add, a.message-add:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/newspaper_add.png') no-repeat top left;
+}
+
+a.message-edit, a.message-edit:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/newspaper_edit.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.message-del, a.message-del:hover {
+  padding-left: 25px;
+  background: url('/images/icons/silk/newspaper_delete.png') no-repeat top left;
+  text-decoration: none;
+}
+
+
+a.calendar-icon, a.calendar-icon:hover {
+  padding-left: 13px;
+  text-decoration: none;
+  background: url('/images/icons/silk/calendar.png') no-repeat top left;
+}
+
+
+
+a.resultsetfirst, a.resultsetfirst:hover {
+  padding-left: 20px;
+  text-decoration: none;
+  border: 1px solid #f00;
+  background: url('/images/icons/silk/resultset_first.png') no-repeat top left;
+}
+
+a.up, a.up:hover {
+  padding-left: 15px;
+  background: url('/images/icons/silk/arrow_up.png') no-repeat top left;
+  text-decoration: none;
+}
+
+a.down, a.down:hover {
+  padding-left: 15px;
+  background: url('/images/icons/silk/arrow_down.png') no-repeat top left;
+  text-decoration: none;
+}

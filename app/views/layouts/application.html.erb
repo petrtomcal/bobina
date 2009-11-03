@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs">
+<head>
+  
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="content-language" content="cs" />
+  <meta http-equiv="MSThemeCompatible" content="no" />
+  <meta http-equiv="imagetoolbar" content="no" />
+  
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="klicova slova" />
+  <meta name="description" content="popis" />
+  <meta name="author" content="autor" />
+  <meta name="webmaster" content="webamster" />
+  <meta name="copyright" content="copyright" />
+  <meta name="MS.LOCALE" content="cs" />
+  <meta name="robots" content="index,follow" />
+  <meta name="googlebot" content="index,follow,snippet,archive" />
+  
+  <meta name="dc.language" content="cs" />
+  <meta name="geo.country" content="CZ" />
+  
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>bobina</title>  
+  <%= stylesheet_link_tag 'screen' %>
+  <%= stylesheet_link_tag 'calendar-green' %>
+  <%= javascript_include_tag 'controls' %>
+  <%= javascript_include_tag 'calendar', 'calendar-setup', 'calendar-cs-utf8' %>
+  <%= javascript_include_tag("datetime","application") %>
+  <%= stylesheet_link_tag 'form' %>
+</head>
+<body id="kofola">
+  <div id="container">
+    <% unless (session[:user_id] == nil) %>
+    <div id="specialNav" class="clearfix">
+      <div id="userInfo">
+          Přihlášený uživatel: <strong></strong>
+          [ <%= link_to 'Nastavení účtu', { :controller => 'users', :action => 'edit', :id => session[:user_id] } %> ]
+          <%= link_to 'Odhlásit', { :controller => 'users', :action => 'logout'  } %>
+      </div>
+    </div><!--specialNav-->
+    <div id="header" class="clearfix">
+      <div id="specialInfo" class="clearfix">
+        <div id="section">
+          <%= image_tag('/images/icons/kofolainfo22.png') %>
+        </div>
+      </div><!--specialInfo-->
+        <%= render :partial => 'shared/navigation'%>
+    </div><!--header-->    
+    <% end %>
+    
+    <div id="mainFrame" class="clearfix">
+      <p style="color: red"><%= flash[:warning] %></p>
+      <p style="color: #D37A26"><%= flash[:notice] %></p>
+      <%= @content_for_layout %>      
+    </div><!--mainFrame-->
+  </div><!--container-->
+</body>
+</html>

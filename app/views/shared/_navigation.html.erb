@@ -1,0 +1,5 @@
+<div id="navigation" class="clearfix">
+  <ul id="nav">    
+    <li id="nav-user" <%= " class=\"navSelected\"" if  @controller.controller_name=='users' %>><%= link_to 'Uživatelé', { :controller => 'users', :action => 'index'} %></li>    
+  </ul>  
+</div>

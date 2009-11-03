@@ -1,0 +1,9 @@
+<% form_for(@user, :url => { :action => "create" } ) do |f| %>
+  <%= f.error_messages %>
+  <%= render :partial => 'form' %>
+  <p>
+    <%= f.submit 'Ulož' %>
+  </p>
+<% end %>
+
+<%= link_to 'Zpět', :action => 'index' %>

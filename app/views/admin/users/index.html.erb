@@ -1,0 +1,19 @@
+<table>
+  <tr>
+  </tr>  
+<% @users.each do |user| %>
+  <tr>
+    <td><%= link_to user.email, { :controller => 'users', :action => 'show', :id => user.id  } %></td>
+    <td><%= user.first_name %></td>
+    <td><%= user.last_name %></td>
+    <td><%= link_to 'Show', {:action => 'show',:id => user.id} %></td>
+    <td><%= link_to 'Edit', {:action => 'edit', :id => user.id} %></td>
+    <td><%= link_to 'Destroy', {:action => 'destroy',:id => user.id}, :confirm => 'Jste si jistý?', :method => :delete %></td>
+  </tr>
+<% end %>
+
+</table>
+
+<br />
+
+<%= link_to 'Nový uživatel', :action => 'new' %>

@@ -1,0 +1,26 @@
+<% if flash[:error] -%>
+    <h2 class="error"><%= flash[:error] %></h2>
+    <% flash[:error]=nil %>
+<% end -%>
+<% if flash[:notice] -%>
+    <h2 class="notice"><%= flash[:notice] %></h2>
+    <br />
+    <% flash[:notice]=nil -%>
+<% end -%>
+<% form_tag  :action => "login" do %>  
+  <table cellpadding="0" cellspacing="0" style="margin: 0 auto; width: 25em;">
+        <tr>
+            <td>Email:</td>
+            <td><%= text_field_tag "email", '', { :size => '40' } %></td>
+        </tr>
+        <tr>
+            <td style="padding-top: 1em;">Heslo:</td>
+            <td style="padding-top: 1em;"><%= password_field_tag "password_hash", '', { :size => '40' } %></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><%= submit_tag 'Příhlásit', {:class => 'submit'} %>&nbsp;</td>
+        </tr>
+    </table>  
+<% end %>
+<p style="margin: 1em auto; width: 15em;"><%= link_to('Registrace nového uživatele', { :action => 'registration'} )  %></p>

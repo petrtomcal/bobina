@@ -1,0 +1,113 @@
+
+
+body {
+  font-family: verdana;
+  font-size: 0.8em;
+  margin: 0;
+  background-color: #FFF3A5;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  text-align: center;
+}
+h2 {
+  line-height: 1.4em;
+}
+
+form {
+  margin: 0;
+  padding: 0;
+}
+
+#head {
+  width: 73em;
+  margin: 0 auto;
+  background-color: #fff;
+  border-left: solid 0.2em #213891;
+  border-right: solid 0.2em #213891;
+  border-top: solid 0.2em #213891;
+  padding: 1em;
+  line-height: 3em;
+  color: #666;
+  text-align: center;
+}
+
+#main {
+  width: 73em;
+  margin: 0 auto;
+  background-color: #fff;
+  border-left: solid 0.2em #213891;
+  border-right: solid 0.2em #213891;
+  border-bottom: solid 0.2em #213891;
+  border-top: solid 0.2em #213891;
+  padding: 1em;
+  line-height: 1.4em;
+  color: #666;
+}
+
+#foot {
+  width: 73em;
+  margin: 0 auto;
+  background-color: #fff;
+  border-left: solid 0.2em #213891;
+  border-right: solid 0.2em #213891;
+  border-bottom: solid 0.2em #213891;
+  padding: 1em;
+  line-height: 1.4em;
+  color: #666;
+  text-align: center;
+}
+
+.logo {
+  float: left;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+a {
+  color: #00a6ec;
+}
+
+a:visited {
+  color: #00a6ec;
+}
+
+
+a:hover {
+  color: #000066;
+}
+
+#timeline-whole {
+  margin: 1em 0;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+#left {
+  width: 14em;
+  float: left;
+  color: #000066;
+}
+
+#right {
+  float: left;
+  color: #000066;
+  padding-left: 1em;
+  width: 58em;
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.clearfix {display: inline-table;}
+
+/* ie win hack ~ height acts like min-height \*/
+* html .clearfix {height: 1%;}
+/* end comment required */
