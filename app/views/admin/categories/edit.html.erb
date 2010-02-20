@@ -1,0 +1,10 @@
+<% form_for(@category, :url => { :action => "update", :id => @category.id }) do |f| %>
+  <%= f.error_messages %>
+  <%= render :partial => 'form' %>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Zobraz', {:action => 'show',:id => @category.id} %> |
+<%= link_to 'Zpět', :action => 'index' %>

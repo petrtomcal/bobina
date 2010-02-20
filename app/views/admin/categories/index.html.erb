@@ -1,0 +1,19 @@
+<h1>Admin::Categories#index</h1>
+<p>Find me in app/views/admin/categories/index.html.erb</p>
+<table>
+  <tr>
+  </tr>  
+<% @categories.each do |category| %>
+  <tr>
+    <td><%= link_to category.name, { :controller => 'categories', :action => 'show', :id => category.id  } %></td>
+    <td><%= link_to 'Show', {:action => 'show',:id => category.id} %></td>
+    <td><%= link_to 'Edit', {:action => 'edit', :id => category.id} %></td>
+    <td><%= link_to 'Destroy', {:action => 'destroy',:id => category.id}, :confirm => 'Jste si jistý?', :method => :delete %></td>
+  </tr>
+<% end %>
+
+</table>
+
+<br />
+
+<%= link_to 'Nová kategorie', :action => 'new' %>

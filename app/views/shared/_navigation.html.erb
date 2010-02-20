@@ -1,5 +1,7 @@
 <div id="navigation" class="clearfix">
   <ul id="nav">    
-    <li id="nav-user" <%= " class=\"navSelected\"" if  @controller.controller_name=='users' %>><%= link_to 'Uživatelé', { :controller => 'users', :action => 'index'} %></li>    
+    <li id="nav-user" <%= " class=\"navSelected\"" if  @controller.controller_name=='users' %>><%= link_to 'Uživatelé', { :controller => 'users', :action => 'index'} %></li>
+<!--    <li id="nav-kind" <%= " class=\"navSelected\"" if  @controller.controller_name=='kinds' %>><%= link_to 'Druhy', { :controller => 'kinds', :action => 'index'} %></li>-->
+    <li id="nav-category" <%= " class=\"navSelected\"" if  @controller.controller_name=='categories' %>><%= link_to 'Kategorie', { :controller => 'categories', :action => 'index'} %></li>
   </ul>  
 </div>

@@ -1,0 +1,21 @@
+<h1>Admin::Kinds#index</h1>
+<p>Find me in app/views/admin/kinds/index.html.erb</p>
+<table>
+  <tr>
+  </tr>  
+<% @kinds.each do |kind| %>
+  <tr>
+    <td><%= link_to kind.kind, { :controller => 'kinds', :action => 'show', :id => kind.id  } %></td>
+    <td><%= kind.first_name %></td>
+    <td><%= kind.last_name %></td>
+    <td><%= link_to 'Show', {:action => 'show',:id => kind.id} %></td>
+    <td><%= link_to 'Edit', {:action => 'edit', :id => kind.id} %></td>
+    <td><%= link_to 'Destroy', {:action => 'destroy',:id => kind.id}, :confirm => 'Jste si jistý?', :method => :delete %></td>
+  </tr>
+<% end %>
+
+</table>
+
+<br />
+
+<%= link_to 'Nový druh', :action => 'new' %>

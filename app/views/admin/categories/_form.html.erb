@@ -1,0 +1,9 @@
+<%= error_messages_for 'category' %>
+<% if flash[:error] -%>
+    <h2 class="error"><%= flash[:error] %></h2>
+<% elsif flash[:notice] -%>
+    <h2 class="notice"><%= flash[:notice] %></h2>
+<% end -%>
+
+<label for="category_kinds"><%= 'Kategorie' %></label><br />
+<%= text_field 'category', 'name' %><br />
