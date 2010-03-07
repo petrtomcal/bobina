@@ -1,0 +1,10 @@
+<% form_for(@product, :url => { :action => "update", :id => @product.id }) do |f| %>
+  <%= f.error_messages %>
+  <%= render :partial => 'form' %>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Zobraz', {:action => 'show',:id => @product.id} %> |
+<%= link_to 'Zpět', :action => 'index' %>

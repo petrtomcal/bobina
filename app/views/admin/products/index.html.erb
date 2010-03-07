@@ -1,0 +1,17 @@
+<table>
+  <tr>
+  </tr>  
+<% @products.each do |product| %>
+  <tr>
+    <td><%= link_to product.name, { :controller => 'categories', :action => 'show', :id => product.id  } %></td>
+    <td><%= link_to 'Show', {:action => 'show',:id => product.id} %></td>
+    <td><%= link_to 'Edit', {:action => 'edit', :id => product.id} %></td>
+    <td><%= link_to 'Destroy', {:action => 'destroy',:id => product.id}, :confirm => 'Jste si jistý?', :method => :delete %></td>
+  </tr>
+<% end %>
+
+</table>
+
+<br />
+
+<%= link_to 'Nový produkt', :action => 'new' %>
