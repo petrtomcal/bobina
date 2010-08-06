@@ -6,7 +6,7 @@
     <td><%= link_to category.name, { :controller => 'categories', :action => 'show', :id => category.id  } %></td>
     <td><%= link_to 'Show', {:action => 'show',:id => category.id} %></td>
     <td><%= link_to 'Edit', {:action => 'edit', :id => category.id} %></td>
-    <td><%= link_to 'Destroy', {:action => 'destroy',:id => category.id}, :confirm => 'Jste si jistý?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', {:action => 'destroy',:id => category.id}, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 
@@ -14,4 +14,4 @@
 
 <br />
 
-<%= link_to 'Nová kategorie', :action => 'new' %>
+<%= link_to 'New category', :action => 'new' %>
