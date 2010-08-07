@@ -41,7 +41,7 @@ class Admin::ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        flash[:notice] = 'Produkt úspěšně vytvořen.'
+        flash[:notice] = 'Product sucesfully added.'
         format.html { redirect_to :action => 'index' }
         format.xml  { render :xml => @product, :status => :created, :location => @product }
       else
@@ -59,7 +59,7 @@ class Admin::ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.update_attributes(params[:product])
-        flash[:notice] = 'Kategorie úspěšně vytvořena.'
+        flash[:notice] = 'Product sucesfully edited.'
         format.html { redirect_to :action => "index" }
         format.xml  { head :ok }
       else

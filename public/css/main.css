@@ -111,3 +111,10 @@ a:hover {
 /* ie win hack ~ height acts like min-height \*/
 * html .clearfix {height: 1%;}
 /* end comment required */
+
+#editform  {
+  width: 22em;
+  border: solid 1px #B3966F;
+  padding: 1em 1.5em;
+  margin-bottom: 1.5em;
+}

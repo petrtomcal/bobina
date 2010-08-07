@@ -1,0 +1,32 @@
+PofFunctions
+============
+
+=CONTACT DETAILS
+
+  Author: Skvely.CZ
+
+=Requirements
+
+	public/javascripts/calendar.js
+	public/javascripts/calendar-cs-utf8.js
+	public/javascripts/calendar-setup.js
+
+=INSTALLATION
+
+  class ApplicationController < ActionController::Base
+    include PofFunctions
+  end
+
+
+
+=USAGE
+
+	class SubjectsController < ApplicationController
+
+	  def list
+	    @pof = pof(:tbl_name => 'subjects')
+	    @pof.item_count = Subject.count(@pof.conds)
+	    @subjects = Subject.find(:all, :conditions => @pof.conds, :order => @pof.order, :offset => @pof.offset, :limit => @pof.limit)
+	  end
+	  
+  end

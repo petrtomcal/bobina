@@ -4,7 +4,10 @@ class Admin::UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   def index
-    @users = User.all
+    #@pof = pof(:tbl_name => 'users')
+	  #@pof.item_count = User.count(@pof.conds)
+	  @users = User.all #(:conditions => @pof.conds, :order => @pof.order, :offset => @pof.offset, :limit => @pof.limit)
+    #@users = User.all
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @users }
@@ -45,7 +48,7 @@ class Admin::UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        flash[:notice] = 'Uživatel úspěšně vytvořen.'
+        flash[:notice] = 'User sucesfully added.'
         format.html { redirect_to :action => 'index' }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
@@ -63,7 +66,7 @@ class Admin::UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        flash[:notice] = 'Uživatel úspěšně editován.'
+        flash[:notice] = 'User sucesfully edited.'
         format.html { redirect_to :action => "index" }
         format.xml  { head :ok }
       else
@@ -99,7 +102,7 @@ class Admin::UsersController < ApplicationController
   
   def logout
     reset_session
-    flash[:notice] =  'Uživatel byl odhlášen.'
+    flash[:notice] =  'User logout.'
     render :template => 'admin/users/login', :layout => 'access'
     return false
   end
