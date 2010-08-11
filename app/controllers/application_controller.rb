@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     #  return false
     #end
     unless session[:user_id]
-      flash[:notice] = 'Přihlašte se prosím'
+      flash[:notice] = 'Login yourself please.'
       render :template => 'admin/users/login', :layout => 'access'
       return false
     end

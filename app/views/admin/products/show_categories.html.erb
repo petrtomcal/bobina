@@ -1,0 +1,36 @@
+<h1>Categories for product: <%= @product.name %></h1>
+<div class="sub-list">
+  <h2>Already in product</h2>
+  <table class="common-table" cellpadding="0" cellspacing="0">
+  <th>Name</th>
+  <th></th>
+  
+    
+      kategorie u produktu
+    
+        
+          
+        
+      </td>
+    </tr>
+  
+  </table>
+</div>
+<br/>
+<div class="sub-list">
+  <h2>Categories possible add for product</h2>
+  <table class="common-table" cellpadding="0" cellspacing="0">
+  <th>Name</th>
+  <th></th>
+  <% even = 0
+   for category in @category_all
+     even+=1 -%>
+    <tr <%= "class=\"even\"" if (even % 2)==0 %>>
+      <td><%= category.name %></td>
+      <td class="links">
+
+      </td>
+    </tr>
+  <% end %>
+  </table>
+</div>

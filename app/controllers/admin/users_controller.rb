@@ -123,7 +123,7 @@ class Admin::UsersController < ApplicationController
     
     respond_to do |format|
       if @user.save
-        flash[:notice] = 'Uživatel úspěšně registrován.'
+        flash[:notice] = 'User was successfully registred.'
         render :template => 'admin/users/login', :layout => 'access'
         return false
         #format.html { redirect_to :action => 'info' }

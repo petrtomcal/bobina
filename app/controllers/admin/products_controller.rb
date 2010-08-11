@@ -80,4 +80,15 @@ class Admin::ProductsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def show_categories
+    @product = Product.find(params[:product_id])
+    #@users_admin = User.find(:all, :conditions => [ "admin = ?", 1])
+    #@categories = Category.all
+    #@products_category = @category.products.find(:all)
+    #@products_category = Category.find_by_id(1)
+    @category_all = Category.all #- @products_category
+    #@users_gallery = @gallery.users.find(:all) - @users_admin
+    #@users_all = User.find(:all) - @users_gallery - @users_admin
+  end
 end
