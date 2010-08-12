@@ -4,16 +4,16 @@
   <table class="common-table" cellpadding="0" cellspacing="0">
   <th>Name</th>
   <th></th>
-  
-    
-      kategorie u produktu
-    
-        
-          
-        
+  <% even = 0
+   for pc in @products_category
+     even+=1 -%>
+    <tr <%= "class=\"even\"" if (even % 2)==0 %>>
+      <td><%= pc.name %></td>
+      <td class="links">
+        <%= link_to '&nbsp Delete', { :controller => 'products', :action => 'del_category_from_product', :product_id => @product.id, :category_id => pc.id } %>
       </td>
     </tr>
-  
+  <% end %>
   </table>
 </div>
 <br/>
@@ -28,7 +28,7 @@
     <tr <%= "class=\"even\"" if (even % 2)==0 %>>
       <td><%= category.name %></td>
       <td class="links">
-
+        <%= link_to '&nbsp Add', { :controller => 'products', :action => 'add_category_to_product', :product_id => @product.id, :category_id => category.id } %>
       </td>
     </tr>
   <% end %>

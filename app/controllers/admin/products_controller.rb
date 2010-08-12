@@ -82,13 +82,25 @@ class Admin::ProductsController < ApplicationController
   end
   
   def show_categories
-    @product = Product.find(params[:product_id])
-    #@users_admin = User.find(:all, :conditions => [ "admin = ?", 1])
+    @product = Product.find(params[:product_id])    
     #@categories = Category.all
-    #@products_category = @category.products.find(:all)
-    #@products_category = Category.find_by_id(1)
-    @category_all = Category.all #- @products_category
-    #@users_gallery = @gallery.users.find(:all) - @users_admin
-    #@users_all = User.find(:all) - @users_gallery - @users_admin
+    #debugger
+    @products_category = @product.categories.find(:all)
+    @category_all = Category.all - @products_category    
+  end
+  
+  def del_category_from_product
+    Category.find(params[:category_id]).remove_product(params[:product_id])
+    redirect_to :action => 'show_categories', :product_id => params[:product_id]
+  end
+  
+  def add_category_to_product
+    product = Product.find(params[:product_id])
+    category = Category.find(params[:category_id])    
+    @pc = ProductsCategory.new
+    @pc.product = product
+    @pc.category = category
+    @pc.save
+    redirect_to :action => 'show_categories', :product_id => params[:product_id]
   end
 end
