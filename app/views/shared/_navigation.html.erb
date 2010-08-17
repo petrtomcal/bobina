@@ -1,8 +1,8 @@
 <div id="navigation" class="clearfix">
   <ul id="nav">    
-    <li id="nav-user" <%= " class=\"navSelected\"" if  @controller.controller_name=='users' %>><%= link_to 'Uživatelé', { :controller => 'users', :action => 'index'} %></li>
-<!--    <li id="nav-kind" <%= " class=\"navSelected\"" if  @controller.controller_name=='kinds' %>><%= link_to 'Druhy', { :controller => 'kinds', :action => 'index'} %></li>-->
-    <li id="nav-category" <%= " class=\"navSelected\"" if  @controller.controller_name=='categories' %>><%= link_to 'Kategorie', { :controller => 'categories', :action => 'index'} %></li>
-    <li id="nav-product" <%= " class=\"navSelected\"" if  @controller.controller_name=='products' %>><%= link_to 'Produkty', { :controller => 'products', :action => 'index'} %></li>
+    <li id="nav-user" <%= " class=\"navSelected\"" if  @controller.controller_name=='users' %>><%= link_to 'Users', { :controller => 'users', :action => 'index'} %></li>
+    <li id="nav-category" <%= " class=\"navSelected\"" if  @controller.controller_name=='categories' %>><%= link_to 'Categories', { :controller => 'categories', :action => 'index'} %></li>
+    <li id="nav-product" <%= " class=\"navSelected\"" if  @controller.controller_name=='products' %>><%= link_to 'Products', { :controller => 'products', :action => 'index'} %></li>
+    <li id="nav-pack" <%= " class=\"navSelected\"" if  @controller.controller_name=='packs' %>><%= link_to 'Packages', { :controller => 'packs', :action => 'index'} %></li>
   </ul>  
 </div>

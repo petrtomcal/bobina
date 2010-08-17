@@ -1,0 +1,10 @@
+<% form_for(@pack, :url => { :action => "update", :id => @pack.id }) do |f| %>
+  <%= f.error_messages %>
+  <%= render :partial => 'form' %>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', {:action => 'show',:id => @pack.id} %> |
+<%= link_to 'Back', :action => 'index' %>
