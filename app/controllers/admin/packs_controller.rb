@@ -80,4 +80,27 @@ class Admin::PacksController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def show_products
+    @pack = Pack.find(params[:pack_id])    
+    #@categories = Category.all
+    #debugger
+    @packs_product = @pack.products.find(:all)
+    @product_all = Product.all - @packs_product
+  end
+  
+  def del_product_from_pack
+    Pack.find(params[:pack_id]).remove_product(params[:product_id])
+    redirect_to :action => 'show_products', :pack_id => params[:pack_id]
+  end
+  
+  def add_product_to_pack
+    product = Product.find(params[:product_id])
+    pack = Pack.find(params[:pack_id])    
+    @pp = PacksProduct.new
+    @pp.product = product
+    @pp.pack = pack
+    @pp.save
+    redirect_to :action => 'show_products', :pack_id => params[:pack_id]
+  end
 end
