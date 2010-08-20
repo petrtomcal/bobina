@@ -95,8 +95,8 @@ class Admin::UsersController < ApplicationController
   
   def login
     #user = User.find_by_credentials(params[:email], params[:password_hash])
-    user = User.find(:first)
-    session[:user_id] = user.id
+    #user = User.find(:first)
+    session[:user_id] = 1#user.id
     redirect_to :action => 'index'
   end
   

@@ -5,10 +5,5 @@
     <h2 class="notice"><%= flash[:notice] %></h2>
 <% end -%>
 
-<label for="product_name"><%= 'Product' %></label><br />
-<%= f.label :name %>
-<%= f.text_field :name %><br/>
-<%= f.label :file %>
-<%= f.file_field :attachment %><br/>
-<%= submit_tag "Upload" %>   
-
+<label for="product_name"><%= 'Name' %></label><br />
+<%= text_field 'product', 'name' %><br />

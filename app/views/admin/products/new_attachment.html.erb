@@ -1,0 +1,14 @@
+ <% form_for :attachment, :url => { :action => "upload_attachment", :product_id => @product.id  }, 
+                        :html => { :multipart => true } do |f| %>
+  <%= f.error_messages %>
+  <% if flash[:error] -%>
+      <h2 class="error"><%= flash[:error] %></h2>
+  <% elsif flash[:notice] -%>
+      <h2 class="notice"><%= flash[:notice] %></h2>
+  <% end -%>
+  
+  
+  <%= f.label :file %>
+  <%= f.file_field :file %><br/>
+  <%= submit_tag "Upload" %>   
+<% end %>

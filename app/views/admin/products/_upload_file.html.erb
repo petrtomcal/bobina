@@ -1,0 +1,7 @@
+<% form_for :product, :url => {:action => "upload"}, :html => {:multipart => true} do |f| -%>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br/>
+  <%= f.label :file %>
+  <%= f.file_field :file %><br/>
+  <%= submit_tag "Upload" %>   
+<% end -%>

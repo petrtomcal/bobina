@@ -104,10 +104,43 @@ class Admin::ProductsController < ApplicationController
     redirect_to :action => 'show_categories', :product_id => params[:product_id]
   end
   
-  def upload    
-    upload_file.name = params [:xml_file]
-    data = uploaded_file.read if uploaded_file.respond_to? :read    
-    redirect_to :action => 'index'
+  def download
+    begin
+      product = Product.find(params[:product_id])      
+      file_path = File.join(product.attachment.path)
+      send_file(file_path, :filename => product.attachment_file_name , :stream => false)    
+    rescue
+      render :text => "File not found", :status => 404
     end
   end
+  
+  def new_attachment
+    @product = Product.find(params[:product_id])
+    @attachment = Attachment.new
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @product }
+    end
+  end
+  
+  def upload_attachment
+    @product = Product.find(params[:product_id])
+    @attachment = @product.attachments.new(params[:attachment])
+    
+    if @attachment.save
+      flash[:notice] = 'Product sucesfully added.'
+      redirect_to :action => 'show', :id => @product.id
+    else
+      render :action => "new_attachment"
+    end
+  end
+  
+  #na smazani
+#def upload
+#  debugger    
+#  post = Product.save(params[:file])
+#  #upload_file.name = params [:file]
+#  #data = uploaded_file.read if uploaded_file.respond_to? :read    
+#  redirect_to :action => 'index'    
+#end
 end
