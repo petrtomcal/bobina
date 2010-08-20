@@ -103,4 +103,11 @@ class Admin::ProductsController < ApplicationController
     @pc.save
     redirect_to :action => 'show_categories', :product_id => params[:product_id]
   end
+  
+  def upload    
+    upload_file.name = params [:xml_file]
+    data = uploaded_file.read if uploaded_file.respond_to? :read    
+    redirect_to :action => 'index'
+    end
+  end
 end
