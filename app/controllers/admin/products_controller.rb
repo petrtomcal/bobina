@@ -104,16 +104,17 @@ class Admin::ProductsController < ApplicationController
     redirect_to :action => 'show_categories', :product_id => params[:product_id]
   end
   
-  def download
+  def download    
     begin
-      product = Product.find(params[:product_id])      
-      file_path = File.join(product.attachment.path)
-      send_file(file_path, :filename => product.attachment_file_name , :stream => false)    
+      attachment = Attachment.find(params[:attachment_id])
+      file_path = File.join(attachment.file.path)
+      send_file(file_path, :filename => attachment.file_file_name , :stream => false)      
     rescue
       render :text => "File not found", :status => 404
     end
   end
   
+  #takto upravit vsechny metody v controlleru #info
   def new_attachment
     @product = Product.find(params[:product_id])
     @attachment = Attachment.new
@@ -125,13 +126,13 @@ class Admin::ProductsController < ApplicationController
   
   def upload_attachment
     @product = Product.find(params[:product_id])
-    @attachment = @product.attachments.new(params[:attachment])
-    
+    @attachment = @product.attachments.new(:file => params[:attachment])
     if @attachment.save
-      flash[:notice] = 'Product sucesfully added.'
-      redirect_to :action => 'show', :id => @product.id
+      status = '<div id="output">success</div>'
+      render :text => "#{status} <div id='message'>Attachment was sucesfully added.</div>"
     else
-      render :action => "new_attachment"
+      status = '<div id="output">failed</div>'
+      render :text => "#{status} <div id='message'>Sorry something was wrong.</div>"
     end
   end
   
