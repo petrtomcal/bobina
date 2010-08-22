@@ -4,13 +4,13 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   include DatabaseHelper #musi se includovat jinak nefunguje
-  include PofFunctions #obsahuje funkce pro razeni
+  include EshopModule::Liquid::LiquidTemplate #includnuti metod z liquid_template
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   
-  before_filter :set_db
+  before_filter :set_db, :set_skin
   
   def default_order_properties
     'id'
@@ -18,6 +18,12 @@ class ApplicationController < ActionController::Base
  
   def default_filter
     {}
+  end
+  
+  def set_skin
+    subdomain = request.host.split(".").first      
+    FileUtils.mkdir_p File.join( RAILS_ROOT, 'liquid', subdomain )
+    @skin_templates = File.join( RAILS_ROOT, 'liquid', subdomain )
   end
   
   def check_authentication
@@ -32,4 +38,5 @@ class ApplicationController < ActionController::Base
       return false
     end
  end
+  
 end

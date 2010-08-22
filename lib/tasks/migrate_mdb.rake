@@ -1,6 +1,6 @@
 require 'ruby-debug'
 
-dbs = ['buk_eshop','vitana_eshop','bobina']
+#dbs = ['buk_eshop','vitana_eshop','bobina']
 namespace :db do
   desc "Migrate specific database. Database name must be specified in DB=x also in VERSION=x you can specify version." 
   task :migrate_db => :environment do 
