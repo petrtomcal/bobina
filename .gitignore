@@ -2,4 +2,5 @@ log/*
 *.log
 script/*
 config/database.yml
+public/products/*
 tmp/*
