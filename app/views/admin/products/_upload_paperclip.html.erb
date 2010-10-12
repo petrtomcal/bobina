@@ -1,9 +1,0 @@
-<%= error_messages_for 'product' %>
-<% if flash[:error] -%>
-    <h2 class="error"><%= flash[:error] %></h2>
-<% elsif flash[:notice] -%>
-    <h2 class="notice"><%= flash[:notice] %></h2>
-<% end -%>
-
-<label for="product_name"><%= 'Name' %></label><br />
-<%= text_field 'product', 'name' %><br />

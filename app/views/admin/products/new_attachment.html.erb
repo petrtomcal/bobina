@@ -15,5 +15,6 @@
   
   <%= submit_tag 'Submit' %>
 <% end %>
-
------------------------------------------
+<br />
+<%= link_to 'Edit', {:action => 'edit',:id => @product.id} %> |
+<%= link_to 'Back', :action => 'index' %>

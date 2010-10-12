@@ -1,9 +1,9 @@
-<% form_for(@product, :url => { :action => "update", :id => @product.id }) do |f| %>
-  <%= f.error_messages %>
+<% form_for(@product, :url => { :action => "update", :id => @product.id }) do |f| %>  
   <%= render :partial => 'form' %>
   <p>
     <%= f.submit 'Update' %>
   </p>
+  
 <% end %>
 
 <%= link_to 'Show', {:action => 'show',:id => @product.id} %> |

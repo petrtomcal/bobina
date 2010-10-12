@@ -22,7 +22,8 @@ module EshopModule
       end
       
       def render_liquid(template, layout, assigns ={}, controller = nil)
-        parse_inner_template(template, assigns, controller)
+        parse_inner_template(template, assigns, controller)        
+        #debugger
         render_layout(layout, assigns, controller)
       end
       
@@ -33,10 +34,23 @@ module EshopModule
     
       def render_layout(layout, assigns, controller)
         content = File.read(File.join(@skin_templates, "#{layout}.liquid"))
-        tmpl = ::Liquid::Template.parse(content)
-        returning tmpl.render(assigns, :registers => {:controller => controller}) do |result|
-          yield tmpl, result if block_given?
-        end
+        #debugger
+        #tmpl = ::Liquid::Template.parse(content)
+        #returning tmpl.render(assigns, :registers => {:controller => controller}) do |result|
+        #  yield tmpl, result if block_given?
+        #end
+        
+        #debugger  #myown        
+        #template = ::Liquid::Template.parse(content)  
+        #template.render('name' => 'tobi' )#assigns, :registers => {:controller => controller})
+        
+        #info doc from github               
+        #@template = Liquid::Template.parse("hi {{name}}")  # Parses and compiles the template
+        #@template.render( 'name' => 'tobi' )               # Renders the output => "hi tobi" 
+        
+        
+        #Liquid::Template.parse(content).render 'products' => assigns
+        
       end
       
       def parse_template(template, assigns, controller)

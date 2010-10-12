@@ -134,14 +134,5 @@ class Admin::ProductsController < ApplicationController
       status = '<div id="output">failed</div>'
       render :text => "#{status} <div id='message'>Sorry something was wrong.</div>"
     end
-  end
-  
-  #na smazani
-#def upload
-#  debugger    
-#  post = Product.save(params[:file])
-#  #upload_file.name = params [:file]
-#  #data = uploaded_file.read if uploaded_file.respond_to? :read    
-#  redirect_to :action => 'index'    
-#end
+  end  
 end
