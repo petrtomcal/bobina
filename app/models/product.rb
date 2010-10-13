@@ -6,7 +6,7 @@ class Product < ActiveRecord::Base
   has_many :packs, :through => :packs_products
   has_many :packs_products, :dependent => :destroy
   
-  has_many :attachments
+  has_many :attachments, :dependent => :destroy
   
   validates_presence_of :name, :message => "can't be blank"
   validates_numericality_of :price, :message => "is not a number"
@@ -17,8 +17,8 @@ class Product < ActiveRecord::Base
                     :path => ":rails_root/public/product/:id/:style/:basename.:extension"
 
   #liquid_cast
-  liquid_methods :name
-  
+  #liquid_methods :name  
+      
   protected
   def price_must_be_at_least_0
     errors.add(:price, 'should be at least then 0.01') if price.nil? || price < 0.01 

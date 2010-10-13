@@ -73,7 +73,15 @@ class Admin::ProductsController < ApplicationController
   # DELETE /users/1.xml
   def destroy
     @product = Product.find(params[:id])
-    @product.destroy
+    
+    #info - vyresit pomoci paperclipu/nemaze soubory z adresare
+    #@pa = @product.attachments
+    debugger
+    #Attachment.find_by_product_id(15).delete_dir('39')
+    #Attachment.delete_dir(@product.id)
+    #Attachment.find_all_by_product_id(@product.id).destroy #if nil     
+    #@product.attachment.destroy
+    #@product.delete
 
     respond_to do |format|
       format.html { redirect_to :action => 'index' }
