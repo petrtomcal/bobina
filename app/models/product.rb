@@ -12,10 +12,6 @@ class Product < ActiveRecord::Base
   validates_numericality_of :price, :message => "is not a number"
   validate :price_must_be_at_least_0
   
-  #upload paperclip
-  has_attached_file :attachment,
-                    :path => ":rails_root/public/product/:id/:style/:basename.:extension"
-
   #liquid_cast
   #liquid_methods :name  
       

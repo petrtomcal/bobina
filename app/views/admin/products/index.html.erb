@@ -18,7 +18,7 @@
     <td><%= link_to (h truncate product.name), { :action => 'show', :id => product.id  } %></td>    
     <td><%= h product.price %></td>
     <td><%= link_to 'Show', {:action => 'show',:id => product.id} %></td>
-    <td><%= link_to 'Edit', {:action => 'edit', :id => product.id} %></td>
+    <td><%= link_to 'Edit', {:action => 'edit', :id => product.id} %></td>    
     <td><%= link_to 'Destroy', {:action => 'destroy',:id => product.id}, :confirm => 'Are you sure?', :method => :delete %></td>
     <td><%= link_to('categories &nbsp', {:action => 'show_categories', :product_id => product.id },  {:title => 'categories for product'} )  %></td>
   </tr>

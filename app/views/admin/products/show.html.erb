@@ -16,8 +16,10 @@
       <td><%= attachment.file_file_name %></td>
       <th>Link to download</th>
       <td><%= link_to('download', :action => 'download', :attachment_id => attachment.id) %></td>
+      <th>Delete from product</th>
+      <td><%= link_to 'Delete', {:controller => 'attachments', :action => 'destroy', :attachment_id => attachment.id} %></td>
     </tr>
-  <% end -%>
+  <% end -%>  
 </table>
 <br/>
 

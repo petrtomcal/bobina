@@ -76,12 +76,14 @@ class Admin::ProductsController < ApplicationController
     
     #info - vyresit pomoci paperclipu/nemaze soubory z adresare
     #@pa = @product.attachments
-    debugger
-    #Attachment.find_by_product_id(15).delete_dir('39')
+    
+    #debugger
+    #Attachment.find_by_product_id(15).delete_dir(39.to_s)
     #Attachment.delete_dir(@product.id)
     #Attachment.find_all_by_product_id(@product.id).destroy #if nil     
-    #@product.attachment.destroy
-    #@product.delete
+    
+    #@product.attachments.destroy
+    @product.destroy
 
     respond_to do |format|
       format.html { redirect_to :action => 'index' }
