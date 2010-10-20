@@ -7,7 +7,7 @@
    <tr>    
 <!--    <th>< pof_order_header(@pof, :order_by => 'first_name', :label => 'Fisrt name', :title => 'Click to order') %></th>
     <th>< pof_order_header(@pof, :order_by => 'last_name', :label => 'Příjmení', :title => 'Click to order') %></th>-->
-      <th colspan="5">&nbsp;</th>
+      <th colspan="6">&nbsp;</th>
    </tr>
   </thead>
   <% even = 0
@@ -15,13 +15,13 @@
   even+=1 -%>
   <tr id="<%= pack.id %>" <%= "class=\"even\"" if (even % 2)==0 %>>
     <td><%= link_to pack.name, { :action => 'show', :id => pack.id  } %></td>
+    <td><%= number_to_czk(pack.total_price) %></td>    
     <td><%= link_to 'Show', {:action => 'show',:id => pack.id} %></td>
     <td><%= link_to 'Edit', {:action => 'edit', :id => pack.id} %></td>
     <td><%= link_to 'Destroy', {:action => 'destroy',:id => pack.id}, :confirm => 'Are you sure?', :method => :delete %></td>
     <td><%= link_to('products &nbsp', {:action => 'show_products', :pack_id => pack.id },  {:title => 'products to pack'} )  %></td>
   </tr>
 <% end %>
-
 </table>
 
 <br />

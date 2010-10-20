@@ -17,4 +17,8 @@ class Pack < ActiveRecord::Base
     end
   end
   
+  def total_price    
+    self.products.sum('price')
+  end
+  
 end
