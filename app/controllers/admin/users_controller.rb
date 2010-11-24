@@ -71,7 +71,7 @@ class Admin::UsersController < ApplicationController
     @user = User.new(params[:user])
     
     respond_to do |format|
-      if @user.save
+      if @user.save_with_captcha #@user.save and simple_captcha_valid?
         flash[:notice] = 'User was successfully registred.'
         render :template => 'admin/users/login', :layout => 'access'
       else

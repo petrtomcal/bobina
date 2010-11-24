@@ -1,4 +1,4 @@
-<% form_for(@user, :url => { :action => "create_registration" } ) do |f| %>
+<% form_for(@user, :url => { :action => "create_registration" }, :html => { :class => 'common-form'}) do |f| %>
   <%= render :partial => 'form' %>
   <p>
     <%= f.submit 'Save' %>

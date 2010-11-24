@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101013091801) do
+ActiveRecord::Schema.define(:version => 20101124200409) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "product_id"
@@ -53,6 +53,13 @@ ActiveRecord::Schema.define(:version => 20101013091801) do
     t.integer  "product_id"
     t.integer  "category_id"
     t.datetime "created_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "simple_captcha_data", :force => true do |t|
+    t.string   "key",        :limit => 40
+    t.string   "value",      :limit => 6
     t.datetime "created_at"
     t.datetime "updated_at"
   end
