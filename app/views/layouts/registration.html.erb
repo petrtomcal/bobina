@@ -25,13 +25,11 @@
   
  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
  <title>bobina</title>  
-  <%= stylesheet_link_tag 'screen' %>
-  <%= stylesheet_link_tag 'calendar-green' %>
-  <!--shared/registration.erb-->
-  <%= javascript_include_tag 'controls' %>
-  <%= javascript_include_tag 'calendar', 'calendar-setup', 'calendar-cs-utf8' %>
-  <%= javascript_include_tag("datetime","application") %>
-  <%= stylesheet_link_tag 'form' %>
+  <%= stylesheet_link_tag 'screen','fileUploader','calendar-green','form' %>  
+  <%= javascript_include_tag 'calendar', 'calendar-setup', 'calendar-cs-utf8',
+                             'datetime','application','jquery-1.4.1.min',
+                             'jquery.fileUploader' %>    
+    
 </head>
 <body id="kofola">
   <div id="container">

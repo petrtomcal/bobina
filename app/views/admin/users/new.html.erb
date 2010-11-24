@@ -1,5 +1,4 @@
-  <% form_for(@user, :url => { :action => "create" } ) do |f| %>
-  <%= f.error_messages %>
+<% form_for(@user, :url => { :action => "create" } ) do |f| %>
   <%= render :partial => 'form' %>
   <p>
     <%= f.submit 'Save' %>

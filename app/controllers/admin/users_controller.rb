@@ -36,11 +36,6 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  # GET /users/1/edit
-  def edit
-    @user = User.find(params[:id])
-  end
-
   # POST /users
   # POST /users.xml
   def create
@@ -52,10 +47,45 @@ class Admin::UsersController < ApplicationController
         format.html { redirect_to :action => 'index' }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => 'new' }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
+  end
+
+  def registration
+    #unless @user
+      @user = User.new
+    #end
+=begin
+    chars = (('a'..'z').to_a + ('0'..'9').to_a) - %w(i o 0 1 l 0)
+    @random_text = RAILS_ENV == 'test' ? 'TEST':((1..6).collect{|a| chars[rand(chars.size)] }.join).upcase
+=end    
+    respond_to do |format|
+      format.html { render :action => 'registration', :layout => 'registration' }
+      format.xml  { render :xml => @user }
+    end
+  end
+  
+  def create_registration
+    @user = User.new(params[:user])
+    
+    respond_to do |format|
+      if @user.save
+        flash[:notice] = 'User was successfully registred.'
+        render :template => 'admin/users/login', :layout => 'access'
+      else
+          
+        #return false
+        format.html { render :action => 'registration', :layout => 'registration' }
+        #format.xml  { render :xml => @user, :status => :created, :location => @user }
+      end
+    end
+  end
+  
+  # GET /users/1/edit
+  def edit
+    @user = User.find(params[:id])
   end
 
   # PUT /users/1
@@ -106,29 +136,15 @@ class Admin::UsersController < ApplicationController
     render :template => 'admin/users/login', :layout => 'access'
     return false
   end
-  
-  def registration
-    unless @user
-      @user = User.new
-    end
-=begin
-    chars = (('a'..'z').to_a + ('0'..'9').to_a) - %w(i o 0 1 l 0)
-    @random_text = RAILS_ENV == 'test' ? 'TEST':((1..6).collect{|a| chars[rand(chars.size)] }.join).upcase
-=end
-    render :action => 'registration', :layout => 'registration'
-  end
-  
-  def create_registration
-    @user = User.new(params[:user])
     
+  
+  def new_attachment
+    @product = Product.find(params[:product_id])
+    @attachment = Attachment.new
     respond_to do |format|
-      if @user.save
-        flash[:notice] = 'User was successfully registred.'
-        render :template => 'admin/users/login', :layout => 'access'
-        return false
-        #format.html { redirect_to :action => 'info' }
-        #format.xml  { render :xml => @user, :status => :created, :location => @user }
-      end
+      format.html # new.html.erb
+      format.xml  { render :xml => @product }
     end
   end
+    
 end
