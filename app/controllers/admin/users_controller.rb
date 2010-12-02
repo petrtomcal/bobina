@@ -69,11 +69,12 @@ class Admin::UsersController < ApplicationController
   
   def create_registration
     @user = User.new(params[:user])
-    
+    #@user.valid_with_captcha?  
+    #debugger
     respond_to do |format|
       if @user.save_with_captcha #@user.save and simple_captcha_valid?
-        flash[:notice] = 'User was successfully registred.'
-        render :template => 'admin/users/login', :layout => 'access'
+        flash[:notice] = 'User sucesfully registred.'
+        format.html { render :template => 'admin/users/login', :layout => 'access' }
       else
           
         #return false
