@@ -18,9 +18,10 @@ class ProductsController < ApplicationController
   
   def list
     #puts 'liquid v akci'
-    #products = Product.all.collect { |p| ProductDrop.new(p.name) }
-    #assigns = {:products => products}
-    #render_liquid_template 'products/list'#, assigns, self
+    products = Product.all.collect { |p| ProductDrop.new(p.name, p.category_id) }
+    assigns = {'products' => products}
+    #debugger
+    render_liquid_template 'products/list', assigns, self
     
     
 #final_render = Liquid::Template.parse(page_layout)  # Parses and compiles the template
@@ -29,8 +30,17 @@ class ProductsController < ApplicationController
 #render :text => final
 
     #info liquid
-    my_template = Liquid::Template.parse("hi {{name}}")  # Parses and compiles the template
-    temp = my_template.render( 'name' => 'tobi' )     
-    render :text => temp
+    
+    #products = Product.all.collect { |p| ProductDrop.new(p.name) }
+    #assigns = {:products => products}
+    
+    #my_template = Liquid::Template.parse("hi {{products.size}}")  # Parses and compiles the template
+    #temp = my_template.render( 'products' => products )     
+    #render :text => temp
+    
+    #funkcni hi tobi
+    #my_template = Liquid::Template.parse("hi {{name}}")  # Parses and compiles the template
+    #temp = my_template.render( 'name' => 'tobi' )     
+    #render :text => temp
   end
 end

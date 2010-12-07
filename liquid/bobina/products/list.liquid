@@ -1,11 +1,11 @@
-<div>
-size: {{ products | size }}<br />
-LIQUID TEMPLATE
-{% for product in products %}
-  <div>
-  {{product.name}}
-  </div>
-{% endfor %}
-</div>
+liquid v adresari pro liquidy
+LIST
 
-testovaci liquid
+<br/>
+size: {{ products.size }}
+
+<br/>
+
+{% for product in products %}
+{{ product.name }} {{ product.category_id }}<br/>
+{% endfor %}

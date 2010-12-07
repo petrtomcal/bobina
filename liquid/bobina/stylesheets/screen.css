@@ -1,0 +1,659 @@
+@import url('common.css');
+@import url('nav.css');
+@import url('icons.css');
+
+/* Body */
+
+body#bobina {
+  background: #f5f5f5;
+  padding: 0; margin: 0;
+}
+
+#container {
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  width: 81em;
+}
+
+#mainFrame {
+  margin: 0;
+  padding: 1em;
+  text-align: left;
+  border: 1px solid #ccc;
+  border-top: none;
+  background-color: #fff;
+}
+
+#header {
+  /*padding-top: 1em;*/
+  background: #361311;
+}
+
+#footer {
+  padding: 10px 0;
+  color: #999;
+}
+
+.pof_navigation {
+  padding: 0;
+  font-style: italic;
+}
+
+.pof_navigation table {
+  font-style: normal;
+}
+
+/* Section */
+
+#section {
+  float: left;
+  text-align: left;
+  padding: 1em;
+  width: 50em;
+}
+
+#section h1 {
+  color: #fff;
+}
+
+#section h2 {
+  color: #eee;
+  font-size: 10pt;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+#section2 a {
+  color: #fff;
+  background: #358F6E;
+  float: right;
+  text-align: right;
+  padding: .3em;
+  width: 20em;
+  font-size: 8pt;
+  text-decoration: none;
+}
+
+#section2 a:hover {
+  color: yellow;
+}
+
+/* Content tables */
+
+table.common-table {
+  vertical-align: top;
+}
+
+table.common-table th {
+  text-align: left;
+  padding: .5em .5em .2em .5em;
+  background: #dfc;
+  background: #612911;
+  color: #F29100;
+  border-bottom: 1px solid #759C8D;
+}
+
+table.common-table .filter th {
+  background: #E7E7E7;
+  padding: .5em .5em .3em .5em;
+  border: none;
+  width: auto;
+}
+
+table.common-table .filter th input, table.common-table .filter th select {
+  width: 93%;
+}
+
+table.common-table .filter .submit_filter {
+  text-align: right;
+}
+
+table.common-table .filter .submit_filter input {
+  width: auto;
+}
+
+table.common-table th input {
+  width: 93%;
+}
+
+table.common-table th input.datefield {
+  margin: 0;
+  width: 7.2em;
+  height: auto;
+} 
+
+table.common-table th input.datetimefield {
+  margin: 0;
+  width: 11em;
+  height: auto;
+} 
+
+/*
+table.common-table th.set-filter {
+  margin: 0 auto;
+  width: 9em;
+  text-align: center;
+}
+*/
+/*table label*/
+table.common-table th a, table.common-table th a:hover  {
+  color: #F29100;
+}
+
+table.common-table td.links  {
+  text-align: right;
+  width: auto;
+}
+
+table.common-table td.links2  {
+  width: 6em;
+  text-align: center;
+}
+
+table.common-table td.input  {
+  width: 100%
+}
+
+table.common-table td.links-left  {
+  width: 10em;
+  text-align: left;
+  padding-left: 2em;
+}
+
+table.common-table th.nowrap {
+  white-space: nowrap;
+}
+
+table.common-table td {
+  text-align: left;
+  padding: 0 1em 0 .5em;
+  border-bottom: 1px solid #efefef;
+  line-height: 1.8em;
+  vertical-align: top;
+}
+
+table.common-table td.nowrap {
+  white-space: nowrap;
+}
+
+table.common-table td.justify-right, table.common-table th.justify-right {
+  text-align: right;
+}
+
+table.common-table td.justify-center, table.common-table th.justify-center {
+  text-align: center;
+}
+
+table.common-table td a:link, table.common-table td a:visited {
+  color: #F29100;
+}
+
+table.common-table tr:hover {
+  background-color: #ffd;
+}
+table.common-table tr.even:hover {
+  background-color: #ffd;
+}
+
+table.common-table tr.more-space {
+  vertical-align: middle;
+  border: 2px solid #ddd;
+  background: #f3f3f3;
+}
+
+table.common-table tr.more-space td {
+  vertical-align: middle;
+  line-height: 3em;
+  border-bottom: 2px solid #ddd;
+}
+
+table.common-table td.actions {
+  width: .5em;
+}
+
+table.common-table tr.even {
+  background-color: honeydew;
+}
+
+table.common-table-red th {
+  background: #fdc;
+  border-bottom: 1px solid #fa6;
+}
+
+table.common-table-grey th {
+  background: #e1e1e1;
+  border-bottom: 1px solid #333;
+}
+
+table.common-table .summary-row th {
+  border-top: 3px double #888;
+  border-bottom: 3px double #888;
+  vertical-align: top;
+  line-height: 1.8em;
+  background: #A7DFCA;
+}
+
+.right {
+  text-align: right;
+}
+
+.editation_menu {
+  padding: .5em 0 1em 0;
+}
+
+/* Show tables */
+
+table.show-table {
+  border-spacing: 0;
+  border: 0;
+  border: 2px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+table.show-table tr.even {
+  background-color: #f2f2f2;
+}
+
+table.show-table th {
+  width: 20%;
+  font-weight: bold;
+  font-style: italic;
+  text-align: right;
+  vertical-align: top;
+  color: #111;
+  padding: .4em .5em;
+  background-color: #D37A26;
+}
+
+table.show-table td {
+  /*width: 52em;*/
+  font-size: 10pt;
+  line-height: 1.1em;
+  vertical-align: top;
+  border-left: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  padding: .4em .5em; 
+  color: #444;
+} 
+
+table.show-table td span.help {
+  color: #888;
+	display: block;
+	font-size: .6em;
+	font-style: italic;
+	font-weight: normal;
+}
+
+/* mini show table */
+table.mini-showtable {
+  border-spacing: 0;
+  margin-top: 0.5em;
+  font-size: 9pt;
+}
+
+table.mini-showtable tr.even {
+  background-color: #ffd;
+}
+
+table.mini-showtable td span {
+  font-weight: normal;
+  font-size: 8pt;
+  visibility: hidden;
+}
+
+table.mini-showtable th {
+  width: 9em;
+  font-weight: bold;
+  text-align: right;
+  vertical-align: top;
+  color: #555;
+  padding: .1em .5em;
+}
+
+table.mini-showtable td {
+  vertical-align: top;
+  border-left: .05em solid #ddd;
+  text-align: left;
+  padding: .1em .5em; 
+  color: #444;
+}
+
+table.mini-showtable td pre {
+  font-family: "Lucida Grande","Lucida Sans Unicode",geneva,verdana,sans-serif;
+  font-size: 9pt;
+  color: #444;
+} 
+
+table.mini-showtable td.justify-right, table.mini-showtable th.justify-right {
+  text-align: right;
+}
+/* minitable */
+
+table.mini-table {
+  border-spacing: 0;
+  font-size: 9pt;
+  width: 100%;
+  margin-top: .8em;
+}
+
+table.mini-table tr {
+  background-color: #fff;
+}
+
+table.mini-table tr.even {
+  background-color: honeydew;
+}
+
+table.mini-table td span {
+  font-weight: normal;
+  font-size: 8pt;
+  visibility: hidden;
+}
+
+table.mini-table th {
+  text-align: left;
+  padding: .5em .5em .2em .5em;
+  background: #dfc;
+  background: #A7DFCA;
+  color: #555;
+  border-bottom: 1px solid #759C8D;
+}
+
+
+table.mini-table td {
+  vertical-align: top;
+  text-align: left;
+  padding: .1em .5em; 
+  color: #444;
+  background: transparent;
+  line-height: 1.4em;
+}
+
+table.mini-table td pre {
+  font-family: "Lucida Grande","Lucida Sans Unicode",geneva,verdana,sans-serif;
+  font-size: 9pt;
+  color: #444;
+} 
+
+table.mini-table td.justify-right, table.mini-table th.justify-right {
+  text-align: right;
+}
+
+table.mini-table .summary-row th {
+  border-top: 3px double #759C8D;
+  border-bottom: 3px double #759C8D;
+  vertical-align: baseline;
+  line-height: 1.2em;
+}
+
+/* end minitable */
+ 
+table.splitted {
+  float :left;
+  width : 49%;
+}
+/* Content forms */
+
+form.common-form {
+  padding: 0;
+  width: 70%;
+  margin: 1em auto;
+}
+
+form.common-form div.fieldWithErrors input {
+  border: 2px solid #f00;
+}
+
+form.common-form table, table.form-table {
+  padding: 0;
+  border-top: 2px solid #ddd;
+  border-bottom: 2px solid #ddd;
+  background: #f8f8f8; 
+}
+
+form.common-form table th, table.form-table th {
+  border-right: .1em solid #ddd;
+	font-weight: bold;
+	padding: .5em;
+	text-align: right;
+	vertical-align: top;
+	width: 12em;
+}
+
+form.common-form table th span.help, table.form-table th span.help{
+  color: #888;
+	display: block;
+	font-size: .9em;
+	font-style: italic;
+	font-weight: normal; 
+}
+
+form.common-form table td, table.form-table td{
+  padding-left: .8em;
+	padding-bottom: .8em;
+	padding-top: .8em;
+	vertical-align: top; 
+  text-align: left;
+}
+
+form.common-form label, table.form-table label {
+  font-weight: bold;
+  line-height: 1.6em;
+}
+
+form.common-form label.mandatory, table.form-table label.mandatory {
+    color: #f00;
+}
+
+form.common-form table td span.help, table.form-table td span.help{
+  color: #888;
+	display: block;
+	font-size: .9em;
+	font-style: italic;
+	font-weight: normal;
+	margin-top: .2em; 
+}
+
+form.common-form table td.helper, table.form-table td.helper {
+  width: 18em;
+  border-left: .1em solid #ddd;
+  font-style: italic;
+  font-size: 8pt;
+  padding-right: .5em;
+} 
+
+form.common-form table td.helper span.help, table.form-table td.helper span.help{
+  color: #888;
+	display: block;
+	margin-top: .2em; 
+	font-size: 8pt;
+}
+
+form.common-form input, table.form-table input, 
+form.common-form select, table.form-table select,
+form.common-form textarea, table.form-table textarea{
+  margin: 0;
+  width: 90%;
+  height: auto;
+  text-align: left;
+  border-width: .15em;
+  margin-bottom: 15px;
+}
+
+form.common-form input.datefield, table.form-table input.datefield{
+  margin: 0;
+  width: 7em;
+  height: auto;
+} 
+
+form.common-form input.datetimefield, table.form-table input.datetimefield {
+  margin: 0;
+  width: 10em;
+  height: auto;
+}
+
+form.common-form input.checkbox, table.form-table input.checkbox,
+form.common-form input.radio, table.form-table input.radio  {
+  width: auto;
+  text-align: left;
+}
+
+form.common-form td.date select, table.form-table input.select {
+  margin: 0;
+  width: 5em;  
+  height: auto;
+}
+
+form.common-form input.submit, table.form-table input.submit {
+  margin-top: 1em;
+  padding: .3em;
+  width: auto;
+}
+
+form.common-form input.submit-no-next-line  {
+  
+}
+
+form.common-form a, table.form-table a {
+	display: inline;
+}
+
+form.common-form input[type="checkbox"], table.form-table input[type="checkbox"],
+form.common-form input[type="file"], table.form-table input[type="file"],
+form.common-form input[type="image"], table.form-table input[type="image"],
+form.common-form input[type="submit"], table.form-table input[type="submit"],
+form.common-form input[type="radio"], table.form-table input[type="radio"],
+form.common-form .normal, table.form-table .normal {
+	width: auto;
+} 
+
+table.simple-table {
+  width: 10em;
+}
+table.simple-table td {
+  vertical-align: middle;
+}
+
+/* Subnavigation */
+
+#subnavigation {
+  text-align: left;
+  padding-bottom: 1em;
+  padding-top: .5em;
+}
+
+#subnavigation a, #subnavigation a:hover {
+  padding-left: 20px;
+  background: url(/images/icons/silk/arrow_down.gif) top left no-repeat;
+}
+
+/* TITLES */
+.page-title {
+  height: 1.5em;
+  text-align: left;
+  font-size: large;
+  font-weight: bold;
+  /*text-transform: uppercase;*/
+}
+
+.page-subtitle {
+  margin-top: 1em;
+  margin-bottom: .5em;
+  text-align: left;
+  font-size: medium;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+/* userInfo */
+
+#userInfo {
+  width: 55em;
+  float: right;
+  height: 1.85em;
+  margin: 0;
+  padding: 1em 0 0 .5em;
+  text-align: right;
+}
+
+#contexthelp {
+  width: 15em;
+  float: left;
+  height: 1.85em;
+  margin: 0;
+  padding: 0.7em 0 0 0em;
+  text-align: left;
+}
+
+
+#timeOut {
+  width: 24em;
+  float: left;
+  height: 1.85em;
+  margin: 0;
+  padding: 1em 0 1em .5em;
+  text-align: left;
+}
+
+.half-content {
+  width: 39em;
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+.report-card {
+  height: auto;
+  padding: 1em;
+  margin-bottom: 1em;
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+}
+
+.fieldWithErrors {
+  border: 2px;  
+  border-color: red;
+  display: inline;
+}
+
+#list-filter th {
+  background: #efefef;
+  border-bottom: 1px solid #fff;
+  padding-bottom: .5em;
+}
+
+#fast-filter .filter th {
+  color: #aaa;
+  background: #efefef;
+  font-weight: normal;
+  border-top: 2px solid #888;
+}
+
+#fast-filter .filter th a, #fast-filter .filter th a:hover {
+  color: #888;
+  font-weight: bold;
+}
+
+.sub-list {
+  border: 2px solid #ddd;
+  padding: 0.5em;
+}
+
+div.title-help {
+  font-style: italic;
+  font-size: 8pt;
+  padding-right: .5em;
+} 
+
+tr.red th, tr.red td {
+  background-color: #fbb;
+}
+
+#errorExplanation {
+  background: #ffbfbf;
+  padding: .5em;
+  border: 2px solid #f00;
+  margin: 1em 0;
+}

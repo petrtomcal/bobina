@@ -1,0 +1,87 @@
+.ratings { 
+  background:url(/images/icons/silk/star.gif) no-repeat;
+  width:104px;
+  margin: 8px 0;
+}
+
+.rate {
+  width:90px;
+  margin: 8px 0;
+}
+
+.add-picture {
+  text-align: center;
+  float: left;
+  border:0.01em solid #702F1D;
+  margin: 1em .7em;
+  padding: 1em;
+  width: 102px;
+}
+
+#ShowGallery {
+  margin: 0 3em;
+}
+
+#ShowGalleryNew  {
+  width: 22em;
+  border: solid 1px #B3966F;
+  padding: 1em 1.5em;
+  margin-bottom: 1.5em;
+}
+
+#ShowGalleryFind  {
+  width: 22em;
+  border: solid 1px #B3966F;
+  padding: 1em 1.5em;
+  margin-bottom: 1.5em;
+}
+
+#ShowCommentsFind  {
+  width: 22em;
+  border: solid 1px #B3966F;
+  padding: 1em 1.5em;
+  margin-bottom: 1.5em;
+}
+
+#ShowGroupNew  {
+  width: 22em;
+  border: solid 1px #B3966F;
+  padding: 1em 1.5em;
+  margin-bottom: 1.5em;
+}
+
+#userChangePass  {
+  width: 22em;
+  border: solid 1px #B3966F;
+  padding: 1em 1.5em;
+  margin-bottom: 1.5em;
+}
+
+#newPhoto  {
+  width: 22em;
+  border: solid 1px #B3966F;
+  padding: 1em 1.5em;
+  margin-bottom: 1.5em;
+}
+
+#ShowPhoto  {
+  text-align: center;  
+}
+
+#ShowRateCount  {
+  text-align: center;  
+}
+
+.sub-list-text {
+  border: 2px solid #ddd;
+  padding: 1.5em;
+  text-align: left;
+}
+
+#Logo {
+  text-align: center;  
+}
+
+#Text  {  
+  padding-left: 1em;  
+}
