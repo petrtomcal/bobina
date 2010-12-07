@@ -71,6 +71,7 @@ class Admin::UsersController < ApplicationController
     @user = User.new(params[:user])
     #@user.valid_with_captcha?  
     #debugger
+    @user.password_hash = Digest::SHA256.hexdigest(@user.password)
     respond_to do |format|
       if @user.save_with_captcha #@user.save and simple_captcha_valid?
         flash[:notice] = 'User sucesfully registred.'

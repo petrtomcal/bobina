@@ -8,13 +8,19 @@
 <label for="user_email"><%= 'Email' %></label><br />
 <%= text_field 'user', 'email' %><br />
 
-<label for="user_first_name"><%= 'Jméno' %></label><br />
+<label for="user_first_name"><%= 'Name' %></label><br />
 <%= text_field 'user', 'first_name' %><br />
 
-<label for="user_last_name"><%= 'Příjmení' %></label><br />
+<label for="user_last_name"><%= 'Surname' %></label><br />
 <%= text_field 'user', 'last_name' %><br />
 
-<label for="user_phone"><%= 'Telefon' %></label><br />
+<label for="user_password"><%= 'Password' %></label><br />
+<%= password_field 'user', 'password' %><br />
+    
+<label for="user_password_confirmation"><%= 'Password confirmation' %></label><br />
+<%= password_field 'user', 'password_confirmation' %><br />
+
+<label for="user_phone"><%= 'Phone' %></label><br />
 <%= text_field 'user', 'phone' %><br />
 
 

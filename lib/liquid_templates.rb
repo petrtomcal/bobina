@@ -2,12 +2,6 @@ module EshopModule
   module Liquid
     module LiquidTemplate
       
-      #def likvidace(template, assigns ={}, controller = nil)
-      #  my_template = Liquid::Template.parse("hi {{name}}")
-      #  temp = my_template.render( 'name' => 'tobi' )     
-      #  render :text => temp  
-      #end
-      
       def render_liquid_template(template, assigns ={}, controller = nil)
         assigns['flash'] = FlashDrop.new(@myflash)
         render :text => render_liquid(template, 'layout', assigns, controller)
@@ -44,19 +38,10 @@ module EshopModule
         #tmpl = ::Liquid::Template.parse(content)
         #returning tmpl.render(assigns, :registers => {:controller => controller}) do |result|
         #  yield tmpl, result if block_given?
-        #end
-        
-        #my_template = Liquid::Template.parse("hi {{products.size}}")  # Parses and compiles the template
-        #temp = my_template.render( 'products' => products )     
-        #render :text => temp
-        
-        
-        #debugger  #myown        
-        #template = ::Liquid::Template.parse(content)  
-        #template.render('name' => 'tobi' )#assigns, :registers => {:controller => controller})
-        #debugger
+        #end        
         my_template = ::Liquid::Template.parse(content)
-        temp = my_template.render( assigns, :registers => {:controller => controller} )
+        #info liquid filters?
+        temp = my_template.render( assigns, {:registers => {:controller => controller}, :filters => [LiquidFilters]})
              
         #render :text => temp  
         
