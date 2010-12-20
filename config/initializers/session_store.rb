@@ -9,6 +9,7 @@ ActionController::Base.session = {
   :secret      => 'a4af663054c73cdfb47da59d4125a60b4de672ae56150b81c0a4c76fb735fd6bbd5ff8c8aee8e0c578a4279ab1251ae7bc4e5e27a00e14c3f45c73b826344a4a'
 }
 
+#info session store table
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information
 # (create the session table with "rake db:sessions:create")

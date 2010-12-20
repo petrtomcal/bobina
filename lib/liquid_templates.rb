@@ -27,10 +27,10 @@ module EshopModule
         render_layout(layout, assigns, controller)
       end
       
-      def render_liquid_email(template, layout, assigns ={}, controller = nil)
-        parse_inner_email_template(template, assigns, controller)
-        render_layout(layout, assigns, controller)
-      end 
+      #def render_liquid_email(template, layout, assigns ={}, controller = nil)
+      #  parse_inner_email_template(template, assigns, controller)
+      #  render_layout(layout, assigns, controller)
+      #end 
     
       def render_layout(layout, assigns, controller)
         content = File.read(File.join(@skin_templates, "#{layout}.liquid"))
@@ -40,8 +40,9 @@ module EshopModule
         #  yield tmpl, result if block_given?
         #end        
         my_template = ::Liquid::Template.parse(content)
-        #info liquid filters?
-        temp = my_template.render( assigns, {:registers => {:controller => controller}, :filters => [LiquidFilters]})
+        #info liquid filters
+        temp = my_template.render( assigns, :registers => {:controller => controller})
+        #temp = my_template.render( assigns, :filters => [LiquidFilters])
              
         #render :text => temp  
         

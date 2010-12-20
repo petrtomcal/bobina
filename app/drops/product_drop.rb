@@ -1,31 +1,32 @@
 class ProductDrop < Liquid::Drop
   
-  def initialize(name,category_id,price,attachments,id)
-    @name = name
-    @category_id = category_id
-    @price = price
-    @attachments = attachments
-    @id = id
+  def initialize(_product, _count=nil)    
+    @product = _product
+    @product.count = _count        
   end
   
   def name
-    @name
+    @product.name
   end
   
   def category_id
-    @category_id
+    @product.category_id
   end
   
   def price
-    @price
+    @product.price
   end
   
   def attachments
-    @attachments
+    @product.attachments
   end
   
   def id
-    @id
+    @product.id
+  end
+  
+  def count
+    @product.count
   end
   
 end

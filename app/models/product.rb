@@ -12,6 +12,9 @@ class Product < ActiveRecord::Base
   validates_numericality_of :price, :message => "is not a number"
   validate :price_must_be_at_least_0
   
+  
+  attr_accessor :count
+  
   #liquid_cast
   #liquid_methods :name  
       

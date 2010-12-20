@@ -1,12 +1,11 @@
-class GuestArea::AssetsController < ActionController::Base
+class AssetsController < ActionController::Base
   
-  include ExceptionNotifiable
-  include GuestArea::DatabaseHelper
+  include DatabaseHelper
   
   session :off
   caches_page :index 
     
-  helper :assets
+  #helper :assets
 
   before_filter :set_db
   before_filter :change_skin_cache_dir
