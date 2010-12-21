@@ -1,9 +1,8 @@
 class CartDrop < Liquid::Drop
   
   def initialize(_items)
-    @items = []
-    _items.each_pair{ |key,value| @items << ProductDrop.new(Product.find(key),value) }
-    # _items.each_pair{ |key,value| @items << ProductDrop.new(Product.find(key),value) }
+    @items ||= []
+    _items.each_pair{ |key,value| @items << ProductDrop.new(Product.find(key),value) }    
   end  
   
   def get_items

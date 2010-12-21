@@ -17,7 +17,7 @@ class Product < ActiveRecord::Base
   
   #liquid_cast
   #liquid_methods :name  
-      
+  
   protected
   def price_must_be_at_least_0
     errors.add(:price, 'should be at least then 0.01') if price.nil? || price < 0.01 

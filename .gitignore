@@ -4,3 +4,4 @@ script/*
 config/database.yml
 public/product/*
 tmp/*
+paypal/*

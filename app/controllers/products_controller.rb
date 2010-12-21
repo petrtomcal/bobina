@@ -15,8 +15,7 @@ class ProductsController < ApplicationController
   def show    
     p = Product.find_by_id(params[:id])
     product = ProductDrop.new(p.name, p.category_id, p.price, p.attachments, p.id)
-    assigns = {'product' => product, 'cart' => cart}    
-    debugger
+    assigns = {'product' => product, 'cart' => cart}
     render_liquid_template 'products/show', assigns, self
   end
   
