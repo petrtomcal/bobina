@@ -72,17 +72,7 @@ class Admin::ProductsController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.xml
   def destroy
-    @product = Product.find(params[:id])
-    
-    #info - vyresit pomoci paperclipu/nemaze soubory z adresare
-    #@pa = @product.attachments
-    
-    #debugger
-    #Attachment.find_by_product_id(15).delete_dir(39.to_s)
-    #Attachment.delete_dir(@product.id)
-    #Attachment.find_all_by_product_id(@product.id).destroy #if nil     
-    
-    #@product.attachments.destroy
+    @product = Product.find(params[:id])    
     @product.destroy
 
     respond_to do |format|
@@ -92,9 +82,7 @@ class Admin::ProductsController < ApplicationController
   end
   
   def show_categories
-    @product = Product.find(params[:product_id])    
-    #@categories = Category.all
-    #debugger
+    @product = Product.find(params[:product_id])        
     @products_category = @product.categories.find(:all)
     @category_all = Category.all - @products_category    
   end

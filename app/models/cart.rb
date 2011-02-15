@@ -21,8 +21,9 @@ class Cart < ActiveRecord::Base
       :cmd => '_cart',
       :upload => 1,
       :return => return_url,
-      :invoice => rand(36**8).to_s(36)
-    }    
+      :invoice => rand(36**8).to_s(36) #info cislo faktur
+    }        
+    #debugger
     _items.each_with_index do |item,index|
         values.merge!({
           "amount_#{index+1}" => item[0].price,

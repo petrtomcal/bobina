@@ -1,6 +1,6 @@
 class ProductDrop < Liquid::Drop
   
-  def initialize(_product, _count=nil)    
+  def initialize(_product, _count=nil )    
     @product = _product
     @product.count = _count        
   end

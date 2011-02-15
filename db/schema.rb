@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101213201416) do
+ActiveRecord::Schema.define(:version => 20110210155052) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "product_id"
@@ -29,6 +29,17 @@ ActiveRecord::Schema.define(:version => 20101213201416) do
 
   create_table "packs", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "description"
+    t.decimal  "price",       :precision => 8, :scale => 2, :default => 0.0
+    t.integer  "category_id"
+  end
+
+  create_table "packs_categories", :force => true do |t|
+    t.integer  "pack_id"
+    t.integer  "category_id"
+    t.datetime "created_on"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -53,6 +64,33 @@ ActiveRecord::Schema.define(:version => 20101213201416) do
     t.integer  "product_id"
     t.integer  "category_id"
     t.datetime "created_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sales", :force => true do |t|
+    t.string   "name"
+    t.integer  "product_id"
+    t.integer  "pack_id"
+    t.integer  "paid"
+    t.integer  "user_id"
+    t.string   "user_email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sales_packs", :force => true do |t|
+    t.integer  "sale_id"
+    t.integer  "pack_id"
+    t.integer  "count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sales_products", :force => true do |t|
+    t.integer  "sale_id"
+    t.integer  "product_id"
+    t.integer  "count"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
