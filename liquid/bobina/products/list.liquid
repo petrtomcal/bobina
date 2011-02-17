@@ -1,4 +1,7 @@
-
+<a href="/admin/users?customer="customer">sign in</a>
+<br/>
+<a href="/admin/users/registration?customer="customer">sign up</a>
+<br/>
 count of products for sale: {{ products.size }}
 
 <br/>
@@ -75,6 +78,6 @@ total count:{{cart.total_count}}<br/>
 total price:{{cart.total_price|number_to_usd}}
 </table>
 {% if cart.total_count > 0 %}
-  <a href="/carts/checkout">Checkout</a>  
+  <a href="/carts/checkout">Checkout</a>
 {% endif %}  
 </div>

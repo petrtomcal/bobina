@@ -41,9 +41,9 @@ class CartsController < ApplicationController
     to_sale_collections(@pack_items)
     #Sale.to_sale(@product_items, @pack_items) #info
     @items = @product_items + @pack_items
-    redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/list", @items)
+    redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", @items)    
   end
-  
+    
   def to_sale_products(array)
     array.each_with_index do |item,index|
       @product = item[0]

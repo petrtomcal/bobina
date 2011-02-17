@@ -21,7 +21,8 @@ class Cart < ActiveRecord::Base
       :cmd => '_cart',
       :upload => 1,
       :return => return_url,
-      :invoice => rand(36**8).to_s(36) #info cislo faktur
+      :invoice => rand(36**8).to_s(36), #info cislo faktur
+      :cert_id => "S8DUNZJY5VS3G"
     }        
     #debugger
     _items.each_with_index do |item,index|
@@ -32,6 +33,19 @@ class Cart < ActiveRecord::Base
           "quantity_#{index+1}" => item[1]          
         })
     end
+     
     "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
-  end  
+    #info-encrypted encrypt_for_paypal(values)    
+  end
+  
+  #info
+  #PAYPAL_CERT_PEM = File.read("#{Rails.root}/paypal/paypal_cert.pem")
+  #APP_CERT_PEM = File.read("#{Rails.root}/paypal/my-pubcert.pem")
+  #APP_KEY_PEM = File.read("#{Rails.root}/paypal/my-prvkey.pem")
+  
+  #def encrypt_for_paypal(values)
+  #  signed = OpenSSL::PKCS7::sign(OpenSSL::X509::Certificate.new(APP_CERT_PEM), OpenSSL::PKey::RSA.new(APP_KEY_PEM, ''), values.map { |k#, v| "#{k}=#{v}" }.join("\n"), [], OpenSSL::PKCS7::BINARY)
+  #  OpenSSL::PKCS7::encrypt([OpenSSL::X509::Certificate.new(PAYPAL_CERT_PEM)], signed.to_der, OpenSSL::Cipher::Cipher::new("DES3"), Op#enSSL::PKCS7::BINARY).to_s.gsub("\n", "")
+  #end
+    
 end 
