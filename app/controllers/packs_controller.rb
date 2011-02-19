@@ -13,10 +13,18 @@ class PacksController < ApplicationController
   end
   
   def show    
-    p = Packs.find_by_id(params[:id])
-    pack = PackDrop.new(p.name, p.category_id, p.price, p.attachments, p.id)
-    assigns = {'pack' => pack, 'cart' => cart}
-    render_liquid_template 'products/show', assigns, self
+    p = Pack.find_by_id(params[:id])
+    pack = PackDrop.new(p, nil)
+    
+    #products_id = PacksProduct.find(:all, :select => "product_id", :conditions => ["pack_id = ?", params[:id]])
+    products = p.products.all.collect { |p| ProductDrop.new(p) }        
+    assigns = {'pack' => pack, 'products' => products}
+    render_liquid_template 'packs/show', assigns, self
+    
+    
+    #galleries_group = GalleriesGroup.find(:all, :conditions => ["group_id IN (?)", groups_id])
+    #galleries_id_group = galleries_group.collect{|p| p.gallery_id}#id galerii z vybranych skupiny
+    #galleries_id = galleries_id_user + galleries_id_group
   end
   
 end

@@ -17,10 +17,10 @@ class ProductsController < ApplicationController
     render_liquid_template 'products/list', assigns, self    
   end
   
-  def show    
+  def show
     p = Product.find_by_id(params[:id])
-    product = ProductDrop.new(p.name, p.category_id, p.price, p.attachments, p.id)
-    assigns = {'product' => product, 'cart' => cart}
+    product = ProductDrop.new(p, nil)
+    assigns = {'product' => product}
     render_liquid_template 'products/show', assigns, self
   end
   
