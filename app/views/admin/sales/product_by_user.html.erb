@@ -1,0 +1,13 @@
+<%=Gchart.line(:theme => :thirty7signals,
+            :data => [0, 40, 10, 70, 20], 
+            :title => 'keynote',
+            :axis_with_labels => ['x','y'],
+            :axis_labels => [['Jan','July','Jan','July','Jan']],
+            :format => 'image_tag')%>
+            ---------------------------------------<br />
+            <td><%= link_to('categories &nbsp', {:action => 'show_categories', :product_id => '1' },  {:title => 'categories for product'} )  %></td>
+            ---------------------------------------<br />
+            <td><%= link_to('products_by_user &nbsp', {:action => 'products_by_user'},  {:title => 'stats for products by user'} )  %></td>
+             
+             
+             

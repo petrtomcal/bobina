@@ -1,0 +1,19 @@
+<%= error_messages_for 'product' %>
+<% if flash[:error] -%>
+    <h2 class="error"><%= flash[:error] %></h2>
+<% elsif flash[:notice] -%>
+    <h2 class="notice"><%= flash[:notice] %></h2>
+<% end -%>
+
+
+<%= text_field 'product', 'name' %><br />
+
+<%= text_field 'product', 'price' %><br />
+------------
+<label for="product_name"><%= 'Name' %></label><br />
+start date:<%= select_date (Date.today, :order => [:day, :month, :year], :prefix => :start_date) %> 
+and time:<%= select_time Time.now, :prefix => :start_time %> 
+<label for="product_price"><%= 'Price' %></label><br />
+end date:<%= select_date Date.today, :prefix => :start_date %> 
+and time:<%= select_time Date.today, :prefix => :start_time %> 
+

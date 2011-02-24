@@ -44,6 +44,7 @@ class CartsController < ApplicationController
     redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", @items)    
   end
     
+  #info -rfc
   def to_sale_products(array)
     array.each_with_index do |item,index|
       @product = item[0]
@@ -55,6 +56,7 @@ class CartsController < ApplicationController
       @sp.sale = @sale
       @sale.name = @product.name
       @sale.product_id = @product.id
+      @sale.user_id = User.find(session[:user_id])
       @sp.save      
       @sale.save
     end
@@ -71,6 +73,7 @@ class CartsController < ApplicationController
       @sp.count = item[1]
       @sale.name = @pack.name
       @sale.pack_id = @pack.id
+      @sale.user_id = User.find(session[:user_id])
       @sp.save      
       @sale.save
     end

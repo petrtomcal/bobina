@@ -1,7 +1,8 @@
 class Admin::PacksController < ApplicationController
   def index
-      @packs = Pack.all
-      respond_to do |format|
+   @packs = Pack.all
+   
+   respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @packs }
     end

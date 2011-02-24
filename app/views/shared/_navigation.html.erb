@@ -4,5 +4,6 @@
     <li id="nav-category" <%= " class=\"navSelected\"" if  @controller.controller_name=='categories' %>><%= link_to 'Categories', { :controller => 'categories', :action => 'index'} %></li>
     <li id="nav-product" <%= " class=\"navSelected\"" if  @controller.controller_name=='products' %>><%= link_to 'Products', { :controller => 'products', :action => 'index'} %></li>
     <li id="nav-pack" <%= " class=\"navSelected\"" if  @controller.controller_name=='packs' %>><%= link_to 'Packages', { :controller => 'packs', :action => 'index'} %></li>
+    <li id="nav-pack" <%= " class=\"navSelected\"" if  @controller.controller_name=='sales' %>><%= link_to 'Statistics', { :controller => 'sales', :action => 'index'} %></li>
   </ul>  
 </div>

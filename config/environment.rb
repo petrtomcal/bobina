@@ -49,7 +49,7 @@ Rails::Initializer.run do |config|
    
   
 end
-
+require 'gchart'
 require 'liquid'
 require 'liquid_templates'
 #info pridani liquid_filters
