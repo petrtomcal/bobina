@@ -9,4 +9,5 @@ validates_presence_of :password, :on => :create, :message => "can't be blank"
 
 apply_simple_captcha
 
+  
 end
