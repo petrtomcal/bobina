@@ -4,27 +4,28 @@ class Admin::SalesController < ApplicationController
     @sale = Sale.new
   end
   
-  def products_by_user
-    @sale = Sale.find(:all, :conditions => { :created_at => start_date..end_date}, 
-          :order =>  "created_at").group_by{ |sale| sale.created_at.strftime("(%y/%d/%m)") }
+  def graph
+    @sale = get_data
     @counts_sales_group ||= []
-    @sale.each {|key, value|  @counts_sales_group << value.size }
-    @one_point = @counts_sales_group.max/@sale.keys.size
-    @y_label ||= []
-    @sale.keys.size.times do |x|
-      @y_label << @one_point * x
-    end    
-    @y_label << @counts_sales_group.max
-    
+    @sale.each {|key, value|  @counts_sales_group << value.size }    
   end
   
-  def pack_by_user
+  def get_data    
+    if user_id
+     @sale = Sale.find(:all, :conditions => { :created_at => start_date..end_date, :user_id => user_id }, 
+         :order =>  "created_at").group_by{ |sale| sale.created_at.strftime("(%y/%d/%m)") }    
+    end
+    if pack_id
+      @sale = Sale.find(:all, :conditions => { :created_at => start_date..end_date, :pack_id => pack_id }, 
+          :order =>  "created_at").group_by{ |sale| sale.created_at.strftime("(%y/%d/%m)") }
+          
+    end            
+    if product_id
+      @sale = Sale.find(:all, :conditions => { :created_at => start_date..end_date, :product_id => product_id }, 
+          :order =>  "created_at").group_by{ |sale| sale.created_at.strftime("(%y/%d/%m)") }
+    end      
     
-  end
-  
-  def user_in_time
-    
-  end
+  end  
   
   def start_date
     @start_date = DateTime.civil(params[:st][:"start_date(1i)"].to_i,     
@@ -47,10 +48,10 @@ class Admin::SalesController < ApplicationController
   end
   
   def pack_id
-    @pack_id = params["pack"]["id"] 
+    @pack_id = params["packs"]["id"] 
   end
   
   def user_id
-    @user_id = params["user"]["id"] 
+    @user_id = params["users"]["id"] 
   end
 end

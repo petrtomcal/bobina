@@ -49,7 +49,7 @@ class CartsController < ApplicationController
     array.each_with_index do |item,index|
       @product = item[0]
       @sale = Sale.new
-      #@sale.product = @product
+      @sale.user_id = session[:user_id]
       @sp = SalesProducts.new
       @sp.product = @product
       @sp.count = item[1]
@@ -66,7 +66,7 @@ class CartsController < ApplicationController
     array.each_with_index do |item,index|
       @pack = item[0]
       @sale = Sale.new
-      #@sale.product = @product
+      @sale.user_id = session[:user_id]
       @sp = SalesPacks.new
       @sp.pack = @pack
       @sp.sale = @sale

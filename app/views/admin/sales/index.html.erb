@@ -1,40 +1,14 @@
-<% form_for(@sale, :url => { :action => 'products_by_user' }) do |f| %>  
-start_time
+<% form_for(@sale, :url => { :action => 'graph' }) do |f| %>  
+Choosing time schedule and concrete parameters for concrete stats in graphs
 <br />
-<td ><%=  datetime_select('st', 'start_date', :order => [:day, :month, :year]) %></td><br />
-end_time:
-<br />
-<td ><%=  datetime_select('et', 'end_date', :order => [:day, :month, :year]) %></td><br />
+start_time:<td ><%=  datetime_select('st', 'start_date', :order => [:day, :month, :year]) %></td><br />
+end_time:<td ><%=  datetime_select('et', 'end_date', :order => [:day, :month, :year]) %></td><br />
  
-<%= collection_select(:products, :id, Product.all, :id, :name, options = {:prompt => "-Select a product"}, :class =>"payment") %> 
-<%= collection_select(:users, :id, User.all, :id, :email, options = {:prompt => "-Select a user"}, :class =>"payment") %> 
-<%= collection_select(:packs, :id, Pack.all, :id, :name, options = {:prompt => "-Select a collection"}, :class =>"payment") %> 
+for concrete products <%= collection_select(:products, :id, Product.all, :id, :name, options = {:prompt => "-Select a product"}, :class =>"payment") %> or
+for concrete collection of products<%= collection_select(:packs, :id, Pack.all, :id, :name, options = {:prompt => "-Select a collection"}, :class =>"payment") %><br /> 
+for concrete user<%= collection_select(:users, :id, User.all, :id, :email, options = {:prompt => "-Select a user"}, :class =>"payment") %> 
 <br /><br />
 <%= f.submit 'Update' %>
 <% end %>  
 
 <br />
-<%= Gchart.line( :data => [17, 17, 11, 8, 2], 
-              :axis_with_labels => ['x', 'y'], 
-              :axis_labels => [['J', 'F', 'M', 'A', 'M']], 
-              :axis_range => [nil, [2,17,5]],
- :format => 'image_tag')%>
-
-<br /><br /><br /><br /><br /><br />
-<%=Gchart.line(:theme => :thirty7signals,
-            :data => [0, 40, 10, 70, 20], 
-            :title => 'keynote',
-            :axis_with_labels => ['x','y'],
-            :axis_labels => [['Jan','July','Jan','July','Jan']],
-            :format => 'image_tag')%>
-<br /><br /><br /><br /><br /><br />
-
-<%=Gchart.bar( :data => [[1,2,4,67,100,41,234],[45,23,67,12,67,300, 250]], 
-            :title => 'SD Ruby Fu level', 
-            :legend => ['matt','patrick'], 
-            :bg => {:color => '76A4FB', :type => 'gradient'}, 
-            :bar_colors => 'ff0000,00ff00',
-            :format => 'image_tag')%>
-            
-<br /><br /><br /><br /><br /><br />
-<td><%= link_to('products_by_user &nbsp', {:action => 'products_by_user'},  {:title => 'stats for products by user'} )  %></td>
