@@ -1,4 +1,4 @@
-class SalesPacks < ActiveRecord::Base
+class SalesPack < ActiveRecord::Base
   
   belongs_to :sale
   belongs_to :pack

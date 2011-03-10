@@ -1,9 +1,9 @@
 class Sale < ActiveRecord::Base
   
-  has_many :sales, :through => :sales_products
+  has_many :products, :through => :sales_products
   has_many :sales_products, :dependent => :destroy
   
-  has_many :sales, :through => :sales_packs
+  has_many :packs, :through => :sales_packs
   has_many :sales_packs, :dependent => :destroy
   
   class << self

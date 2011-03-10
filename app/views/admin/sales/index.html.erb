@@ -4,9 +4,9 @@ Choosing time schedule and concrete parameters for concrete stats in graphs
 start_time:<td ><%=  datetime_select('st', 'start_date', :order => [:day, :month, :year]) %></td><br />
 end_time:<td ><%=  datetime_select('et', 'end_date', :order => [:day, :month, :year]) %></td><br />
  
-for concrete products <%= collection_select(:products, :id, Product.all, :id, :name, options = {:prompt => "-Select a product"}, :class =>"payment") %> or
+<!--for concrete products <%= collection_select(:products, :id, Product.all, :id, :name, options = {:prompt => "-Select a product"}, :class =>"payment") %> or
 for concrete collection of products<%= collection_select(:packs, :id, Pack.all, :id, :name, options = {:prompt => "-Select a collection"}, :class =>"payment") %><br /> 
-for concrete user<%= collection_select(:users, :id, User.all, :id, :email, options = {:prompt => "-Select a user"}, :class =>"payment") %> 
+for concrete user<%= collection_select(:users, :id, User.all, :id, :email, options = {:prompt => "-Select a user"}, :class =>"payment") %>--> 
 <br /><br />
 <%= f.submit 'Update' %>
 <% end %>  

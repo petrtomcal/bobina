@@ -1,4 +1,4 @@
-class SalesProducts < ActiveRecord::Base
+class SalesProduct < ActiveRecord::Base
   
   belongs_to :sale
   belongs_to :product

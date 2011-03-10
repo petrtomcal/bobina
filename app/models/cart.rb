@@ -14,8 +14,7 @@ class Cart < ActiveRecord::Base
  
   #column :product_id, :integer 
   
-  def paypal_url(return_url, _items)
-    
+  def paypal_url(return_url, _sales_items)
     values = {
       :business => 'seller_1292877565_biz@gmail.com',
       :cmd => '_cart',
@@ -23,17 +22,27 @@ class Cart < ActiveRecord::Base
       :return => return_url,
       :invoice => rand(36**8).to_s(36), #info cislo faktur
       :cert_id => "S8DUNZJY5VS3G"
-    }        
-    #debugger
-    _items.each_with_index do |item,index|
+    }
+    _sales_items.each_with_index do |si,index|
         values.merge!({
-          "amount_#{index+1}" => item[0].price,
-          "item_name_#{index+1}" => item[0].name,
-          "item_number_#{index+1}" => item[0].id,
-          "quantity_#{index+1}" => item[1]          
+          "amount_#{index+1}" => if si.type == SalesProduct
+                                   si.product.price
+                                 else
+                                   si.pack.price
+                                 end,    
+          "item_name_#{index+1}" => if si.type == SalesProduct
+                                      si.product.name
+                                    else
+                                      si.pack.name
+                                    end,
+          "item_number_#{index+1}" => if si.type == SalesProduct
+                                      si.product.id
+                                    else
+                                      si.pack.id
+                                    end,
+          "quantity_#{index+1}" => si.count          
         })
     end
-     
     "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
     #info-encrypted encrypt_for_paypal(values)    
   end

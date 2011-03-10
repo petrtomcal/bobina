@@ -44,8 +44,7 @@ Rails::Initializer.run do |config|
   # Ensure the gateway is in test mode
   #ActiveMerchant::Billing::Base.gateway_mode = :test
   #ActiveMerchant::Billing::Base.integration_mode = :test
-  #ActiveMerchant::Billing::PaypalGateway.pem_file =  File.read(File.dirname(__FILE__) + '/../paypal/paypal_cert.pem')
-  
+  #ActiveMerchant::Billing::PaypalGateway.pem_file =  File.read(File.dirname(__FILE__) + '/../paypal/paypal_cert.pem')  
    
   
 end

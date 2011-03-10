@@ -1,9 +1,9 @@
-<%=Gchart.bar(:size => '420x150', 
+<%=Gchart.bar(:size => @size, 
            :data => @counts_sales_group,
            :bar_colors => 'D37A26',
            :chart_background => 'FFF',
            :bar_width_and_spacing => '50',
            :axis_with_labels => ['x','x'],
-           :custom => 'chm=B,FFFFFF,0,0,0&chls=3,1,0&chg=25,50,1,0',
+           :custom => 'chm=B,FFFFFF,0,0,0&chls=3,1,0&chg=100,100,0,0',
            :axis_labels => [@counts_sales_group,@sale.keys],
            :format => 'image_tag')%>

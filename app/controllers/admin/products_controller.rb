@@ -11,7 +11,9 @@ class Admin::ProductsController < ApplicationController
   # GET /users/1.xml
   def show
     @product = Product.find(params[:id])
-
+    #info
+    #debugger
+    #@product.categories
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @product }

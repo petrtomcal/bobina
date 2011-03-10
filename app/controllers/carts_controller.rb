@@ -32,51 +32,24 @@ class CartsController < ApplicationController
   
   def checkout
     @cart = Cart.new
-    @items ||= []    
-    @product_items ||= []
-    @pack_items ||= []
-    session[:items]["products"].each_pair{ |key,value| @product_items << [Product.find(key), value] }
-    session[:items]["collection"].each_pair{ |key,value| @pack_items << [Pack.find(key), value] }    
-    to_sale_products(@product_items)
-    to_sale_collections(@pack_items)
-    #Sale.to_sale(@product_items, @pack_items) #info
-    @items = @product_items + @pack_items
-    redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", @items)    
+    @sale=to_sale
+    redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", @sale.sales_products + @sale.sales_packs)    
   end
     
-  #info -rfc
-  def to_sale_products(array)
-    array.each_with_index do |item,index|
-      @product = item[0]
-      @sale = Sale.new
-      @sale.user_id = session[:user_id]
-      @sp = SalesProducts.new
-      @sp.product = @product
-      @sp.count = item[1]
-      @sp.sale = @sale
-      @sale.name = @product.name
-      @sale.product_id = @product.id
-      @sale.user_id = User.find(session[:user_id])
-      @sp.save      
-      @sale.save
-    end
-  end
-  
-  def to_sale_collections(array)
-    array.each_with_index do |item,index|
-      @pack = item[0]
-      @sale = Sale.new
-      @sale.user_id = session[:user_id]
-      @sp = SalesPacks.new
-      @sp.pack = @pack
-      @sp.sale = @sale
-      @sp.count = item[1]
-      @sale.name = @pack.name
-      @sale.pack_id = @pack.id
-      @sale.user_id = User.find(session[:user_id])
-      @sp.save      
-      @sale.save
-    end
-  end
+  def to_sale    
+    @sale = Sale.new
+    @sale.user_id = session[:user_id]    
+    @sale.save
+    
+    session[:items]["products"].each_pair{ |key,value| 
+    @sale.sales_products.create(:product_id => key, :count => value)
+     }
+    
+     session[:items]["collection"].each_pair{ |key,value| 
+    @sale.sales_packs.create(:pack_id => key, :count => value)
+     }
+     
+     @sale
+  end  
   
 end
