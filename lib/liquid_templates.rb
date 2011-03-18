@@ -40,7 +40,7 @@ module EshopModule
         #  yield tmpl, result if block_given?
         #end        
         my_template = ::Liquid::Template.parse(content)
-        #info liquid filters
+        #info liquid filters        
         temp = my_template.render( assigns, :registers => {:controller => controller})
         #temp = my_template.render( assigns, :filters => [LiquidFilters])
              

@@ -2,7 +2,9 @@ class PackDrop < Liquid::Drop
   
   def initialize(_pack, _count=nil)    
     @pack = _pack
-    @pack.count = _count        
+    unless _count == nil
+      @pack.count = _count
+    end  
   end
   
   def name

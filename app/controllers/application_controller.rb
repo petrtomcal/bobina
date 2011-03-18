@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   
-  before_filter :set_db, :set_skin
+  before_filter :set_db, :set_skin, :reset_session_expiry
   
   def default_order_properties
     'id'
@@ -27,16 +27,36 @@ class ApplicationController < ActionController::Base
   end
   
   def check_authentication
-    #if session[:user_id] == 0
-    #  flash[:notice] = 'Přihlašte se prosím'
-    #  render :template => 'admin/users/login', :layout => 'access'
-    #  return false
-    #end
-    unless session[:user_id]
+    unless session[:user_id] 
       flash[:notice] = 'Login yourself please.'
-      render :template => 'admin/users/login', :layout => 'access'
+      redirect_to :controller => 'users', :action => 'login'      
       return false
     end
- end
+    unless User.find(session[:user_id]).admin == 1
+      flash[:notice] = 'Sorry you, but you should be administrator.'
+      redirect_to :controller => 'users', :action => 'login'      
+      return false
+    end
+  end
   
+  def session_check
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+    end
+  end
+
+  protected
+  
+  def reset_session_expiry
+  	creation_time = session[:creation_time] || Time.now
+    if !session[:expiry_time].nil? and session[:expiry_time] < Time.now
+      reset_session
+      $logout = 'logout'
+    else
+      $logout = ''
+      session[:expiry_time] = 15.minutes.from_now
+    end    
+    return true
+  end
+    
 end

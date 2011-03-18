@@ -1,5 +1,5 @@
 class Admin::SalesController < ApplicationController
-  
+  before_filter :check_authentication
   def index
     @sale = Sale.new
   end
@@ -19,6 +19,7 @@ class Admin::SalesController < ApplicationController
   end
   
   def get_size
+    #info-bad value range
     @size = ((@counts_sales_group.size * 60).to_s+ "x" + (@counts_sales_group.max * 1).to_s).to_s
   end
   

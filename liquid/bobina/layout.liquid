@@ -24,25 +24,22 @@
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <title>bobina</title>  
-  
-  
-  
   <link href="/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css" />
-  
-
-    
-     
-    {{ content_for_header }}
 </head>
 <body>
-  
- 	
 	<body id="">
-  <div id="container">
-    
+  <div id="container">    
     <div id="specialNav" class="clearfix">
       <div id="userInfo">
-        
+      {% if user %}
+        Logged as {{user.email}}&nbsp|&nbsp<a href="/products/sale_history_list">Sale history</a>&nbsp|
+        <a href="/products/index">Go to shop</a>|
+        <a href="/admin/users/logout">logout</a>
+      {% else %}              
+        <a href="/admin/users">sign in</a>&nbsp|
+        <a href="/admin/users/registration">sign up</a>
+      {% endif %}
+      <br/>
       </div>
     </div><!--specialNav-->
     <div id="header" class="clearfix">

@@ -1,7 +1,3 @@
-<a href="/admin/users?customer="customer">sign in</a>
-<br/>
-<a href="/admin/users/registration?customer="customer">sign up</a>
-<br/>
 count of products for sale: {{ products.size }}
 
 <br/>
@@ -47,6 +43,7 @@ count of products for sale: {{ products.size }}
 </table>
 
 <br/>
+{% if cart.get_product_items < 0 and cart.get_pack_items < 0 %}
 <div class="sub-list">
 <table class="common-table" cellpadding="0" cellspacing="0">
   <thead>
@@ -77,6 +74,7 @@ count of products for sale: {{ products.size }}
 total count:{{cart.total_count}}<br/>
 total price:{{cart.total_price|number_to_usd}}
 </table>
+{% endif %}  
 {% if cart.total_count > 0 %}
   <a href="/carts/checkout">Checkout</a>
 {% endif %}  

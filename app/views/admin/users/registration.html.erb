@@ -1,6 +1,7 @@
 <% form_for(@user, :url => { :action => "create_registration" }, :html => { :class => 'common-form'}) do |f| %>
   <%= render :partial => 'form' %>
   <p>
+    *This fields are required.<br/>
     <%= f.submit 'Save' %>
   </p>
 <% end %>

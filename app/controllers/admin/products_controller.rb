@@ -1,4 +1,5 @@
 class Admin::ProductsController < ApplicationController
+  before_filter :check_authentication
   def index
       @products = Product.all
       respond_to do |format|

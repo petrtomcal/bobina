@@ -1,4 +1,5 @@
 class Admin::PacksController < ApplicationController
+  before_filter :check_authentication
   def index
    @packs = Pack.all
    

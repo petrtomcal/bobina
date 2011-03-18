@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_filter :check_authentication , :except => ['login','registration','create_registration']
+  before_filter :check_authentication , :except => ['login','registration','create_registration','logout']
   
   # GET /users
   # GET /users.xml
@@ -54,13 +54,9 @@ class Admin::UsersController < ApplicationController
   end
 
   def registration
-    #unless @user
+    unless @user
       @user = User.new
-    #end
-=begin
-    chars = (('a'..'z').to_a + ('0'..'9').to_a) - %w(i o 0 1 l 0)
-    @random_text = RAILS_ENV == 'test' ? 'TEST':((1..6).collect{|a| chars[rand(chars.size)] }.join).upcase
-=end    
+    end
     respond_to do |format|
       format.html { render :action => 'registration', :layout => 'registration' }
       format.xml  { render :xml => @user }
@@ -69,18 +65,14 @@ class Admin::UsersController < ApplicationController
   
   def create_registration
     @user = User.new(params[:user])
-    #@user.valid_with_captcha?  
-    #debugger
     @user.password_hash = Digest::SHA256.hexdigest(@user.password)
     respond_to do |format|
       if @user.save_with_captcha #@user.save and simple_captcha_valid?
-        flash[:notice] = 'User sucesfully registred.'
+        flash[:notice] = 'User successfully registered.'
+        NotifierUser.deliver_registration_confirmation(@user.id)
         format.html { render :template => 'admin/users/login', :layout => 'access' }
-      else
-          
-        #return false
-        format.html { render :action => 'registration', :layout => 'registration' }
-        #format.xml  { render :xml => @user, :status => :created, :location => @user }
+      else        
+        format.html { render :action => 'registration', :layout => 'registration' }        
       end
     end
   end
@@ -119,17 +111,21 @@ class Admin::UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
-  def info
-    session[:user_id] = 1# pouze aby proslo do layoutu aplication
-    redirect_to :action => 'index'
-  end
-  
+    
   def login
-    #user = User.find_by_credentials(params[:email], params[:password_hash])
-    #user = User.find(:first)
-    session[:user_id] = 1#user.id
-    redirect_to :action => 'index'
+    user = User.find_by_credentials(params[:email], params[:password_hash])
+    if user.nil?
+      flash[:notice] =  'Wrong email or password.'
+      render :action => 'login', :layout => 'access'
+    else
+      if user.admin == 1 
+        session[:user_id] = user.id
+        redirect_to :action => 'index'
+      else
+        session[:user_id] = user.id
+        redirect_to :controller => '../products', :action => 'index'           
+      end            
+    end    
   end
   
   def logout

@@ -32,7 +32,7 @@ class CartsController < ApplicationController
   
   def checkout
     @cart = Cart.new
-    @sale=to_sale
+    @sale = to_sale
     redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", @sale.sales_products + @sale.sales_packs)    
   end
     

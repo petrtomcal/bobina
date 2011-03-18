@@ -1,4 +1,5 @@
 class Admin::CategoriesController < ApplicationController
+  before_filter :check_authentication
   def index
       @categories = Category.all
       respond_to do |format|
