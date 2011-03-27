@@ -1,5 +1,15 @@
 class NotifierUser < ActionMailer::Base
   
+  def new_shop_confirmation(amdmineshop_id, pass)
+    ae = AdminEshop.find(amdmineshop_id)
+    @subject = "Confirmate your registration"
+    @recipients = ae.email
+    @from = "NOTIFIER_EMAIL after db create and migratation task#info, link to shop"
+    @sent_on = Time.now
+    @content_type = "text/html" 
+    @body = { 'user' => ae }
+  end
+  
   def registration_confirmation(user_id)
     user = User.find(user_id)
     @subject = "Confirmate your registration"

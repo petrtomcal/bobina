@@ -35,7 +35,8 @@ class CartsController < ApplicationController
     @sale = to_sale
     redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", @sale.sales_products + @sale.sales_packs)    
   end
-    
+  
+  #info user email for not logged user  
   def to_sale    
     @sale = Sale.new
     @sale.user_id = session[:user_id]    
@@ -45,11 +46,11 @@ class CartsController < ApplicationController
     @sale.sales_products.create(:product_id => key, :count => value)
      }
     
-     session[:items]["collection"].each_pair{ |key,value| 
+    session[:items]["collection"].each_pair{ |key,value| 
     @sale.sales_packs.create(:pack_id => key, :count => value)
      }
      
-     @sale
+    @sale
   end  
   
 end

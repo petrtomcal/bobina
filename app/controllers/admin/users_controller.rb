@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_filter :check_authentication , :except => ['login','registration','create_registration','logout']
+  before_filter :check_authentication , :except => ['login','registration','create_registration','logout','new_shop','create_shop']
   
   # GET /users
   # GET /users.xml
@@ -123,7 +123,7 @@ class Admin::UsersController < ApplicationController
         redirect_to :action => 'index'
       else
         session[:user_id] = user.id
-        redirect_to :controller => '../products', :action => 'index'           
+        redirect_to :controller => '../products', :action => 'list'           
       end            
     end    
   end
@@ -143,6 +143,5 @@ class Admin::UsersController < ApplicationController
       format.html # new.html.erb
       format.xml  { render :xml => @product }
     end
-  end
-    
+  end   
 end

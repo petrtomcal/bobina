@@ -4,6 +4,7 @@ class Attachment < ActiveRecord::Base
     
   has_attached_file :file,
                     :path => ":rails_root/public/product/:id/:basename.:extension"
+                    #info diffrent path for subdomain
                     
   #def delete_dir(id)
   #  attachment_dir = File.join(RAILS_ROOT, 'public', 'product',id )

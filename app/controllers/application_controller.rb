@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     @skin_templates = File.join( RAILS_ROOT, 'liquid', subdomain )
   end
   
-  def check_authentication
+  def check_authentication#info last flash only
     unless session[:user_id] 
       flash[:notice] = 'Login yourself please.'
       redirect_to :controller => 'users', :action => 'login'      
@@ -40,8 +40,8 @@ class ApplicationController < ActionController::Base
   end
   
   def session_check
-    if session[:user_id]
-      @user = User.find(session[:user_id])
+    unless session[:user_id]
+      redirect_to :controller=> '../products', :action => 'index'
     end
   end
 

@@ -9,7 +9,7 @@ validates_confirmation_of :password
 validates_presence_of :password, :on => :create, :message => "can't be blank."
 
 
-apply_simple_captcha
+apply_simple_captcha 
 
   def self.find_by_credentials(email, pass)
      pswd_hash = Digest::SHA256.hexdigest(pass)         

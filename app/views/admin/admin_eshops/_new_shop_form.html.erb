@@ -1,0 +1,14 @@
+<%= error_messages_for 'admineshop' %>
+<% if flash[:error] -%>
+    <h2 class="error"><%= flash[:error] %></h2>
+<% elsif flash[:notice] -%>
+    <h2 class="notice"><%= flash[:notice] %></h2>
+<% end -%>
+
+<label for="admineshop_email"><%= 'Email' %>*</label><br />
+<%= text_field 'admineshop', 'email' %><br />
+
+<label for="admineshop_domain"><%= 'Domain' %>*</label><br />
+<%= text_field 'admineshop', 'domain' %><br />
+
+
