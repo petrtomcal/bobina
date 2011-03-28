@@ -45,7 +45,8 @@ class Admin::ProductsController < ApplicationController
     respond_to do |format|
       if @product.save
         flash[:notice] = 'Product sucesfully added.'
-        format.html { redirect_to :action => 'index' }
+        session[:product_id] = @product.id
+        format.html { redirect_to :action => 'new_attachment' }
         format.xml  { render :xml => @product, :status => :created, :location => @product }
       else
         format.html { render :action => "new" }
@@ -116,8 +117,8 @@ class Admin::ProductsController < ApplicationController
   end
   
   #takto upravit vsechny metody v controlleru #info
-  def new_attachment
-    @product = Product.find(params[:product_id])
+  def new_attachment    
+    @product = Product.find(session[:product_id])
     @attachment = Attachment.new
     respond_to do |format|
       format.html # new.html.erb

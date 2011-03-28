@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  before_filter :session_check, :only => [:checkout]
   
   def create_product    
     session[:items]["products"] ||= Hash.new
@@ -30,16 +31,18 @@ class CartsController < ApplicationController
     redirect_to :controller => "products", :action => "list"
   end
   
-  def checkout
+  def checkout#info just logged
     @cart = Cart.new
     @sale = to_sale
-    redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", @sale.sales_products + @sale.sales_packs)    
-  end
+    redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart",
+                                 @sale.sales_products + @sale.sales_packs, 
+                                 @sale.token)    
+  end  
   
-  #info user email for not logged user  
   def to_sale    
     @sale = Sale.new
-    @sale.user_id = session[:user_id]    
+    @sale.user_id = session[:user_id]
+    @sale.token = get_unique_token
     @sale.save
     
     session[:items]["products"].each_pair{ |key,value| 
@@ -52,5 +55,23 @@ class CartsController < ApplicationController
      
     @sale
   end  
+  
+  private
+  #info 
+  def get_unique_token
+    token = rand(36**8).to_s(36) + rand(Time.now).to_s(36)
+    letter = ("A".."Z").to_a    
+    token.insert(rand(10), letter[rand(25)])    
+    token.insert(rand(10), letter[rand(25)]) 
+    if check_exist(token)    
+      get_unique_token
+    else
+      token
+    end    
+  end
+  
+  def check_exist(_token)
+    Sale.exists?(:token => _token)
+  end
   
 end

@@ -14,13 +14,13 @@ class Cart < ActiveRecord::Base
  
   #column :product_id, :integer 
   
-  def paypal_url(return_url, _sales_items)
+  def paypal_url(return_url, _sales_items, _invoice_id)
     values = {
       :business => 'seller_1292877565_biz@gmail.com',
       :cmd => '_cart',
       :upload => 1,
       :return => return_url,
-      :invoice => rand(36**8).to_s(36), #info cislo faktur
+      :invoice => _invoice_id,
       :cert_id => "S8DUNZJY5VS3G"
     }
     _sales_items.each_with_index do |si,index|

@@ -1,7 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :session_check, :except => [:index, :empty_cart, :show]
-  #before_filter :check_acces, :only => [:download]
-
+  before_filter :session_check, :except => [:index, :empty_cart, :show, :get_downloads_links]
   
   def index
     session[:items] ||= Hash.new
@@ -78,8 +76,7 @@ class ProductsController < ApplicationController
       }
     
     products_id = @products.collect{|p| p.id}
-    p_id = Attachment.find(params[:id], :select => 'product_id')
-    #debugger
+    p_id = Attachment.find(params[:id], :select => 'product_id')    
     if products_id.include?(p_id.product_id)
       begin        
         attachment = Attachment.find(params[:id])
@@ -91,6 +88,19 @@ class ProductsController < ApplicationController
     else  
       redirect_to :action => 'sale_history_list'  
     end    
+  end
+  
+  def get_downloads_links    
+    sale = Sale.first(:conditions => { :token => params[:text] })
+        
+    @products = sale.products.collect { |p| ProductDrop.new(p) }
+    packs = sale.packs
+    packs.each {|pack|
+      @products = pack.products.collect { |p| ProductDrop.new(p) } + @products
+    }
+    
+    assigns = {'products' => @products}
+    render_liquid_template 'products/token', assigns, self
   end
   
   #info private
