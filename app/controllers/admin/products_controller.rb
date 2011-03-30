@@ -118,7 +118,7 @@ class Admin::ProductsController < ApplicationController
   
   #takto upravit vsechny metody v controlleru #info
   def new_attachment    
-    @product = Product.find(session[:product_id])
+    @product = Product.find(params[:product_id])
     @attachment = Attachment.new
     respond_to do |format|
       format.html # new.html.erb
@@ -126,9 +126,12 @@ class Admin::ProductsController < ApplicationController
     end
   end
   
-  def upload_attachment
+  def upload_attachment    
     @product = Product.find(params[:product_id])
     @attachment = @product.attachments.new(:file => params[:attachment])
+    #url = request.host      
+    #eshop = AdminEshop.find_by_domain(url.split(".").first)
+    #@attachment.subdomain_name = eshop    
     if @attachment.save
       status = '<div id="output">success</div>'
       render :text => "#{status} <div id='message'>Attachment was sucesfully added.</div>"

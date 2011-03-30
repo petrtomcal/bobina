@@ -4,7 +4,8 @@ class Attachment < ActiveRecord::Base
     
   has_attached_file :file,
                     :path => ":rails_root/public/product/:id/:basename.:extension"
-                    #info diffrent path for subdomain
+                    #info diffrent path for subdomain /:subdomain_name
+                    # raise "Requested database '#{url}' was NOT found" if @eshop.nil?
                     
   #def delete_dir(id)
   #  attachment_dir = File.join(RAILS_ROOT, 'public', 'product',id )

@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :session_check, :except => [:index, :empty_cart, :show, :get_downloads_links]
+  before_filter :session_check, :except => [:index, :empty_cart, :show, :get_downloads_links, :download_by_token]
   
   def index
     session[:items] ||= Hash.new
@@ -90,19 +90,58 @@ class ProductsController < ApplicationController
     end    
   end
   
-  def get_downloads_links    
+  def get_downloads_links
+    
+    #@sale = Sale.all( :conditions => { :created_at => start_date..end_date }, :joins => [:sales_products], :select => "sales.*, sum(  sales_products.count) as products_count", :group => "sales.id").group_by{ |sale| sale.created_at.strftime("(%y/%d/%m)") }
+    
     sale = Sale.first(:conditions => { :token => params[:text] })
         
-    @products = sale.products.collect { |p| ProductDrop.new(p) }
-    packs = sale.packs
-    packs.each {|pack|
-      @products = pack.products.collect { |p| ProductDrop.new(p) } + @products
+    @products = sale.products
+    
+    unless sale.packs.empty?
+      sale.packs.each {|pack|
+        @products = pack.products + @products        
+      } 
+    end
+    @attachments ||= []  
+    @products.each {|p|
+      @attachments = p.attachments.all.collect { |attachment| AttachmentDrop.new(attachment) } + @attachments #dej to do modelu
     }
     
-    assigns = {'products' => @products}
-    render_liquid_template 'products/token', assigns, self
+    
+    assigns = {'attachments' => @attachments, 'token' => params[:text]}
+    render_liquid_template 'products/download_by_token', assigns, self
   end
   
+  def download_by_token
+    
+    sale = Sale.first(:conditions => { :token => params[:token] })
+    token = "text=" + params[:token]
+      @products ||= []
+      packs ||= []
+      
+        @products = sale.products
+        
+        packs = sale.packs 
+        packs.each {|p|
+          @products = @products + p.products
+        }
+      
+    
+    products_id = @products.collect{|p| p.id}
+    p_id = Attachment.find(params[:id], :select => 'product_id')    
+    if products_id.include?(p_id.product_id)
+      begin        
+        attachment = Attachment.find(params[:id])
+        file_path = File.join(attachment.file.path)
+        send_file(file_path, :filename => attachment.file_file_name , :stream => false)      
+      rescue
+        render :text => "File not found", :status => 404
+      end      
+    else  
+      redirect_to :action => 'get_downloads_links', :param => token  
+    end        
+  end
   #info private
   def get_user_hash
     @user = User.find(session[:user_id])

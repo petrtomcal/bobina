@@ -60,9 +60,12 @@ class CartsController < ApplicationController
   #info 
   def get_unique_token
     token = rand(36**8).to_s(36) + rand(Time.now).to_s(36)
-    letter = ("A".."Z").to_a    
-    token.insert(rand(10), letter[rand(25)])    
-    token.insert(rand(10), letter[rand(25)]) 
+    letter = ("A".."Z").to_a 
+    
+    2.times do       
+      token.insert(rand(10), letter[rand(25)])
+    end
+    
     if check_exist(token)    
       get_unique_token
     else

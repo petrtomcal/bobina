@@ -115,7 +115,7 @@ class Admin::UsersController < ApplicationController
   def login
     user = User.find_by_credentials(params[:email], params[:password_hash])
     if user.nil?
-      flash[:notice] =  'Wrong email or password.'
+      flash[:notice] =  'Wrong email or password.' if flash[:notice].nil?
       render :action => 'login', :layout => 'access'
     else
       if user.admin == 1 
