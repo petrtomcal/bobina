@@ -50,4 +50,14 @@ class NotifierUser < ActionMailer::Base
     @body = { 'user' => user }
   end
   
+   def create(user_id, pass)
+    user = User.find(user_id)
+    @subject = "Registration"
+    @recipients = user.email
+    @from = "NOTIFIER_EMAIL"
+    @sent_on = Time.now
+    @content_type = "text/html" 
+    @body = { 'user' => user, 'pass' => pass }
+  end
+  
 end

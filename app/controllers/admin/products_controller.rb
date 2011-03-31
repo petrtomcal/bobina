@@ -1,5 +1,6 @@
 class Admin::ProductsController < ApplicationController
   before_filter :check_authentication
+  
   def index
       @products = Product.all
       respond_to do |format|
@@ -8,21 +9,14 @@ class Admin::ProductsController < ApplicationController
     end
   end
   
-  # GET /users/1
-  # GET /users/1.xml
   def show
     @product = Product.find(params[:id])
-    #info
-    #debugger
-    #@product.categories
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @product }
     end
   end
 
-  # GET /users/new
-  # GET /users/new.xml
   def new
     @product = Product.new
 
@@ -32,19 +26,16 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
-  # GET /users/1/edit
   def edit
     @product = Product.find(params[:id])    
   end
 
-  # POST /users
-  # POST /users.xml
   def create
     @product = Product.new(params[:product])
 
     respond_to do |format|
       if @product.save
-        flash[:notice] = 'Product sucesfully added.'
+        flash[:notice] = 'Product was sucesfully added.'
         session[:product_id] = @product.id
         format.html { redirect_to :action => 'new_attachment' }
         format.xml  { render :xml => @product, :status => :created, :location => @product }
@@ -55,15 +46,12 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
-  # PUT /users/1
-  # PUT /users/1.xml
-  def update
-    
+  def update    
     @product = Product.find(params[:id])
 
     respond_to do |format|
       if @product.update_attributes(params[:product])
-        flash[:notice] = 'Product sucesfully edited.'
+        flash[:notice] = 'Product was sucesfully edited.'
         format.html { redirect_to :action => "index" }
         format.xml  { head :ok }
       else
@@ -73,16 +61,20 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.xml
   def destroy
-    @product = Product.find(params[:id])    
-    @product.destroy
-
-    respond_to do |format|
-      format.html { redirect_to :action => 'index' }
-      format.xml  { head :ok }
-    end
+    @product = Product.find(params[:id])
+    
+    if @product.packs.nil?
+      @product.destroy
+      flash[:notice] = 'Product was sucesfully deleted.'
+      respond_to do |format|
+        format.html { redirect_to :action => 'index' }
+        format.xml  { head :ok }
+      end
+    else
+      flash[:notice] = 'Product is in this package. Remove from package first.'
+      redirect_to :controller => 'packs', :action => 'show', :id => @product.packs.first.id
+    end  
   end
   
   def show_categories
@@ -118,7 +110,11 @@ class Admin::ProductsController < ApplicationController
   
   #takto upravit vsechny metody v controlleru #info
   def new_attachment    
-    @product = Product.find(params[:product_id])
+    if params[:product_id].nil?
+      @product = Product.find(session[:product_id]) #info session if going straight
+    else
+      @product = Product.find(params[:product_id])
+    end  
     @attachment = Attachment.new
     respond_to do |format|
       format.html # new.html.erb

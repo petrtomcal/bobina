@@ -1,6 +1,6 @@
 <h1>Products in package: <%= @pack.name %></h1>
 <div class="sub-list">
-  <h2>Already in package</h2>
+  <h2>Package has these products</h2>
   <table class="common-table" cellpadding="0" cellspacing="0">
   <th>Name</th>
   <th></th>
@@ -10,7 +10,7 @@
     <tr <%= "class=\"even\"" if (even % 2)==0 %>>
       <td><%= pp.name %></td>
       <td class="links">
-        <%= link_to '&nbsp Delete', { :action => 'del_product_from_pack', :pack_id => @pack.id, :product_id => pp.id } %>
+        <%= link_to 'Delete', { :action => 'del_product_from_pack', :pack_id => @pack.id, :product_id => pp.id } %>
       </td>
     </tr>
   <% end %>
@@ -28,9 +28,10 @@
     <tr <%= "class=\"even\"" if (even % 2)==0 %>>
       <td><%= product.name %></td>
       <td class="links">
-        <%= link_to '&nbsp Add', { :action => 'add_product_to_pack', :pack_id => @pack.id, :product_id => product.id } %>
+        <%= link_to 'Add', { :action => 'add_product_to_pack', :pack_id => @pack.id, :product_id => product.id } %>
       </td>
     </tr>
   <% end %>
   </table>
 </div>
+<%= link_to 'Back', :action => 'index' %>

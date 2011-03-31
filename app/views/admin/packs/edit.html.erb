@@ -1,5 +1,4 @@
-<% form_for(@pack, :url => { :action => "update", :id => @pack.id }) do |f| %>
-  <%= f.error_messages %>
+<% form_for(@pack, :url => { :action => "update", :id => @pack.id }, :html => { :class => 'common-form'}) do |f| %>
   <%= render :partial => 'form' %>
   <p>
     <%= f.submit 'Update' %>

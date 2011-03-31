@@ -3,15 +3,14 @@ class Pack < ActiveRecord::Base
   has_many :products, :through => :packs_products
   has_many :packs_products, :dependent => :destroy
   
-  has_many :categories, :through => :packs_categories
-  has_many :packs_categories, :dependent => :destroy
-  
   has_many :sales, :through => :sales_packs
   has_many :sales_packs, :dependent => :destroy
   
   attr_accessor :count
   
-  #Metoda vrati true pokud ma produkt kategorii
+  validates_presence_of :name, :message => "can't be blank"
+  
+  
   def has_product?(product_id) 
     tmp = self.products.find(product_id) rescue nil
     return !tmp.nil?

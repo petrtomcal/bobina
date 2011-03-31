@@ -16,15 +16,11 @@ class Product < ActiveRecord::Base
   validate :price_must_be_at_least_0
   
   
-  attr_accessor :count
-  
-  #liquid_cast
-  #liquid_methods :name  
-  
+  attr_accessor :count  
+    
   protected
   def price_must_be_at_least_0
-    errors.add(:price, 'should be at least then 0.01') if price.nil? || price < 0.01 
-  end
-                    
+    errors.add(:price, 'should be at least more than 0.01') if price.nil? || price < 0.01 
+  end                    
         
 end

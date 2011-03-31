@@ -5,8 +5,6 @@
 <table class="common-table" cellpadding="0" cellspacing="0">
   <thead>
    <tr>    
-<!--    <th>< pof_order_header(@pof, :order_by => 'first_name', :label => 'Fisrt name', :title => 'Click to order') %></th>
-    <th>< pof_order_header(@pof, :order_by => 'last_name', :label => 'Příjmení', :title => 'Click to order') %></th>-->
       <th colspan="6">&nbsp;</th>
    </tr>
   </thead>
@@ -19,7 +17,7 @@
     <td><%= link_to 'Show', {:action => 'show',:id => pack.id} %></td>
     <td><%= link_to 'Edit', {:action => 'edit', :id => pack.id} %></td>
     <td><%= link_to 'Destroy', {:action => 'destroy',:id => pack.id}, :confirm => 'Are you sure?', :method => :delete %></td>
-    <td><%= link_to('products &nbsp', {:action => 'show_products', :pack_id => pack.id },  {:title => 'products to pack'} )  %></td>
+    <td><%= link_to('Products', {:action => 'show_products', :pack_id => pack.id },  {:title => 'Administrate products in package'} )  %></td>
   </tr>
 <% end %>
 </table>

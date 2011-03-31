@@ -1,5 +1,6 @@
 class Admin::SalesController < ApplicationController
   before_filter :check_authentication
+  
   def index
     @sale = Sale.new
   end

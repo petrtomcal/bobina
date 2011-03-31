@@ -1,5 +1,6 @@
 class Admin::CategoriesController < ApplicationController
   before_filter :check_authentication
+  
   def index
       @categories = Category.all
       respond_to do |format|
@@ -8,8 +9,6 @@ class Admin::CategoriesController < ApplicationController
     end
   end
   
-  # GET /users/1
-  # GET /users/1.xml
   def show
     @category = Category.find(params[:id])
 
@@ -19,8 +18,6 @@ class Admin::CategoriesController < ApplicationController
     end
   end
 
-  # GET /users/new
-  # GET /users/new.xml
   def new
     @category = Category.new
 
@@ -30,13 +27,10 @@ class Admin::CategoriesController < ApplicationController
     end
   end
 
-  # GET /users/1/edit
   def edit
     @category = Category.find(params[:id])    
   end
 
-  # POST /users
-  # POST /users.xml
   def create
     @category = Category.new(params[:category])
 
@@ -52,8 +46,6 @@ class Admin::CategoriesController < ApplicationController
     end
   end
 
-  # PUT /users/1
-  # PUT /users/1.xml
   def update
     
     @category = Category.find(params[:id])
@@ -70,12 +62,10 @@ class Admin::CategoriesController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.xml
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
-
+    flash[:notice] = 'Category was sucesfully destroyed.'
     respond_to do |format|
       format.html { redirect_to :action => 'index' }
       format.xml  { head :ok }

@@ -1,5 +1,4 @@
-<% form_for(@category, :url => { :action => "update", :id => @category.id }) do |f| %>
-  <%= f.error_messages %>
+<% form_for(@category, :url => { :action => "update", :id => @category.id }, :html => { :class => 'common-form'}) do |f| %>  
   <%= render :partial => 'form' %>
   <p>
     <%= f.submit 'Update' %>

@@ -1,6 +1,6 @@
 <h1>Categories for product: <%= @product.name %></h1>
 <div class="sub-list">
-  <h2>Already in product</h2>
+  <h2>Product has these categories</h2>
   <table class="common-table" cellpadding="0" cellspacing="0">
   <th>Name</th>
   <th></th>
@@ -10,7 +10,7 @@
     <tr <%= "class=\"even\"" if (even % 2)==0 %>>
       <td><%= pc.name %></td>
       <td class="links">
-        <%= link_to '&nbsp Delete', { :controller => 'products', :action => 'del_category_from_product', :product_id => @product.id, :category_id => pc.id } %>
+        <%= link_to 'Delete', { :controller => 'products', :action => 'del_category_from_product', :product_id => @product.id, :category_id => pc.id } %>
       </td>
     </tr>
   <% end %>
@@ -18,7 +18,7 @@
 </div>
 <br/>
 <div class="sub-list">
-  <h2>Categories possible add for product</h2>
+  <h2>Products possible add to package</h2>
   <table class="common-table" cellpadding="0" cellspacing="0">
   <th>Name</th>
   <th></th>
@@ -28,9 +28,10 @@
     <tr <%= "class=\"even\"" if (even % 2)==0 %>>
       <td><%= category.name %></td>
       <td class="links">
-        <%= link_to '&nbsp Add', { :controller => 'products', :action => 'add_category_to_product', :product_id => @product.id, :category_id => category.id } %>
+        <%= link_to 'Add', { :controller => 'products', :action => 'add_category_to_product', :product_id => @product.id, :category_id => category.id } %>
       </td>
     </tr>
   <% end %>
-  </table>
+  </table>  
 </div>
+<%= link_to 'Back', :action => 'index' %>

@@ -1,5 +1,6 @@
 module DatabaseHelper
   #porovnani vyparsovane hodnoty z url s hodnotu z db  
+  #info about subdomain
   def set_db
     begin
       if ENV["RAILS_ENV"] == "test"

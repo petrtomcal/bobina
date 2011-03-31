@@ -1,21 +1,14 @@
 class Admin::UsersController < ApplicationController
   before_filter :check_authentication , :except => ['login','registration','create_registration','logout','new_shop','create_shop']
   
-  # GET /users
-  # GET /users.xml
-  def index
-    #@pof = pof(:tbl_name => 'users')
-	  #@pof.item_count = User.count(@pof.conds)
-	  @users = User.all #(:conditions => @pof.conds, :order => @pof.order, :offset => @pof.offset, :limit => @pof.limit)
-    #@users = User.all
+  def index    
+	  @users = User.all     
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @users }
     end
   end
 
-  # GET /users/1
-  # GET /users/1.xml
   def show
     @user = User.find(params[:id])
 
@@ -25,8 +18,6 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  # GET /users/new
-  # GET /users/new.xml
   def new
     @user = User.new
 
@@ -36,14 +27,16 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  # POST /users
-  # POST /users.xml
   def create
-    @user = User.new(params[:user])
-
+    pass = "password"+rand(100**2).to_s
+    params[:user][:password_confirmation] = pass
+    params[:user][:password] = pass
+    @user = User.new(params[:user])    
+    @user.password_hash = Digest::SHA256.hexdigest(pass)    
     respond_to do |format|
       if @user.save
         flash[:notice] = 'User sucesfully added.'
+        NotifierUser.deliver_create(@user.id, pass)
         format.html { redirect_to :action => 'index' }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
@@ -77,13 +70,10 @@ class Admin::UsersController < ApplicationController
     end
   end
   
-  # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
   end
 
-  # PUT /users/1
-  # PUT /users/1.xml
   def update
     
     @user = User.find(params[:id])
@@ -100,8 +90,6 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.xml
   def destroy
     @user = User.find(params[:id])
     @user.destroy
@@ -143,5 +131,29 @@ class Admin::UsersController < ApplicationController
       format.html # new.html.erb
       format.xml  { render :xml => @product }
     end
-  end   
+  end
+  
+  def password    
+    @user = User.find(params[:id])  
+  end
+  
+  def update_password
+    old_pass = params[:pass]
+    pass = params[:user][:password]
+    pass_conf = params[:user][:password_confirmation]
+    @user = User.find(params[:id])
+    if Digest::SHA256.hexdigest(old_pass["old_password"]) == @user.password_hash
+      if pass == pass_conf
+        @user.password_hash = Digest::SHA256.hexdigest(pass)
+        @user.save
+        flash[:notice] = 'Password was successfully changed.'
+      else
+        flash[:warning] = 'Passwords  do not match.'
+      end  
+    else
+      flash[:warning] = 'Bad password.'
+    end
+    render :action => 'password', :id => @user.id
+  end
+    
 end

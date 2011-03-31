@@ -19,4 +19,16 @@ apply_simple_captcha
      return nil
   end
   
+  def full_name
+    first_name + ' ' + last_name
+  end
+  
+  def is_admin
+    if admin == 1 
+      true
+    else 
+      false       
+    end
+  end
+  
 end

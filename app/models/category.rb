@@ -1,10 +1,10 @@
 class Category < ActiveRecord::Base
   
   has_many :products, :through => :products_categories
-  has_many :products_categories, :dependent => :destroy
+  has_many :products_categories, :dependent => :destroy  
   
-  has_many :packs, :through => :packs_categories
-  has_many :packs_categories, :dependent => :destroy
+  validates_presence_of :name, :message => "can't be blank."
+  validates_uniqueness_of :name, :message => 'must be unique. This is already used.'
   
   #Metoda vrati true pokud ma prudukt kategorii
   def has_product?(product_id) 

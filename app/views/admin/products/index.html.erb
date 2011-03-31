@@ -4,8 +4,6 @@
 <table class="common-table" cellpadding="0" cellspacing="0">
   <thead>
    <tr>    
-<!--    <th>< pof_order_header(@pof, :order_by => 'first_name', :label => 'Fisrt name', :title => 'Click to order') %></th>
-    <th>< pof_order_header(@pof, :order_by => 'last_name', :label => 'Příjmení', :title => 'Click to order') %></th>-->
     <th> Name </th>  
     <th> Price </th>
     <th colspan="6">&nbsp;</th>      
@@ -20,7 +18,7 @@
     <td><%= link_to 'Show', {:action => 'show',:id => product.id} %></td>
     <td><%= link_to 'Edit', {:action => 'edit', :id => product.id} %></td>    
     <td><%= link_to 'Destroy', {:action => 'destroy',:id => product.id}, :confirm => 'Are you sure?', :method => :delete %></td>
-    <td><%= link_to('categories &nbsp', {:action => 'show_categories', :product_id => product.id },  {:title => 'categories for product'} )  %></td>
+    <td><%= link_to('Categories', {:action => 'show_categories', :product_id => product.id },  {:title => 'Categories for product'} )  %></td>
   </tr>
 <% end %>
 
