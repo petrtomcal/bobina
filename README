@@ -1,1 +1,1 @@
-Diplomova prace bobina
+create database "admin_eshop" and run migration from YOUR_PATH\bobina\db\migrate\eshop\migrate\
