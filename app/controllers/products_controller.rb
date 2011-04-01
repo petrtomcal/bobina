@@ -63,7 +63,8 @@ class ProductsController < ApplicationController
   
   #info - rfc
   def download#info maybe zip for one link    
-      @sales = Sale.find(:all, :conditions => { :user_id => session[:user_id] })
+    @sales = Sale.find(:all, :conditions => { :user_id => session[:user_id] })
+    if @sales.nil?
       @products ||= []
       @packs ||= []
       @sales.each {|s|
@@ -75,19 +76,22 @@ class ProductsController < ApplicationController
         }
       }
     
-    products_id = @products.collect{|p| p.id}
-    p_id = Attachment.find(params[:id], :select => 'product_id')    
-    if products_id.include?(p_id.product_id)
-      begin        
-        attachment = Attachment.find(params[:id])
-        file_path = File.join(attachment.file.path)
-        send_file(file_path, :filename => attachment.file_file_name , :stream => false)      
-      rescue
-        render :text => "File not found", :status => 404
-      end      
-    else  
-      redirect_to :action => 'sale_history_list'  
-    end    
+      products_id = @products.collect{|p| p.id}
+      p_id = Attachment.find(params[:id], :select => 'product_id')    
+      if products_id.include?(p_id.product_id)
+        begin        
+          attachment = Attachment.find(params[:id])
+          file_path = File.join(attachment.file.path)
+          send_file(file_path, :filename => attachment.file_file_name , :stream => false)      
+        rescue
+          render :text => "File not found", :status => 404
+        end      
+      else  
+        redirect_to :action => 'sale_history_list'  
+      end    
+    else
+      redirect_to :action => 'index'
+    end
   end
   
   def get_downloads_links
@@ -95,22 +99,25 @@ class ProductsController < ApplicationController
     #@sale = Sale.all( :conditions => { :created_at => start_date..end_date }, :joins => [:sales_products], :select => "sales.*, sum(  sales_products.count) as products_count", :group => "sales.id").group_by{ |sale| sale.created_at.strftime("(%y/%d/%m)") }
     
     sale = Sale.first(:conditions => { :token => params[:text] })
-        
-    @products = sale.products
+    if sale.nil?    
+      @products = sale.products
     
-    unless sale.packs.empty?
-      sale.packs.each {|pack|
-        @products = pack.products + @products        
-      } 
+      unless sale.packs.empty?
+        sale.packs.each {|pack|
+          @products = pack.products + @products        
+        } 
+      end
+      @attachments ||= []  
+      @products.each {|p|
+        @attachments = p.attachments.all.collect { |attachment| AttachmentDrop.new(attachment) } + @attachments #info to model
+      }
+    
+    
+      assigns = {'attachments' => @attachments, 'token' => params[:text]}
+      render_liquid_template 'products/download_by_token', assigns, self
+    else
+      redirect_to :action => 'index'
     end
-    @attachments ||= []  
-    @products.each {|p|
-      @attachments = p.attachments.all.collect { |attachment| AttachmentDrop.new(attachment) } + @attachments #dej to do modelu
-    }
-    
-    
-    assigns = {'attachments' => @attachments, 'token' => params[:text]}
-    render_liquid_template 'products/download_by_token', assigns, self
   end
   
   def download_by_token

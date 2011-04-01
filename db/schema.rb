@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110327151011) do
+ActiveRecord::Schema.define(:version => 20110331234625) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "product_id"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20110327151011) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "price",       :precision => 8, :scale => 2, :default => 0.0
+    t.string   "description"
   end
 
   create_table "products_categories", :force => true do |t|

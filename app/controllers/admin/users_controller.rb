@@ -28,15 +28,15 @@ class Admin::UsersController < ApplicationController
   end
 
   def create
-    pass = "password"+rand(100**2).to_s
-    params[:user][:password_confirmation] = pass
-    params[:user][:password] = pass
+    @pass = "password"+rand(100**2).to_s
+    params[:user][:password_confirmation] = @pass
+    params[:user][:password] = @pass
     @user = User.new(params[:user])    
-    @user.password_hash = Digest::SHA256.hexdigest(pass)    
+    @user.password_hash = Digest::SHA256.hexdigest(@pass)    
     respond_to do |format|
       if @user.save
         flash[:notice] = 'User sucesfully added.'
-        NotifierUser.deliver_create(@user.id, pass)
+        NotifierUser.deliver_create(@user.email, @pass)
         format.html { redirect_to :action => 'index' }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else

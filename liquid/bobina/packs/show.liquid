@@ -10,13 +10,13 @@
   </thead>
 {% for product in products %}
   <tr>
-    <td>{{ product.id }}</td>
     <td>{{ product.name | truncate: 20 }}</td>
     <td>{{ product.price|number_to_usd }}</td>
-    <td>{{ product.category_id }}</td>
-    <td>attachment<br />    
-    #<a href="/products/show/{{product.id}}">show</a>#
+    <td>
+    <a href="/products/show/{{product.id}}">show</a>
     </td>    
   </tr>
 {% endfor %}    
 </table>
+</div>
+<a href="/products/index">Back to shop</a>

@@ -1,0 +1,15 @@
+<div id="editform"><!--#info about div-->
+<% form_for(@user, :url => { :action => "update", :id => @user.id }, :html => { :class => 'common-form'}) do |f| %>    
+  <% if session[:user_id] %>
+    <%= link_to 'Change password', {:action => 'password',:id => @user.id} %>
+  <% end %>
+  <br />
+  <%= render :partial => 'edit_form' %>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+  </tr>
+</div>
+
+<%= link_to 'Back to shop', :controller => 'products', :action => 'index' %>
