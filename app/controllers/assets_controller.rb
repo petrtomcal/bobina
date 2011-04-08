@@ -1,5 +1,4 @@
 class AssetsController < ActionController::Base
-  
   include DatabaseHelper
   
   session :off

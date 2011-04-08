@@ -1,5 +1,4 @@
 class PacksController < ApplicationController
-  
   def index
     list
   end

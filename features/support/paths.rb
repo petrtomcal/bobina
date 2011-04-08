@@ -30,4 +30,4 @@ module NavigationHelpers
   end
 end
 
-World(NavigationHelpers)
+World(NavigationHelpers, ApplicationController)

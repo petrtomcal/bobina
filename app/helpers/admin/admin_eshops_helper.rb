@@ -1,2 +1,2 @@
-module Admin::AdminEshopsHelper
+module Admin::AdminEshopsHelper  
 end
