@@ -35,7 +35,7 @@ class Admin::ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        flash[:notice] = 'Product was sucesfully added.'
+        flash[:notice] = 'Product was successfully added.'
         session[:product_id] = @product.id
         format.html { redirect_to :action => 'new_attachment' }
         format.xml  { render :xml => @product, :status => :created, :location => @product }
@@ -125,9 +125,10 @@ class Admin::ProductsController < ApplicationController
   def upload_attachment    
     @product = Product.find(params[:product_id])
     @attachment = @product.attachments.new(:file => params[:attachment])
-    #url = request.host      
-    #eshop = AdminEshop.find_by_domain(url.split(".").first)
-    #@attachment.subdomain_name = eshop    
+    url = request.host      
+    eshop = url.split(".").first
+    @attachment.subdomain = eshop
+    
     if @attachment.save
       status = '<div id="output">success</div>'
       render :text => "#{status} <div id='message'>Attachment was sucesfully added.</div>"

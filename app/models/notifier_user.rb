@@ -20,7 +20,7 @@ class NotifierUser < ActionMailer::Base
     @body = { 'user' => user }
   end
   
-  def checkout(user)
+  def checkout(user_id, sale_token, domain)
     user = User.find(user_id)
     @subject = "Confirmate your order"
     @recipients = user.email

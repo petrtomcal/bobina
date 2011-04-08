@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  include DatabaseHelper #musi se includovat jinak nefunguje
+  include DatabaseHelper #info db helper
   include EshopModule::Liquid::LiquidTemplate #includnuti metod z liquid_template
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 

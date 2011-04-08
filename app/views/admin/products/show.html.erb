@@ -17,7 +17,7 @@
       <th>Link to download</th>
       <td><%= link_to('download', :action => 'download', :attachment_id => attachment.id) %></td>
       <th>Delete from product</th>
-      <td><%= link_to 'Delete', {:controller => 'attachments', :action => 'destroy', :attachment_id => attachment.id} %></td>
+      <td><%= link_to 'Delete', {:controller => 'attachments', :action => 'destroy', :attachment_id => attachment.id, :id => @product.id} %></td>
     </tr>
   <% end -%>  
 </table>

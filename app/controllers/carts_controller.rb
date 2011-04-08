@@ -5,14 +5,14 @@ class CartsController < ApplicationController
     session[:items]["products"] ||= Hash.new
     session[:items]["products"][params[:id]] ||= 0
     session[:items]["products"][params[:id]] += 1
-    redirect_to :controller => "products", :action => "list"
+    redirect_to :controller => "products", :action => "index"
   end
   
   def create_pack
     session[:items]["collection"] ||= Hash.new
     session[:items]["collection"][params[:id]] ||= 0
     session[:items]["collection"][params[:id]] += 1
-    redirect_to :controller => "products", :action => "list"
+    redirect_to :controller => "products", :action => "index"
   end  
   
   def destroy_product
@@ -20,7 +20,7 @@ class CartsController < ApplicationController
     if session[:items]["products"][params[:id]] == 0       
       session[:items]["products"].delete(params[:id])
     end    
-    redirect_to :controller => "products", :action => "list"
+    redirect_to :controller => "products", :action => "index"
   end
   
    def destroy_pack
@@ -28,19 +28,15 @@ class CartsController < ApplicationController
     if session[:items]["collection"][params[:id]] == 0       
       session[:items]["collection"].delete(params[:id])
     end    
-    redirect_to :controller => "products", :action => "list"
+    redirect_to :controller => "products", :action => "index"
   end
   
   def checkout#info just logged
     @cart = Cart.new
-    @sale = to_sale
+    @sale = to_sale   
     
-    #info
-    url = request.host    
-    subdomain = AdminEshop.find_by_domain(url.split(".").first)
-    @domain = subdomain ".domain"
-    
-    NotifierUser.deliver_checkout(@user.id, @sale.token, @domain)
+    @domain = request.host    
+    NotifierUser.deliver_checkout(@sale.user_id, @sale.token, @domain)
     
     redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart",
                                  @sale.sales_products + @sale.sales_packs, 

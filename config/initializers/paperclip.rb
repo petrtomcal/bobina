@@ -1,3 +1,3 @@
-Paperclip.interpolates :subdomain_name do |attachment, style|  
-	attachment.instance.subdomain_name
+Paperclip.interpolates :subdomain do |attachment, style|  
+	attachment.instance.subdomain
 end
