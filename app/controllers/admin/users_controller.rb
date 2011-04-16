@@ -11,7 +11,7 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
@@ -35,8 +35,8 @@ class Admin::UsersController < ApplicationController
     @user.password_hash = Digest::SHA256.hexdigest(@pass)    
     respond_to do |format|
       if @user.save
-        flash[:notice] = 'User sucesfully added.'
-        NotifierUser.deliver_create(@user.email, @pass)
+        flash[:notice] = 'User was successfully created.'
+        NotifierUser.deliver_create(@user.id, @pass)
         format.html { redirect_to :action => 'index' }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
@@ -71,6 +71,11 @@ class Admin::UsersController < ApplicationController
   end
   
   def edit
+    #not going here?????
+    #####
+    #####
+    #####
+    #debugger
     @user = User.find(params[:id])
   end
 
@@ -107,7 +112,7 @@ class Admin::UsersController < ApplicationController
       render :action => 'login', :layout => 'access'
     else
       if user.admin == 1 
-        session[:user_id] = user.id
+        session[:user_id] = user.id        
         redirect_to :action => 'index'
       else
         session[:user_id] = user.id

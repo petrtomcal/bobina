@@ -1,16 +1,13 @@
-<div id="editform"><!--#info about div-->
-<% form_for(@user, :url => { :action => "update", :id => @user.id }, :html => { :class => 'common-form'}) do |f| %>    
+<% form_for(@user, :url => { :action => "update", :id => @user.id }, :html => { :class => 'common-form'}) do |f| %>
   <% if @user.is_admin %>
     <%= link_to 'Change password', {:action => 'password',:id => @user.id} %>
   <% end %>
   <br />
-  <%= render :partial => 'edit_form' %>
+  <%= render :partial => 'new_form' %>
   <p>
     <%= f.submit 'Update' %>
   </p>
 <% end %>
-  </tr>
-</div>
 
 <%= link_to 'Show', {:action => 'show',:id => @user.id} %> |
 <%= link_to 'Back', :action => 'index' %>

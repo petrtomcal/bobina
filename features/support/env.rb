@@ -12,10 +12,14 @@ require 'cucumber/rails/world'
 require 'cucumber/rails/active_record'
 require 'cucumber/web/tableish'
 
+require 'ruby-debug'
+require 'cucumber/rails/rspec'
+
+
 require 'capybara/rails'
 require 'capybara/cucumber'
 require 'capybara/session'
-require 'cucumber/rails/capybara_javascript_emulation' # Lets you click links with onclick javascript handlers without using @culerity or @javascript
+#require 'cucumber/rails/capybara_javascript_emulation' # Lets you click links with onclick javascript handlers without using @culerity or @javascript
 
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
@@ -58,7 +62,19 @@ if defined?(ActiveRecord::Base)
   end
 end
 
-class ApplicationController
-  include EshopModule::Liquid::LiquidTemplate
+#Selenium::WebDriver.for :firefox, :http_client => Selenium::WebDriver::Remote::Http::Curb 
+#class ApplicationController
+#  include EshopModule::Liquid::LiquidTemplate
+#end
+
+#http://bobina.eshop.cz:3000
+Before ('@subdomain') do
+  Capybara::Server.manual_host = 'bobina.eshop.cz'
+  Capybara.default_host = 'bobina.eshop.cz'
+end
+
+After('@subdomain') do
+  Capybara.default_host = "eshop.cz"
+  Capybara::Server.manual_host = "eshop.cz"
 end
 

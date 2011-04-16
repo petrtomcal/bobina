@@ -31,6 +31,7 @@ When /^(?:|I )press "([^"]*)"(?: within "([^"]*)")?$/ do |button, selector|
 end
 
 When /^(?:|I )follow "([^"]*)"(?: within "([^"]*)")?$/ do |link, selector|
+  #save_and_open_page
   with_scope(selector) do
     click_link(link)
   end
@@ -59,11 +60,17 @@ end
 # TODO: Add support for checkbox, select og option
 # based on naming conventions.
 #
-When /^(?:|I )fill in the following(?: within "([^"]*)")?:$/ do |selector, fields|
-  with_scope(selector) do
-    fields.rows_hash.each do |name, value|
-      When %{I fill in "#{name}" with "#{value}"}
-    end
+#When /^(?:|I )fill in the following(?: within "([^"]*)")?:$/ do |selector, fields|
+#  with_scope(selector) do
+#    fields.rows_hash.each do |name, value|
+#      When %{I fill in "#{name}" with "#{value}"}
+#    end
+#  end
+#end
+
+When /^(?:|I )fill in the following:$/ do |fields|
+  fields.rows_hash.each do |name, value|
+    When %{I fill in "#{name}" with "#{value}"}
   end
 end
 
@@ -98,23 +105,23 @@ When /^(?:|I )attach the file "([^"]*)" to "([^"]*)"(?: within "([^"]*)")?$/ do 
 end
 
 Then /^(?:|I )should see JSON:$/ do |expected_json|
-  require 'json'
+  require 'json'  
   expected = JSON.pretty_generate(JSON.parse(expected_json))
   actual   = JSON.pretty_generate(JSON.parse(response.body))
   expected.should == actual
 end
 
-Then /^(?:|I )should see "([^"]*)"(?: within "([^"]*)")?$/ do |text, selector|
+Then /^(?:|I )should see "([^\"]*)"(?: within "([^\"]*)")?$/ do |text, selector|  
   with_scope(selector) do
     if page.respond_to? :should
       page.should have_content(text)
     else
       assert page.has_content?(text)
     end
-  end
+  end  
 end
 
-Then /^(?:|I )should see \/([^\/]*)\/(?: within "([^"]*)")?$/ do |regexp, selector|
+Then /^(?:|I )should see \/([^\/]*)\/(?: within "([^\"]*)")?$/ do |regexp, selector|  
   regexp = Regexp.new(regexp)
   with_scope(selector) do
     if page.respond_to? :should

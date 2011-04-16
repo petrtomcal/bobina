@@ -10,7 +10,10 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
-
+    
+    when /path "(.+)"/
+      $1
+      
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
@@ -30,4 +33,4 @@ module NavigationHelpers
   end
 end
 
-World(NavigationHelpers, ApplicationController)
+World(NavigationHelpers)

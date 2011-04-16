@@ -4,7 +4,10 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   include DatabaseHelper #info db helper
-  include EshopModule::Liquid::LiquidTemplate #includnuti metod z liquid_template
+  
+  #include EshopModule::Liquid::LiquidTemplate  #info comment for cucumber  
+  #includnuti metod z liquid_template
+  
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
@@ -26,14 +29,15 @@ class ApplicationController < ActionController::Base
     @skin_templates = File.join( RAILS_ROOT, 'liquid', subdomain )
   end
   
-  def check_authentication#info last flash only
+  def check_authentication#info last flash only    
     unless session[:user_id] 
-      flash[:notice] = 'Login yourself please.'
+      flash[:notice] = 'Login yourself please.'      
       redirect_to :controller => 'users', :action => 'login'      
       return false
     end
     unless User.find(session[:user_id]).admin == 1
-      flash[:notice] = 'Sorry you, but you should be administrator.'
+      flash[:notice] = 'Sorry you, but you should be administrator.'      
+      debugger
       redirect_to :controller => 'users', :action => 'login'      
       return false
     end

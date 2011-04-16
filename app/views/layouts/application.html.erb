@@ -37,7 +37,7 @@
     <% unless (session[:user_id] == nil) %>
     <div id="specialNav" class="clearfix">
       <div id="userInfo">        
-          Loged as: <strong><%= User.find(session[:user_id]).email %></strong>
+          Logged as: <strong><%= User.find(session[:user_id]).email %></strong>
           [ <%= link_to 'Account setting', { :controller => 'users', :action => 'edit', :id => session[:user_id] } %> ]
           <%= link_to 'Logout', { :controller => 'users', :action => 'logout'  } %>
       </div>
