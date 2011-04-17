@@ -19,6 +19,7 @@ apply_simple_captcha
      return nil
   end
   
+  #info - if are nil!!
   def full_name
     first_name + ' ' + last_name
   end

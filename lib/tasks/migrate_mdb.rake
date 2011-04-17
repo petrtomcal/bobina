@@ -23,5 +23,15 @@ namespace :db do
       puts "rake db:migrate_db DB=#{db} #{version}"
       system "rake db:migrate_db DB=#{db}"
     end
-  end  
+  end
+  
+  #desc "Migrate to admin_eshop"
+  #task :migrate_admin_db => :environment do    
+  #    db = "vitana_admin"      
+  #    puts "rake db:migrate_db DB=#{db} {20091015135610}"
+  #    system "rake db:migrate_db DB=#{db}"
+  #  end
+  #end   
 end
+
+#rake db:migrate:up VERSION=20090408054532
