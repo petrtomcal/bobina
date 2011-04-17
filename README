@@ -5,7 +5,7 @@ STEPS TO GO:
 1. set in your hosts(under WIN) file subdomain
 	127.0.0.1	bobina.eshop.cz
 
-2. set db like this in your database.yml, i use mysql adapter
+2. set databases like this in your database.yml, i use mysql adapter
 	dev: 	database: bobina_eshop
 	test:	database: bobina_test
 	pro:	database: bobina_production
@@ -13,7 +13,7 @@ STEPS TO GO:
 	admin_eshop:
 		database: admin_eshop
 
-3. create dbs: 
+3. create databases: 
 	bobina_eshop
 	admin_eshop
 
@@ -21,7 +21,7 @@ STEPS TO GO:
 	4.1 copy 20001015100000_create_eshops.rb from YOUR_PATH\bobina\db\migrate\eshop\migrate\ to YOUR_PATH\bobina\db\migrate and run 
 		rake db:migrate VERSION=20001015100000 RAILS_ENV="admin_eshop"
 	    !!after this, erase file 20001015100000_create_eshops.rb from YOUR_PATH\bobina\db\migrate!!	
-	4.2 run mugration fo databse bobina_eshop
+	4.2 run migration for database bobina_eshop
 		run db:migrate
 
 5. run initial data from YOUR_PATH\bobina\db (for diffrent subdomain change initialsubdomain.rb)
