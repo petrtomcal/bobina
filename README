@@ -20,7 +20,7 @@ STEPS TO GO:
 4. run migrations	
 	4.1 copy 20001015100000_create_eshops.rb from YOUR_PATH\bobina\db\migrate\eshop\migrate\ to YOUR_PATH\bobina\db\migrate and run 
 		rake db:migrate VERSION=20001015100000 RAILS_ENV="admin_eshop"
-	    !!after erase file 20001015100000_create_eshops.rb YOUR_PATH\bobina\db\migrate!!	
+	    !!after erase file 20001015100000_create_eshops.rb from YOUR_PATH\bobina\db\migrate!!	
 	4.2 run mugration fo databse bobina_eshop
 		run db:migrate
 
