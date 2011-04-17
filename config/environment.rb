@@ -67,5 +67,6 @@ end
 require 'gchart'
 require 'liquid'
 require 'liquid_templates'
+
 #info pridani liquid_filters
 [LiquidFilters].each { |f| Liquid::Template.register_filter f }
