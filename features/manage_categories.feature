@@ -34,7 +34,7 @@ Feature: Manage categories
     Then I should see "Category name"
     Then I should see "fillsomekindofcategorynumber2"
 
-    # Destroy user
+    # Destroy category
     When I follow "Categories"
     When I follow category "destroy" for "fillsomekindofcategorynumber2"    
     Then I should not see "fillsomekindofcategorynumber2"

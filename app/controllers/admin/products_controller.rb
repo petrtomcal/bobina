@@ -35,7 +35,7 @@ class Admin::ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        flash[:notice] = 'Product was successfully added.'
+        flash[:notice] = 'Product was successfully created. Please upload content for product.'
         session[:product_id] = @product.id
         format.html { redirect_to :action => 'new_attachment' }
         format.xml  { render :xml => @product, :status => :created, :location => @product }
@@ -51,7 +51,7 @@ class Admin::ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.update_attributes(params[:product])
-        flash[:notice] = 'Product was sucesfully edited.'
+        flash[:notice] = 'Product was successfully edited.'
         format.html { redirect_to :action => "index" }
         format.xml  { head :ok }
       else
