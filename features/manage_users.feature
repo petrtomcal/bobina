@@ -26,7 +26,7 @@ Feature: Manage Users
     Then I should see "User was successfully created."
     And I should see "test@go2time.com"
     
-    #update diff user?
+    #update user
     When I follow "edit" for "test@go2time.com"
     And I fill in the following:
       |user[email]                    |yeap@yeap.com|   
@@ -35,7 +35,7 @@ Feature: Manage Users
     When I follow "show" for "yeap@yeap.com"
     Then I should see "User detail"
     Then I should see "yeap@yeap.com"
-
+ 
     # Destroy user
     When I follow "Users"
     When I follow "destroy" for "yeap@yeap.com"

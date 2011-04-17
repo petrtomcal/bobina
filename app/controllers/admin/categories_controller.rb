@@ -36,7 +36,7 @@ class Admin::CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        flash[:notice] = 'Category sucefully added.'
+        flash[:notice] = 'Category was successfully created.'
         format.html { redirect_to :action => 'index' }
         format.xml  { render :xml => @category, :status => :created, :location => @category }
       else
@@ -52,7 +52,7 @@ class Admin::CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.update_attributes(params[:category])
-        flash[:notice] = 'Category sucesfully edited.'
+        flash[:notice] = 'Category was successfully edited.'
         format.html { redirect_to :action => "index" }
         format.xml  { head :ok }
       else

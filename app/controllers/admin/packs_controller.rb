@@ -1,6 +1,6 @@
 class Admin::PacksController < ApplicationController
   before_filter :check_authentication
-  
+  #info - full name of controller
   def index
     @packs = Pack.all
    
@@ -37,7 +37,7 @@ class Admin::PacksController < ApplicationController
 
     respond_to do |format|
       if @pack.save
-        flash[:notice] = 'Package was sucefully added.'
+        flash[:notice] = 'Package was successfully created.'
         format.html { redirect_to :action => 'index' }
         format.xml  { render :xml => @pack, :status => :created, :location => @pack }
       else
@@ -53,7 +53,7 @@ class Admin::PacksController < ApplicationController
 
     respond_to do |format|
       if @pack.update_attributes(params[:pack])
-        flash[:notice] = 'Package was sucesfully edited.'
+        flash[:notice] = 'Package was successfully edited.'
         format.html { redirect_to :action => 'index' }
         format.xml  { head :ok }
       else

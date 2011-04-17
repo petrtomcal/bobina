@@ -71,11 +71,6 @@ class Admin::UsersController < ApplicationController
   end
   
   def edit
-    #not going here?????
-    #####
-    #####
-    #####
-    #debugger
     @user = User.find(params[:id])
   end
 
