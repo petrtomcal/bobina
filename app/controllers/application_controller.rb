@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   include DatabaseHelper #info db helper
   
-  #include EshopModule::Liquid::LiquidTemplate  #info comment for cucumber  
+  include EshopModule::Liquid::LiquidTemplate  #info comment for cucumber  
   #includnuti metod z liquid_template
   
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
