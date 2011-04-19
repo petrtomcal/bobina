@@ -32,5 +32,6 @@ require 'liquid'
 require 'liquid_templates'
 [LiquidFilters].each { |f| Liquid::Template.register_filter f }
 
-config.gem 'rspec', :lib => false
-config.gem 'rspec-rails', :lib => false
+#infobundler
+#config.gem 'rspec', :lib => false
+#config.gem 'rspec-rails', :lib => false
