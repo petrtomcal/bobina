@@ -31,3 +31,11 @@ STEPS TO GO:
 
 6. should log as admin
 	test@admin.com/diplomka
+	
+	
+Issues:
+rmagick windows
+https://github.com/carlhuda/bundler/issues/575
+
+subdomain cucumber features/server.rb
+http://blog.jamesalmond.com/testing-subdomains-using-capybara/
