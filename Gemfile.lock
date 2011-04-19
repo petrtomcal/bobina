@@ -98,7 +98,7 @@ DEPENDENCIES
   liquid (= 2.2.2)
   mysql
   rails (= 2.3.4)
-  rmagick (= 2.10.0)
+  rmagick (~> 2.10.0)
   rspec
   rspec-rails
   ruby-debug (= 0.10.4)

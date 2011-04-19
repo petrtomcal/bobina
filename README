@@ -37,5 +37,6 @@ Issues:
 rmagick windows
 https://github.com/carlhuda/bundler/issues/575
 
-subdomain cucumber features/server.rb
+subdomain cucumber 
 http://blog.jamesalmond.com/testing-subdomains-using-capybara/
+features/server.rb
