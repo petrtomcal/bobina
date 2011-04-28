@@ -1,7 +1,7 @@
 # Copyright (c) 2008 [Sur http://expressica.com]
 
 require 'rubygems'
-require 'RMagick'
+#require 'RMagick'
 
 module SimpleCaptcha #:nodoc
   module ImageHelpers #:nodoc
