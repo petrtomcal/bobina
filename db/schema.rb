@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110407135545) do
+ActiveRecord::Schema.define(:version => 20110430152225) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "product_id"
@@ -54,6 +54,15 @@ ActiveRecord::Schema.define(:version => 20110407135545) do
     t.integer  "pack_id"
     t.integer  "product_id"
     t.datetime "created_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payment_notifications", :force => true do |t|
+    t.text     "params"
+    t.integer  "sale_id"
+    t.string   "status"
+    t.string   "transaction_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

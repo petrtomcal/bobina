@@ -95,10 +95,12 @@ DEPENDENCIES
   cucumber-rails (= 0.3.2)
   database_cleaner (= 0.5.0)
   googlecharts (= 1.6.1)
+  json (= 1.5.1)
+  json_pure (= 1.5.1)
   liquid (= 2.2.2)
   mysql
   rails (= 2.3.4)
-  rmagick (~> 2.10.0)
+  rmagick (>= 2.10.0)
   rspec
   rspec-rails
   ruby-debug (= 0.10.4)

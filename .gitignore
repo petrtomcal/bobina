@@ -2,6 +2,7 @@ log/*
 *.log
 script/*
 config/database.yml
+config/app_config.yml
 public/product/*
 tmp/*
 paypal/*

@@ -64,7 +64,7 @@ class Admin::ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     
-    if @product.packs.nil?
+    if @product.packs.empty?
       @product.destroy
       flash[:notice] = 'Product was sucesfully deleted.'
       respond_to do |format|

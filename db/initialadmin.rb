@@ -34,3 +34,10 @@ require 'digest/sha2'
    else
     puts 'CHYBA'
    end
+   
+   admin = User.new(:email => 'test@test.cz', :password_hash =>'824b3e7b0db94d1ff31b350c54613a77faedd129099a7273a5f4505321b47a13', :admin => '1', :authorization => '1', :first_name => 'testuser', :last_name => 'testuser') 
+   if admin.save(false)
+    puts 'OK' 
+   else
+    puts 'CHYBA'
+   end
