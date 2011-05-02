@@ -1,11 +1,13 @@
-RAILS version 2.3.4
+Win users - look at "Windows installation" under "setting application"
+some issues - check links under "Windows installation"
 
-STEPS TO GO:
-
-1. set in your hosts(under WIN) file subdomain
+--------	
+setting application:
+--------	
+1. set in your hosts(under WIN) file for subdomain
 	127.0.0.1	bobina.eshop.cz
 
-2. set database.yml like YOUR_PATH\bobina\config\database.yml.example , i used mysql adapter	
+2. set database.yml like YOUR_PATH\bobina\config\database.yml.example 
 
 3. create databases: 
 	bobina_eshop
@@ -23,17 +25,46 @@ STEPS TO GO:
 		ruby initialadmin.rb
 	should both put OK or ERROR message
 
-6. should log as admin
+6. log as admin
 	test@admin.com/diplomka
-	
-	
+
+--------	
+under Windows installation:
+--------	
+1.one click instaler
+rubyinstaller-1.8.7-p334.exe
+
+2.rubygems-1.5.3.zip
+ruby setup.rb
+
+3. Development Kit
+ruby dk.rb init
+ruby dk.rb review
+ruby dk.rb install
+gem install rdiscount --platform=ruby
+-troubleshooting WINvista: SET PATH=%PATH%;C:\DevKit\mingw\libexec\gcc\mingw32\4.5.1
+
+5. copy mysql to ruby dir
+http://forums.mysql.com/read.php?116,279110,280899#msg-280899
+
+6.RMagick-2.12.0-ImageMagick-6.5.6-8-Q8.zip
+install ImageMagick-6.5.6-8-Q8
+
+7.install rmagick
+gem install rmagick --local
+
+8.copy rmagick
+-X:\Ruby187\lib\ruby\gems\1.8\cache\rmagick-2.12.0-x86-mswin32.gem to X:\Ruby187\lib\ruby\gems\1.8\cache\rmagick-2.12.0.gem
+-X:\Ruby187\lib\ruby\gems\1.8\gems\rmagick-2.12.0-x86-mswin32\ to X:\Ruby187\lib\ruby\gems\1.8\gems\rmagick-2.12.0\
+-X:\Ruby187\lib\ruby\gems\1.8\specifications\rmagick-2.12.0-x86-mswin32.gemspec to X:\Ruby187\lib\ruby\gems\1.8\specifications\rmagick- 2.12.0.gemspec
+-edit X:\Ruby187\lib\ruby\gems\1.8\specifications\rmagick-2.12.0.gemspec and delete line "s.platform = %q{mswin32}"
+
+9.bundler
+gem install bundler	
+--------	
 Issues:
 rmagick windows
 https://github.com/carlhuda/bundler/issues/575
-
-subdomain cucumber 
-http://blog.jamesalmond.com/testing-subdomains-using-capybara/
-features/server.rb
 
 DevKit
 https://github.com/oneclick/rubyinstaller/wiki/Development-Kit
@@ -41,3 +72,7 @@ https://github.com/oneclick/rubyinstaller/wiki/Troubleshooting
 
 mysql adapter
 http://forums.mysql.com/read.php?116,279110,280899#msg-280899
+
+subdomain cucumber 
+http://blog.jamesalmond.com/testing-subdomains-using-capybara/
+features/server.rb
