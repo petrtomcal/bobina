@@ -38,11 +38,9 @@ class CartsController < ApplicationController
     @domain = request.host    
     NotifierUser.deliver_checkout(@sale.user_id, @sale.token, @domain)
     
-    neco = @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart",
-                                 @sale.sales_products + @sale.sales_packs, 
-                                 @sale.token)    
-    debugger
-    redirect_to neco
+    redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart",
+                                 @sale.sales_products + @sale.sales_packs,
+                                 @sale.token) 
   end  
   
   def to_sale    
