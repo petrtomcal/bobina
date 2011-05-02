@@ -37,6 +37,7 @@ features/server.rb
 
 DevKit
 https://github.com/oneclick/rubyinstaller/wiki/Development-Kit
+https://github.com/oneclick/rubyinstaller/wiki/Troubleshooting
 
 mysql adapter
 http://forums.mysql.com/read.php?116,279110,280899#msg-280899
