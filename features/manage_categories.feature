@@ -2,7 +2,7 @@ Feature: Manage categories
   In order to manage categories
   As an admin
   I want to create, update and destroy categories
-    
+  
   Background:    
     When I go to path "admin/users/login"
     When I fill form

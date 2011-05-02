@@ -33,7 +33,8 @@ setting application:
 test application:
 --------		
 -for testing please comment 8 line in APP_PATH\app\controllers\application_controller.rb
--for different subdomain set line 72,73 in APP_PATH\features\support\env.rb
+-for different subdomain set line 72,73,77,78 in APP_PATH\features\support\env.rb
+-troubles about subdomain access gor testing: http://blog.jamesalmond.com/testing-subdomains-using-capybara/
 rake cucumber
 
 --------	

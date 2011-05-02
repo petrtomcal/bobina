@@ -32,6 +32,7 @@ When /^(?:|I )follow "([^"]*)"(?: within "([^"]*)")? for "(.+)"$/ do |link, sele
 end
 
 When /^I fill form/ do
+  #save_and_open_page
   fill_in 'email', :with => 'test@test.cz'
   fill_in 'password_hash', :with => 'diplomka'  
 end

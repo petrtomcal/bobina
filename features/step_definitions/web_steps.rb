@@ -20,8 +20,9 @@ Given /^(?:|I )am on (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
-When /^(?:|I )go to (.+)$/ do |page_name|
+When /^(?:|I )go to (.+)$/ do |page_name|  
   visit path_to(page_name)
+  #save_and_open_page
 end
 
 When /^(?:|I )press "([^"]*)"(?: within "([^"]*)")?$/ do |button, selector|
