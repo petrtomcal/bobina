@@ -11,22 +11,30 @@ setting application:
 
 3. create databases: 
 	bobina_eshop
+	bobina_test
 	admin_eshop
 
 4. run migrations	
 	4.1 copy 20001015100000_create_eshops.rb from YOUR_PATH\bobina\db\migrate\eshop\migrate\ to YOUR_PATH\bobina\db\migrate and run 
-		rake db:migrate VERSION=20001015100000 RAILS_ENV="admin_eshop"
+		rake db:migrate VERSION=00000000000001 RAILS_ENV="admin_eshop"
 	    !!after this, erase file 20001015100000_create_eshops.rb from YOUR_PATH\bobina\db\migrate!!	
 	4.2 run migration for database bobina_eshop
 		rake db:migrate
 
 5. run initial data from YOUR_PATH\bobina\db (for different subdomain change initialsubdomain.rb)
-		ruby initialsubdomain.rb
-		ruby initialadmin.rb
+		ruby db/initialsubdomain.rb
+		ruby db/initialadmin.rb
 	should both put OK or ERROR message
 
 6. log as admin
 	test@admin.com/diplomka
+	
+--------	
+test application:
+--------		
+-for testing please comment 8 line in APP_PATH\app\controllers\application_controller.rb
+-for different subdomain set line 72,73 in APP_PATH\features\support\env.rb
+rake cucumber
 
 --------	
 under Windows installation:

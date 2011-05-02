@@ -91,6 +91,11 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  actionmailer (= 2.3.4)
+  actionpack (= 2.3.4)
+  activerecord (= 2.3.4)
+  activeresource (= 2.3.4)
+  activesupport (= 2.3.4)
   capybara (= 0.4.1.2)
   cucumber-rails (= 0.3.2)
   database_cleaner (= 0.5.0)
@@ -99,8 +104,10 @@ DEPENDENCIES
   json_pure (= 1.5.1)
   liquid (= 2.2.2)
   mysql
+  rack (= 1.0.1)
   rails (= 2.3.4)
-  rmagick (>= 2.10.0)
+  rake (= 0.8.7)
+  rmagick (= 2.12.0)
   rspec
   rspec-rails
   ruby-debug (= 0.10.4)

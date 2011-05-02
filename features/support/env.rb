@@ -74,7 +74,7 @@ Before ('@subdomain') do
 end
 
 After('@subdomain') do
-  Capybara.default_host = "eshop.cz"
-  Capybara::Server.manual_host = "eshop.cz"
+  Capybara.default_host = "bobina.eshop.cz"
+  Capybara::Server.manual_host = "bobina.eshop.cz"
 end
 
