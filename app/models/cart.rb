@@ -21,7 +21,7 @@ class Cart < ActiveRecord::Base
       :upload => 1,
       :return => return_url,
       :invoice => _invoice_id,
-      :notify_url => notify_url,
+      #:notify_url => notify_url,
       :cert_id => "QQNHSVEBXE5DS"#"S8DUNZJY5VS3G"
     }
     _sales_items.each_with_index do |si,index|

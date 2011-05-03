@@ -1,5 +1,5 @@
-Win users - look at "Windows installation" under "setting application"
-some issues - check links under "Windows installation"
+Win users - look at "Ruby on Rails-Windows installation" under "setting application"
+some issues - check links under "RoR-Windows installation"
 
 --------	
 setting application:
@@ -34,11 +34,11 @@ test application:
 --------		
 -for testing please comment 8 line in APP_PATH\app\controllers\application_controller.rb
 -for different subdomain set line 72,73,77,78 in APP_PATH\features\support\env.rb
--troubles about subdomain access gor testing: http://blog.jamesalmond.com/testing-subdomains-using-capybara/
+-troubles about subdomain access for testing: http://blog.jamesalmond.com/testing-subdomains-using-capybara/ also 
 rake cucumber
 
 --------	
-under Windows installation:
+Ruby on Rails-under Windows installation:
 --------	
 1.one click instaler
 rubyinstaller-1.8.7-p334.exe
