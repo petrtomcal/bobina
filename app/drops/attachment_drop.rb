@@ -16,4 +16,8 @@ class AttachmentDrop < Liquid::Drop
     @attachment.product_id
   end
   
+  def size
+    @attachment.file_file_size
+  end
+  
 end

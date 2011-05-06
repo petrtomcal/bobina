@@ -1,14 +1,14 @@
 class PaymentNotification < ActiveRecord::Base
   
-  belongs_to :cart
+  belongs_to :sale
   serialize :params
-  after_create :mark_cart_as_purchased
+  after_create :mark_sale_as_purchased
   
   private
   
-  def mark_cart_as_purchased
-    if status == "Completed"
-      cart.update_attribute(:purchased_at, Time.now)
+  def mark_sale_as_purchased
+    if status == "Completed"      
+      sale.update_attributes(:purchased_at => Time.now, :paid => 1)
     end
   end
   

@@ -25,6 +25,7 @@ gem "googlecharts", "1.6.1"
 gem "rake", "0.8.7"
 gem "liquid", "2.2.2"
 gem "mysql"
+gem "curl"
 
 
 # bundler requires these gems in all environments

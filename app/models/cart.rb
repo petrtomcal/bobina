@@ -12,16 +12,14 @@ class Cart < ActiveRecord::Base
     columns << ActiveRecord::ConnectionAdapters::Column.new(name.to_s, default, sql_type.to_s, null)
   end
  
-  #column :product_id, :integer 
-  
-  def paypal_url(return_url, _sales_items, _invoice_id)
+  def paypal_url(return_url, notify_url, _sales_items, _invoice_id)
     values = {
       :business => 'seller_1292877565_biz@gmail.com',
       :cmd => '_cart',
       :upload => 1,
       :return => return_url,
       :invoice => _invoice_id,
-      #:notify_url => notify_url,
+      :notify_url => notify_url,
       :cert_id => "QQNHSVEBXE5DS"#"S8DUNZJY5VS3G"
     }
     _sales_items.each_with_index do |si,index|

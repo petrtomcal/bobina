@@ -23,7 +23,9 @@ class ProductsController < ApplicationController
   def show
     p = Product.find_by_id(params[:id])
     product = ProductDrop.new(p, nil)
-    assigns = {'product' => product}
+    attachments = AttachmentDrop.new(p.attachments)
+    attachments = product.attachments.collect { |a| AttachmentDrop.new(a) }
+    assigns = {'product' => product, 'attachments' => attachments}
     assigns = assigns.merge(get_user_hash) if session[:user_id]
     render_liquid_template 'products/show', assigns, self
   end

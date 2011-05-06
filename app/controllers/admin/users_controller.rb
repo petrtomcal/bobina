@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_filter :check_authentication , :except => ['login','registration','create_registration','logout','new_shop','create_shop']
   
   def index    
-	  @users = User.all     
+	  @users = User.all  
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @users }
@@ -118,7 +118,7 @@ class Admin::UsersController < ApplicationController
   
   def logout
     reset_session
-    flash[:notice] =  'User logout.'
+    flash[:notice] =  'User logout'
     render :template => 'admin/users/login', :layout => 'access'
     return false
   end

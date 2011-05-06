@@ -37,8 +37,8 @@ class CartsController < ApplicationController
     
     @domain = request.host    
     NotifierUser.deliver_checkout(@sale.user_id, @sale.token, @domain)
-    
-    redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart",
+    notify = url_for :controller => 'payment_notifications', :action => 'create'
+    redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", notify,
                                  @sale.sales_products + @sale.sales_packs,
                                  @sale.token) 
   end  

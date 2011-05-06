@@ -34,7 +34,7 @@ test application:
 --------		
 -for testing please comment 8 line in APP_PATH\app\controllers\application_controller.rb
 -for different subdomain set line 72,73,77,78 in APP_PATH\features\support\env.rb
--troubles about subdomain access for testing: http://blog.jamesalmond.com/testing-subdomains-using-capybara/ also 
+-troubles about subdomain access for testing: http://blog.jamesalmond.com/testing-subdomains-using-capybara/ or just copy YOUT_PATH\bobina\features\_set_test\serve.rb to X:\Ruby187\lib\ruby\gems\1.8\gems\capybara-0.4.1.2\lib\capybara\ 
 rake cucumber
 
 --------	
