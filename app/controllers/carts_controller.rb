@@ -40,11 +40,11 @@ class CartsController < ApplicationController
     
     NotifierUser.deliver_checkout(@sale.user_id, @sale.token, @domain)
     notify = url_for :controller => 'payment_notifications', :action => 'create'
-    #redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", notify,                                                                                @sale.sales_products + @sale.sales_packs,                                                                                                @sale.token)
+    redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", notify,                                                                                @sale.sales_products + @sale.sales_packs,                                                                                                @sale.token)
     
     #redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?", :cmd => "_s-xclick", :encrypted => @cart.paypal_encrypted("http://bobina.eshop.cz:3000/products/empty_cart", notify,                                                                                @sale.sales_products + @sale.sales_packs,                                                                                                @sale.token)
-    @neco = ("https://www.sandbox.paypal.com/cgi-bin/webscr?", :cmd => "_s-xclick", :encrypted => @cart.paypal_encrypted("http://bobina.eshop.cz:3000/products/empty_cart", notify,                                                                                @sale.sales_products + @sale.sales_packs,                                                                                                @sale.token))
-    debugger
+    #@neco = ("https://www.sandbox.paypal.com/cgi-bin/webscr?", :cmd => "_s-xclick", :encrypted => @cart.paypal_encrypted("http://bobina.eshop.cz:3000/products/empty_cart", notify,                                                                                @sale.sales_products + @sale.sales_packs,                                                                                                @sale.token))
+    #debugger
 
 =begin    
     <% form_tag APP_CONFIG[:paypal_url] do %>

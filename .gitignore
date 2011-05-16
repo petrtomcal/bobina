@@ -5,3 +5,4 @@ config/app_config.yml
 public/product/*
 tmp/*
 paypal/*
+script/*

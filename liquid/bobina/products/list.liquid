@@ -71,6 +71,7 @@ total count:{{cart.total_count}}<br/>
 total price:{{cart.total_price|number_to_usd}}
 </table>
 
+{{ cart.checkout_link }}
 {% if cart.total_count > 0 %}
   {% if user %}
     <a href="/carts/checkout">Checkout</a>

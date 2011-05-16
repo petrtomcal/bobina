@@ -22,4 +22,8 @@ class CartDrop < Liquid::Drop
   def total_price
     @product_items.map{|p| p.price * p.count}.sum + @pack_items.map{|p| p.price * p.count}.sum
   end  
+  
+  def checkout_link
+    "checkout link by drop"
+  end
 end

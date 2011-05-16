@@ -12,7 +12,7 @@ class Cart < ActiveRecord::Base
     columns << ActiveRecord::ConnectionAdapters::Column.new(name.to_s, default, sql_type.to_s, null)
   end
  
-  def paypal_encrypted(return_url, notify_url, _sales_items, _invoice_id)
+  def paypal_url(return_url, notify_url, _sales_items, _invoice_id)
     values = {
       :business => 'seller_1292877565_biz@gmail.com',
       :cmd => '_cart',
@@ -42,8 +42,8 @@ class Cart < ActiveRecord::Base
           "quantity_#{index+1}" => si.count          
         })
     end
-    encrypt_for_paypal(values)
-    #"https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
+    #encrypt_for_paypal(values)
+    "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
   end
   
   #info
