@@ -55,6 +55,25 @@ class CartsController < ApplicationController
 =end    
   end  
   
+  def nocheckout
+    @cart = Cart.new
+    @sale = to_sale
+    @notify = url_for :controller => 'payment_notifications', :action => 'create'  
+  end
+  
+  #def nocheckoutPP
+  #  @cart = Cart.new
+  #  @sale = to_sale   
+  #  
+  #  @domain = request.host    
+  #  #info - delivery now, downloading after paymant notification
+  #  
+  #  NotifierUser.deliver_checkout(@sale.user_id, @sale.token, @domain)
+  #  notify = url_for :controller => 'payment_notifications', :action => 'create'
+  #  @encrypted_basic = @encrypted_basic.gsub("\n","")
+  #  redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", notify,                                                #                                @sale.sales_products + @sale.sales_packs,                                                                #                                @sale.token)
+  #end  
+  
   def to_sale    
     @sale = Sale.new
     @sale.user_id = session[:user_id]

@@ -1,0 +1,5 @@
+<% form_tag "https://www.sandbox.paypal.com/cgi-bin/webscr" do %>
+  <%= hidden_field_tag :cmd, "_s-xclick" %>  
+  <%= hidden_field_tag :encrypted, @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", @notify,                                                                                @sale.sales_products + @sale.sales_packs,                                                                                                @sale.token) %>
+    <p><%= submit_tag "Checkout" %></p>
+<% end %>
