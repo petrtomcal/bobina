@@ -59,6 +59,7 @@ class CartsController < ApplicationController
     @cart = Cart.new
     @sale = to_sale
     @notify = url_for :controller => 'payment_notifications', :action => 'create'  
+    #debugger
   end
   
   #def nocheckoutPP
