@@ -1,0 +1,37 @@
+<div class="sub-list">
+<table class="common-table" cellpadding="0" cellspacing="0">
+  <thead>
+   <tr>    
+      <th colspan="5">&nbsp;</th>
+   </tr>
+  </thead>
+{% for item in cart.get_product_items %}
+  <tr>
+    <td>{{ item.name | truncate: 20 }}</td>
+    <td>{{ item.price|number_to_usd }}</td>
+    <td>{{ item.count }}</td>
+    <td>
+      <a href="/carts/destroy_product/{{item.id}}">destroy</a>
+    </td>    
+  </tr>
+{% endfor %}
+{% for item in cart.get_pack_items %}
+  <tr>
+    <td>{{ item.name | truncate: 20 }}</td>
+    <td>{{ item.price|number_to_usd }}</td>
+    <td>{{ item.count }}</td>
+    <td>   
+      <a href="/carts/destroy_pack/{{item.id}}">destroy</a>
+    </td>    
+  </tr>
+{% endfor %}      
+total count:{{cart.total_count}}<br/>
+total price:{{cart.total_price|number_to_usd}}
+</table>
+
+
+<form method="post" action="https://www.sandbox.paypal.com/cgi-bin/webscr">
+  <input type="hidden" value="_s-xclick" name="cmd" id="cmd">  
+  <input type="hidden" value="{{cart.encrypted_value}}" name="encrypted" id="encrypted">  
+    <p><input type="submit" value="Checkout" name="commit"></p>
+</form>

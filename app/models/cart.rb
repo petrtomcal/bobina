@@ -42,8 +42,7 @@ class Cart < ActiveRecord::Base
           "quantity_#{index+1}" => si.count          
         })
     end
-    encrypt_for_paypal(values)
-    #"https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
+    encrypt_for_paypal(values)    
   end
  
   def paypal_url(return_url, notify_url, _sales_items, _invoice_id)

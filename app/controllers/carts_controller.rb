@@ -23,12 +23,31 @@ class CartsController < ApplicationController
     redirect_to :controller => "products", :action => "index"
   end
   
-   def destroy_pack
+  def destroy_pack
     session[:items]["collection"][params[:id]] -= 1
     if session[:items]["collection"][params[:id]] == 0       
       session[:items]["collection"].delete(params[:id])
     end    
     redirect_to :controller => "products", :action => "index"
+  end
+  
+  #info - rfc
+  def cart
+    session[:items] ||= Hash.new
+    @cart = Cart.new
+    session[:items]["products"] ||= Hash.new
+    session[:items]["collection"] ||= Hash.new
+    
+    @sale = to_sale
+    notify = url_for :controller => 'payment_notifications', :action => 'create'
+    encrypted_PP = @cart.nopaypal_url("http://bobina.eshop.cz:3000/products/empty_cart", notify,                                                                                @sale.sales_products + @sale.sales_packs,                                                                                                @sale.token)
+    
+    products = Product.all.collect { |p| ProductDrop.new(p) }
+    packs = Pack.all.collect { |p| PackDrop.new(p) }
+    cart = CartDrop.new(session[:items], encrypted_PP)    
+    assigns = {'products' => products, 'cart' => cart, 'packs' => packs}
+    assigns = assigns.merge(get_user_hash) if session[:user_id]
+    render_liquid_template 'products/cart', assigns, self
   end
   
   def checkout
@@ -41,18 +60,6 @@ class CartsController < ApplicationController
     NotifierUser.deliver_checkout(@sale.user_id, @sale.token, @domain)
     notify = url_for :controller => 'payment_notifications', :action => 'create'
     redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", notify,                                                                                @sale.sales_products + @sale.sales_packs,                                                                                                @sale.token)
-    
-    #redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?", :cmd => "_s-xclick", :encrypted => @cart.paypal_encrypted("http://bobina.eshop.cz:3000/products/empty_cart", notify,                                                                                @sale.sales_products + @sale.sales_packs,                                                                                                @sale.token)
-    #@neco = ("https://www.sandbox.paypal.com/cgi-bin/webscr?", :cmd => "_s-xclick", :encrypted => @cart.paypal_encrypted("http://bobina.eshop.cz:3000/products/empty_cart", notify,                                                                                @sale.sales_products + @sale.sales_packs,                                                                                                @sale.token))
-    #debugger
-
-=begin    
-    <% form_tag APP_CONFIG[:paypal_url] do %>
-  <%= hidden_field_tag :cmd, "_s-xclick" %>
-  <%= hidden_field_tag :encrypted, @cart.paypal_encrypted(products_url, payment_notifications_url(:secret => APP_CONFIG[:paypal_secret])) %>
-  <p><%= submit_tag "Checkout" %></p>
-<% end %>
-=end    
   end  
   
   def nocheckout
@@ -61,19 +68,6 @@ class CartsController < ApplicationController
     @notify = url_for :controller => 'payment_notifications', :action => 'create'  
     #debugger
   end
-  
-  #def nocheckoutPP
-  #  @cart = Cart.new
-  #  @sale = to_sale   
-  #  
-  #  @domain = request.host    
-  #  #info - delivery now, downloading after paymant notification
-  #  
-  #  NotifierUser.deliver_checkout(@sale.user_id, @sale.token, @domain)
-  #  notify = url_for :controller => 'payment_notifications', :action => 'create'
-  #  @encrypted_basic = @encrypted_basic.gsub("\n","")
-  #  redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", notify,                                                #                                @sale.sales_products + @sale.sales_packs,                                                                #                                @sale.token)
-  #end  
   
   def to_sale    
     @sale = Sale.new
@@ -91,6 +85,12 @@ class CartsController < ApplicationController
      
     @sale
   end  
+  
+  def get_user_hash
+    @user = User.find(session[:user_id])
+    user = UserDrop.new(@user)
+    userhash = {'user' => user}
+  end
   
   private
   #info 

@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
     session[:items]["collection"] ||= Hash.new
     products = Product.all.collect { |p| ProductDrop.new(p) }
     packs = Pack.all.collect { |p| PackDrop.new(p) }
-    cart = CartDrop.new(session[:items])    
+    cart = CartDrop.new(session[:items], nil)    
     assigns = {'products' => products, 'cart' => cart, 'packs' => packs}
     assigns = assigns.merge(get_user_hash) if session[:user_id]
     render_liquid_template 'products/list', assigns, self    

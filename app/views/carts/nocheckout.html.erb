@@ -3,3 +3,23 @@
   <%= hidden_field_tag :encrypted, @cart.nopaypal_url("http://bobina.eshop.cz:3000/products/empty_cart", @notify,                                                                                @sale.sales_products + @sale.sales_packs,                                                                                                @sale.token) %>
     <p><%= submit_tag "Checkout" %></p>
 <% end %>
+
+<form method="post" action="https://www.sandbox.paypal.com/cgi-bin/webscr"><div style="margin: 0pt; padding: 0pt; display: inline;"><input type="hidden" value="85GuHIVrqmvKi1klVGfOVRJmEXkHdCHiclR2HyasgYM=" name="authenticity_token"></div>
+  <input type="hidden" value="_s-xclick" name="cmd" id="cmd">  
+  <input type="hidden" value="-----BEGIN PKCS7----------END PKCS7-----" name="encrypted" id="encrypted">
+    <p><input type="submit" value="Checkout" name="commit"></p>
+</form>
+
+
+
+"-----BEGIN PKCS7-----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-----END PKCS7-----"
+(rdb:395)
