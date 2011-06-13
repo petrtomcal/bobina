@@ -49,25 +49,18 @@ class CartsController < ApplicationController
     assigns = assigns.merge(get_user_hash) if session[:user_id]
     render_liquid_template 'products/cart', assigns, self
   end
-  
-  def checkout
-    @cart = Cart.new
-    @sale = to_sale   
-    
-    @domain = request.host    
-    #info - delivery now, downloading after paymant notification
-    
-    NotifierUser.deliver_checkout(@sale.user_id, @sale.token, @domain)
-    notify = url_for :controller => 'payment_notifications', :action => 'create'
-    redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", notify,                                                                                @sale.sales_products + @sale.sales_packs,                                                                                                @sale.token)
-  end  
-  
-  def nocheckout
-    @cart = Cart.new
-    @sale = to_sale
-    @notify = url_for :controller => 'payment_notifications', :action => 'create'  
-    #debugger
-  end
+ #info - mail delivery  
+ #  def checkout
+ #    @cart = Cart.new
+ #    @sale = to_sale   
+ #    
+ #    @domain = request.host    
+ #    #info - delivery now, downloading after paymant notification
+ #    
+ #    NotifierUser.deliver_checkout(@sale.user_id, @sale.token, @domain)
+ #    notify = url_for :controller => 'payment_notifications', :action => 'create'
+ #    redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", notify,                                              #                                   @sale.sales_products + @sale.sales_packs,                                                             #                                    @sale.token)
+ #  end  
   
   def to_sale    
     @sale = Sale.new

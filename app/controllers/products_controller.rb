@@ -57,7 +57,7 @@ class ProductsController < ApplicationController
   
   #logged
   def download_links    
-    product = Product.find(params[:id])
+    product = Product.find(params[:id])    
     attachments = product.attachments.all.collect { |attachment| AttachmentDrop.new(attachment) }  
     assigns = {'attachments' => attachments}
     assigns = assigns.merge(get_user_hash) if session[:user_id]
@@ -116,8 +116,8 @@ class ProductsController < ApplicationController
       @products.each {|p|
         @attachments = p.attachments.all.collect { |attachment| AttachmentDrop.new(attachment) } + @attachments        
       }
-      
-      assigns = {'attachments' => @attachments, 'token' => params[:text]}
+      assigns = {'attachments' => @attachments, 'token' => params[:text]}      
+      #error #info - didn't get content
       render_liquid_template 'products/download_by_token', assigns, self    
     end
   end

@@ -24,12 +24,6 @@ class CartDrop < Liquid::Drop
     @product_items.map{|p| p.price * p.count}.sum + @pack_items.map{|p| p.price * p.count}.sum
   end  
   
-  def checkout_link
-    "checkout link by drop"
-    #link = paypal_encrypted("http://bobina.eshop.cz:3000/products/empty_cart",                                                                                       "http://bobina.eshop.cz:3000/payment_notifications/create", @sale.sales_products + @sale.sales_packs,                                                                                                @sale.token)    
-    "checkout link by drop"
-  end  
-  
   def encrypted_value
     @encrypted_value    
   end
