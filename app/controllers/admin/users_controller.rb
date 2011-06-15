@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_filter :check_authentication , :except => ['login','registration','create_registration','logout','new_shop','create_shop']
+  before_filter :check_authentication , :except => ['login','registration','create_registration','logout','new_shop','create_shop', 'forgotten_password', 'send_password']
   
   def index    
 	  @users = User.all  
@@ -155,5 +155,23 @@ class Admin::UsersController < ApplicationController
     end
     render :action => 'password', :id => @user.id
   end
+  
+  def forgotten_password
+	@user = User.new
+
+    respond_to do |format|
+      format.html { render :layout => 'registration' }
+      format.xml  { render :xml => @user }
+    end  	
+  end
+  
+  #info
+  def send_password  	
+  	flash[:notice] =  'New password was send to e-mail.'
+  	puts "sending to email info"
+    render :action => 'login', :layout => 'access'
+  end
     
 end
+
+

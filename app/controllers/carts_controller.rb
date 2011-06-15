@@ -23,7 +23,7 @@ class CartsController < ApplicationController
     redirect_to :controller => "products", :action => "index"
   end
   
-   def destroy_pack
+  def destroy_pack
     session[:items]["collection"][params[:id]] -= 1
     if session[:items]["collection"][params[:id]] == 0       
       session[:items]["collection"].delete(params[:id])
@@ -31,17 +31,36 @@ class CartsController < ApplicationController
     redirect_to :controller => "products", :action => "index"
   end
   
-  def checkout#info just logged
+  #info - rfc
+  def cart
+    session[:items] ||= Hash.new
     @cart = Cart.new
-    @sale = to_sale   
+    session[:items]["products"] ||= Hash.new
+    session[:items]["collection"] ||= Hash.new
     
-    @domain = request.host    
-    NotifierUser.deliver_checkout(@sale.user_id, @sale.token, @domain)
+    @sale = to_sale
     notify = url_for :controller => 'payment_notifications', :action => 'create'
-    redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", notify,
-                                 @sale.sales_products + @sale.sales_packs,
-                                 @sale.token) 
-  end  
+    encrypted_PP = @cart.nopaypal_url("http://bobina.eshop.cz:3000/products/empty_cart", notify,                                                                                @sale.sales_products + @sale.sales_packs,                                                                                                @sale.token)
+    
+    products = Product.all.collect { |p| ProductDrop.new(p) }
+    packs = Pack.all.collect { |p| PackDrop.new(p) }
+    cart = CartDrop.new(session[:items], encrypted_PP)    
+    assigns = {'products' => products, 'cart' => cart, 'packs' => packs}
+    assigns = assigns.merge(get_user_hash) if session[:user_id]
+    render_liquid_template 'products/cart', assigns, self
+  end
+ #info - mail delivery  
+ #  def checkout
+ #    @cart = Cart.new
+ #    @sale = to_sale   
+ #    
+ #    @domain = request.host    
+ #    #info - delivery now, downloading after paymant notification
+ #    
+ #    NotifierUser.deliver_checkout(@sale.user_id, @sale.token, @domain)
+ #    notify = url_for :controller => 'payment_notifications', :action => 'create'
+ #    redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", notify,                                              #                                   @sale.sales_products + @sale.sales_packs,                                                             #                                    @sale.token)
+ #  end  
   
   def to_sale    
     @sale = Sale.new
@@ -59,6 +78,12 @@ class CartsController < ApplicationController
      
     @sale
   end  
+  
+  def get_user_hash
+    @user = User.find(session[:user_id])
+    user = UserDrop.new(@user)
+    userhash = {'user' => user}
+  end
   
   private
   #info 

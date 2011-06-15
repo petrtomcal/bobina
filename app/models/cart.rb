@@ -11,8 +11,8 @@ class Cart < ActiveRecord::Base
   def self.column(name, sql_type = nil, default = nil, null = true)
     columns << ActiveRecord::ConnectionAdapters::Column.new(name.to_s, default, sql_type.to_s, null)
   end
- 
-  def paypal_url(return_url, notify_url, _sales_items, _invoice_id)
+  
+  def nopaypal_url(return_url, notify_url, _sales_items, _invoice_id)
     values = {
       :business => 'seller_1292877565_biz@gmail.com',
       :cmd => '_cart',
@@ -20,7 +20,7 @@ class Cart < ActiveRecord::Base
       :return => return_url,
       :invoice => _invoice_id,
       :notify_url => notify_url,
-      :cert_id => "QQNHSVEBXE5DS"#"S8DUNZJY5VS3G"
+      :cert_id => 'S8DUNZJY5VS3G'
     }
     _sales_items.each_with_index do |si,index|
         values.merge!({
@@ -42,11 +42,40 @@ class Cart < ActiveRecord::Base
           "quantity_#{index+1}" => si.count          
         })
     end
-    #valuesi = encrypt_for_paypal(values)
-    #"https://www.sandbox.paypal.com/cgi-bin/webscr?" + valuesi.to_query
-    #info-encrypted 
-    #encrypt_for_paypal(values)    
-    #"https://www.sandbox.paypal.com/cgi-bin/webscr?" #+ encrypt_for_paypal(values)
+    encrypt_for_paypal(values)    
+  end
+ 
+  def paypal_url(return_url, notify_url, _sales_items, _invoice_id)
+    values = {
+      :business => 'seller_1292877565_biz@gmail.com',
+      :cmd => '_cart',
+      :upload => 1,
+      :return => return_url,
+      :invoice => _invoice_id,
+      :notify_url => notify_url,
+      :cert_id => "S8DUNZJY5VS3G"
+    }
+    _sales_items.each_with_index do |si,index|
+        values.merge!({
+          "amount_#{index+1}" => if si.type == SalesProduct
+                                   si.product.price
+                                 else
+                                   si.pack.price
+                                 end,    
+          "item_name_#{index+1}" => if si.type == SalesProduct
+                                      si.product.name
+                                    else
+                                      si.pack.name
+                                    end,
+          "item_number_#{index+1}" => if si.type == SalesProduct
+                                      si.product.id
+                                    else
+                                      si.pack.id
+                                    end,
+          "quantity_#{index+1}" => si.count          
+        })
+    end
+    #encrypt_for_paypal(values)
     "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
   end
   
