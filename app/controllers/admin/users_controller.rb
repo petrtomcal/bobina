@@ -165,12 +165,20 @@ class Admin::UsersController < ApplicationController
     end  	
   end
   
-  #info
-  def send_password  	
-  	flash[:notice] =  'New password was send to e-mail.'
-  	puts "sending to email info"
+  def send_password
+  	@pass = rand(100**2).to_s+"password"+rand(100**2).to_s    
+    @user = User.first(:conditions => ["email = ?", params[:user][:email]])
+    @user.password_hash = Digest::SHA256.hexdigest(@pass) unless @user.nil?
+    unless  @user.nil?
+    	@user.save
+      flash[:notice] =  'New password was send to your e-mail.'
+      NotifierUser.deliver_create(@user.id, @pass)    
+    else
+      flash[:notice] =  'Wrong e-mail.'    
+    end    
     render :action => 'login', :layout => 'access'
   end
+    
     
 end
 
