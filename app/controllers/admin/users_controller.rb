@@ -156,6 +156,7 @@ class Admin::UsersController < ApplicationController
     render :action => 'password', :id => @user.id
   end
   
+  #info captcha validation to form
   def forgotten_password
 	@user = User.new
 
