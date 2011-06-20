@@ -6,8 +6,7 @@ class UsersController < ApplicationController
     @user = User.find(session[:user_id])
   end
 
-  def update
-    
+  def update    
     @user = User.find(session[:user_id])
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -43,5 +42,5 @@ class UsersController < ApplicationController
     end
     render :action => 'password', :id => @user.id
   end
-  
+    
 end
