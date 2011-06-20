@@ -158,12 +158,12 @@ class Admin::UsersController < ApplicationController
   
   #info captcha validation to form
   def forgotten_password
-	@user = User.new
+	  @user = User.new
 
-    respond_to do |format|
-      format.html { render :layout => 'registration' }
-      format.xml  { render :xml => @user }
-    end  	
+      respond_to do |format|
+        format.html { render :layout => 'registration' }
+        format.xml  { render :xml => @user }
+      end  	
   end
   
   def send_password
