@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_filter :check_authentication , :except => ['login','registration','create_registration','logout','new_shop','create_shop']
+  before_filter :check_authentication , :except => ['login','registration','create_registration','logout','new_shop','create_shop', 'forgotten_password', 'send_password']
   
   def index    
 	  @users = User.all  
@@ -155,5 +155,32 @@ class Admin::UsersController < ApplicationController
     end
     render :action => 'password', :id => @user.id
   end
+  
+  #info captcha validation to form
+  def forgotten_password
+	@user = User.new
+
+    respond_to do |format|
+      format.html { render :layout => 'registration' }
+      format.xml  { render :xml => @user }
+    end  	
+  end
+  
+  def send_password
+  	@pass = rand(100**2).to_s+"password"+rand(100**2).to_s    
+    @user = User.first(:conditions => ["email = ?", params[:user][:email]])
+    @user.password_hash = Digest::SHA256.hexdigest(@pass) unless @user.nil?
+    unless  @user.nil?
+    	@user.save
+      flash[:notice] =  'New password was send to your e-mail.'
+      NotifierUser.deliver_create(@user.id, @pass)    
+    else
+      flash[:notice] =  'Wrong e-mail.'    
+    end    
+    render :action => 'login', :layout => 'access'
+  end
+    
     
 end
+
+
