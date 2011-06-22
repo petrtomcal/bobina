@@ -66,8 +66,8 @@ class ProductsController < ApplicationController
   
   #info - rfc
   def download#info maybe zip for one link    
-    @sales = Sale.find(:all, :conditions => { :user_id => session[:user_id] })
-    if @sales.nil?
+    @sales = Sale.find(:all, :conditions => { :user_id => session[:user_id] })    
+    if !@sales.nil?
       @products ||= []
       @packs ||= []
       @sales.each {|s|
@@ -80,12 +80,13 @@ class ProductsController < ApplicationController
       }
     
       products_id = @products.collect{|p| p.id}
-      p_id = Attachment.find(params[:id], :select => 'product_id')    
-      if products_id.include?(p_id.product_id)
-        begin        
-          attachment = Attachment.find(params[:id])
-          file_path = File.join(attachment.file.path)
-          send_file(file_path, :filename => attachment.file_file_name , :stream => false)      
+      product_id = Product.find(params[:id], :select => 'id').id      
+      #trouble
+      if products_id.include?(product_id)
+        begin          
+          attachment = Attachment.find_by_product_id(product_id)
+          file_path = File.join(attachment.file.path)          
+          send_file(file_path, :filename => attachment.file_file_name , :stream => true)      
         rescue
           render :text => "File not found", :status => 404
         end      
