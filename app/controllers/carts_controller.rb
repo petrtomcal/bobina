@@ -40,7 +40,7 @@ class CartsController < ApplicationController
     
     @sale = to_sale
     notify = url_for :controller => 'payment_notifications', :action => 'create'
-    encrypted_PP = @cart.nopaypal_url("http://bobina.eshop.cz:3000/products/empty_cart", notify,                                                                                @sale.sales_products + @sale.sales_packs,                                                                                                @sale.token)
+    encrypted_PP = @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", notify,                                                                                @sale.sales_products + @sale.sales_packs,                                                                                                @sale.token)
     
     products = Product.all.collect { |p| ProductDrop.new(p) }
     packs = Pack.all.collect { |p| PackDrop.new(p) }

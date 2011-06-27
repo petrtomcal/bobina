@@ -77,7 +77,7 @@ class Admin::PacksController < ApplicationController
   def show_products
     @pack = Pack.find(params[:pack_id])    
     @packs_product = @pack.products.find(:all)
-    @product_all = Product.all - @packs_product
+    @product_all = (Product.all :joins => :attachments).uniq - @packs_product
   end
   
   def del_product_from_pack

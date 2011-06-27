@@ -12,7 +12,8 @@ class ProductsController < ApplicationController
     @cart = Cart.new
     session[:items]["products"] ||= Hash.new
     session[:items]["collection"] ||= Hash.new
-    products = Product.all.collect { |p| ProductDrop.new(p) }
+    
+    products = (Product.all :joins => :attachments).uniq.collect { |p| ProductDrop.new(p) }
     packs = Pack.all.collect { |p| PackDrop.new(p) }
     cart = CartDrop.new(session[:items], nil)    
     assigns = {'products' => products, 'cart' => cart, 'packs' => packs}
