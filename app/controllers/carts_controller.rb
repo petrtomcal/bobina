@@ -1,10 +1,27 @@
 class CartsController < ApplicationController
   before_filter :session_check, :only => [:checkout]
   
+  protect_from_forgery :except => [:create_order]  
+  skip_before_filter :verify_authenticity_token, :except => [:create_order]
+  
+  #info - cart by URL
+  def create_order    
+    session[:items]["products"] ||= Hash.new
+    session[:items]["collection"] ||= Hash.new    
+    if params[:type]=="product"
+      session[:items]["products"][params[:id]] ||= 0
+      session[:items]["products"][params[:id]] += 1
+    else
+      session[:items]["collection"][params[:id]] ||= 0
+      session[:items]["collection"][params[:id]] += 1
+    end
+    redirect_to :action => "cart"
+  end  
+  
   def create_product    
     session[:items]["products"] ||= Hash.new
     session[:items]["products"][params[:id]] ||= 0
-    session[:items]["products"][params[:id]] += 1
+    session[:items]["products"][params[:id]] += 1    
     redirect_to :controller => "products", :action => "index"
   end
   
