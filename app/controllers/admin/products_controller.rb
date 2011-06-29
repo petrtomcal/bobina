@@ -32,7 +32,7 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(params[:product])
-
+    
     respond_to do |format|
       if @product.save
         flash[:notice] = 'Product was successfully created. Please upload content for product.'
@@ -137,4 +137,13 @@ class Admin::ProductsController < ApplicationController
       render :text => "#{status} <div id='message'>Sorry something was wrong.</div>"
     end
   end  
+  
+  def generate_link
+    @product = Product.find(params[:id])    
+    @id = @product.id
+    @url_host = request.host      
+    @product.weblink = "<a href='#{@url_host}/carts/create_order?type=product&id=#{@id}'>Your description</a>"
+    @product.save        
+    redirect_to :action => 'show', :id => @product.id
+  end
 end

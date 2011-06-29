@@ -95,4 +95,13 @@ class Admin::PacksController < ApplicationController
     redirect_to :action => 'show_products', :pack_id => params[:pack_id]
   end
   
+  def generate_link
+    @pack = Pack.find(params[:id])    
+    @id = @pack.id
+    @url_host = request.host      
+    @pack.weblink = "<a href='#{@url_host}/carts/create_order?type=pack&id=#{@id}'>Your description</a>"
+    @pack.save        
+    redirect_to :action => 'show', :id => @pack.id
+  end
+  
 end

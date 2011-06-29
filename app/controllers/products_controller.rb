@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
   end
   
   #info - rfc
-  def sale_history_list    
+  def sale_history_list_download    
     sales = Sale.find(:all, :conditions => { :user_id => session[:user_id] })    
     @sales = sales.collect { |s| SaleDrop.new(s) }    
     times = sales.size    
@@ -53,8 +53,17 @@ class ProductsController < ApplicationController
     }    
     assigns = {'products' => @products, 'packs' => @packs, 'sales' => @sales}
     assigns = assigns.merge(get_user_hash) if session[:user_id]
-    render_liquid_template 'products/sale_history_list', assigns, self       
+    render_liquid_template 'products/sale_history_list_download', assigns, self       
   end
+  
+  def sale_history_list    
+    sales = Sale.find(:all, :conditions => { :user_id => session[:user_id] })    
+    @sales = sales.collect { |s| SaleDrop.new(s) }    
+    assigns = {'sales' => @sales}
+    assigns = assigns.merge(get_user_hash) if session[:user_id]
+    render_liquid_template 'products/sale_history_list', assigns, self         
+  end
+  
   
   #logged
   def download_links    
