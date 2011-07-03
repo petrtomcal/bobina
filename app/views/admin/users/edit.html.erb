@@ -1,6 +1,7 @@
 <% form_for(@user, :url => { :action => "update", :id => @user.id }, :html => { :class => 'common-form'}) do |f| %>
   <% if @user.is_admin %>
-    <%= link_to 'Change password', {:action => 'password',:id => @user.id} %>
+    <%= link_to 'Change password', {:action => 'password',:id => @user.id} %>&nbsp|
+    <%= link_to 'PayPal setting', {:controller => 'settings', :action => 'edit',:id => @user.id} %>
   <% end %>
   <br />
   <%= render :partial => 'new_form' %>

@@ -1,0 +1,2 @@
+module PaypalSettingsHelper
+end

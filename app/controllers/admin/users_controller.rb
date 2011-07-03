@@ -178,8 +178,7 @@ class Admin::UsersController < ApplicationController
       flash[:notice] =  'Wrong e-mail.'    
     end    
     render :action => 'login', :layout => 'access'
-  end
-    
+  end    
     
 end
 

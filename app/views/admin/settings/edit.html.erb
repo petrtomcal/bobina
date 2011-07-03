@@ -1,0 +1,10 @@
+<div id="editform"><!--#info about div-->
+<% form_for(@setting, :url => { :action => "update", :id => @setting.id, :user_id => @user.id}, :html => { :class => 'common-form'}) do |f| %>  
+  <%= render :partial => 'form' %>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+  </tr>
+</div>
+<%= link_to 'Back', :controller => 'users', :action => 'edit', :id => @user.id %>

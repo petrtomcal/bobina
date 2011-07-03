@@ -57,7 +57,13 @@ class CartsController < ApplicationController
     
     @sale = to_sale
     notify = url_for :controller => 'payment_notifications', :action => 'create'
-    encrypted_PP = @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", notify,                                                                                @sale.sales_products + @sale.sales_packs,                                                                                                @sale.token)
+    #info - url for empty car - subdomain
+    #subdomain = request.host.split(".").first
+    user_id = User.find_by_admin("1").id
+    setting = Setting.find_by_user_id(user_id)
+    encrypted_PP = @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", notify,
+                                    @sale.sales_products + @sale.sales_packs, @sale.token,    
+                                    request.host.split(".").first, setting)
     
     products = Product.all.collect { |p| ProductDrop.new(p) }
     packs = Pack.all.collect { |p| PackDrop.new(p) }

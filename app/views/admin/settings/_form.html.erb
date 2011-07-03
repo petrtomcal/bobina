@@ -1,0 +1,14 @@
+<% if flash[:error] -%>
+    <h2 class="error"><%= flash[:error] %></h2>
+<% elsif flash[:notice] -%>
+    <h2 class="notice"><%= flash[:notice] %></h2>
+<% end -%>
+
+<label for="setting_email"><%= 'PayPal email' %></label><br />
+<%= text_field 'setting', 'email' %><br />
+<label for="setting_secret"><%= 'PayPal secret' %></label><br />
+<%= text_field 'setting', 'secret' %><br />
+<label for="setting_cert_id"><%= 'PayPal certificate ID' %></label><br />
+<%= text_field 'setting', 'cert_id' %><br />
+<label for="setting_url"><%= 'PayPal email' %></label><br />
+<%= text_field 'setting', 'url' %><br />

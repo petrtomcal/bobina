@@ -6,6 +6,8 @@ class Sale < ActiveRecord::Base
   has_many :packs, :through => :sales_packs
   has_many :sales_packs, :dependent => :destroy
   
+  has_one :user
+  
   class << self
     #info
     def to_sale(_products, _packs)
