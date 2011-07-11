@@ -71,4 +71,8 @@ class Admin::SalesController < ApplicationController
   def user_id
     @user_id = params["users"]["id"] 
   end
+  
+  def list
+    @sales = Sale.find(:all)
+  end
 end

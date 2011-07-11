@@ -88,13 +88,13 @@ class ProductsController < ApplicationController
           @products = @products + p.products.collect 
         }
       }
-    
+      
       products_id = @products.collect{|p| p.id}
-      product_id = Product.find(params[:id], :select => 'id').id      
-      #trouble
-      if products_id.include?(product_id)
+      #product_id = Product.find(params[:id], :select => 'id').id  #params id is  attachment
+      attachment = Attachment.find(params[:id])      
+      if products_id.include?(attachment.product_id)
         begin          
-          attachment = Attachment.find_by_product_id(product_id)
+          #attachment = Attachment.find_by_product_id(product_id)
           file_path = File.join(attachment.file.path)          
           send_file(file_path, :filename => attachment.file_file_name , :stream => true)      
         rescue

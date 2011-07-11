@@ -1,0 +1,27 @@
+<div class="editation_menu"> 
+  <%= link_to('graph', { :controller => 'sales', :action => 'index' } )  %>
+  <%= link_to('sales', { :controller => 'sales', :action => 'list' } )  %>
+</div>
+<table class="common-table" cellpadding="0" cellspacing="0">
+  <thead>
+   <tr>    
+    <th> Sale ID</th>  
+    <th> ID </th>
+    <th colspan="6">&nbsp;</th>      
+   </tr>
+  </thead>
+  <% even = 0
+  for sale in @sales 
+  even+=1 -%>
+  <tr id="<%= sale.id %>" <%= "class=\"even\"" if (even % 2)==0 %>>
+    <td><%= link_to (sale.id), { :action => 'show', :id => sale.id  } %></td>    
+    <td><%= link_to 'Show', {:controller => 'users', :action => 'show',:id => sale.user_id} %></td>
+  </tr>
+<% end %>
+
+</table>
+
+<br />
+
+
+

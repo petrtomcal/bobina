@@ -11,12 +11,17 @@
   <tr>
     <td>{{ sale.id }}</td>
     <td>{{ sale.created_at }}</td>
-    <td>{{ sale.purchased_at }}</td>
-    {% if sale.paid == 1 %}
-      <td>{{ sale.token }}</td>
-    {% endif %}  
     <td>
-    link to details
+    {% if sale.paid == 1 %}
+      {{ sale.token }}
+    {% endif %}
+    </td>
+    <td>
+    {% if sale.paid == 1 %}
+      {{ sale.purchased_at }}
+    {% else %}
+       Unpaid   
+    {% endif %}
     </td>    
   </tr>
 {% endif %}  

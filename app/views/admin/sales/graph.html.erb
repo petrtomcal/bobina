@@ -1,3 +1,7 @@
+<div class="editation_menu"> 
+  <%= link_to('graph', { :controller => 'sales', :action => 'index' } )  %>
+  <%= link_to('sales', { :controller => 'sales', :action => 'list' } )  %>
+</div>
 <%=Gchart.bar(:size => @size, 
            :data => @counts_sales_group,
            :bar_colors => 'D37A26',
