@@ -25,3 +25,35 @@
 </table>
 
 <br />
+		
+		<title>DataTables example</title>			
+		<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				$('#example').dataTable();
+			} );
+		</script>	
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+	<thead>
+		<tr>
+			<th>Email</th>
+			<th>Full name</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% for user in @users -%>
+  <tr>
+    <td><%= link_to user.email, { :controller => 'users', :action => 'show', :id => user.id  } %></td>
+    <td><%= user.full_name %></td>    
+    <td><%= link_to 'Show', {:action => 'show',:id => user.id} %></td>
+    <td><%= link_to 'Edit', {:action => 'edit', :id => user.id} %></td>
+    <td><%= link_to 'Destroy', {:action => 'destroy',:id => user.id}, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+	</tfoot>
+</table>
+	
+
+tady neco
