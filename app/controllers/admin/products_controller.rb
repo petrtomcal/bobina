@@ -72,7 +72,7 @@ class Admin::ProductsController < ApplicationController
         format.xml  { head :ok }
       end
     else
-      flash[:notice] = 'Product is in this package. Remove from package first.'
+      flash[:notice] = 'Product is in package. Remove from package first.'
       redirect_to :controller => 'packs', :action => 'show', :id => @product.packs.first.id
     end  
   end

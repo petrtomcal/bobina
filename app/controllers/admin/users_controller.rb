@@ -148,7 +148,7 @@ class Admin::UsersController < ApplicationController
         @user.save
         flash[:notice] = 'Password was successfully changed.'
       else
-        flash[:warning] = 'Passwords  do not match.'
+        flash[:warning] = 'Passwords do not match.'
       end  
     else
       flash[:warning] = 'Bad password.'
