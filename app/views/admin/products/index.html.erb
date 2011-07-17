@@ -1,18 +1,25 @@
 <div class="editation_menu"> 
   <%= link_to 'New product', :action => 'new' %>
 </div>
-<table class="common-table" cellpadding="0" cellspacing="0">
+<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				$('#products').dataTable();
+			} );
+</script>	  
+<table table cellpadding="0" cellspacing="0" border="0" class="display" id="products">
   <thead>
    <tr>    
     <th> Name </th>  
     <th> Price </th>
-    <th colspan="6">&nbsp;</th>      
+    <th>link</th>
+    <th>link</th>
+    <th>link</th>
+    <th>link</th>
    </tr>
   </thead>
-  <% even = 0
-  for product in @products 
-  even+=1 -%>
-  <tr id="<%= product.id %>" <%= "class=\"even\"" if (even % 2)==0 %>>
+  <tbody>
+  <% for product in @products -%>
+  <tr>
     <td><%= link_to (h truncate product.name), { :action => 'show', :id => product.id  } %></td>    
     <td><%= number_to_usd(product.price) %></td>
     <td><%= link_to 'Show', {:action => 'show',:id => product.id} %></td>
@@ -20,8 +27,8 @@
     <td><%= link_to 'Destroy', {:action => 'destroy',:id => product.id}, :confirm => 'Are you sure?', :method => :delete %></td>
     <td><%= link_to('Categories', {:action => 'show_categories', :product_id => product.id },  {:title => 'Categories for product'} )  %></td>
   </tr>
-<% end %>
-
+  <% end %>
+  </tbody>
 </table>
 
 <br />

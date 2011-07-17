@@ -2,23 +2,26 @@
   <%= link_to('graph', { :controller => 'sales', :action => 'index' } )  %>
   <%= link_to('sales', { :controller => 'sales', :action => 'list' } )  %>
 </div>
-<table class="common-table" cellpadding="0" cellspacing="0">
+<div class="sub-list"><script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				$('#sales').dataTable();
+			} );
+</script>	  
+<table table cellpadding="0" cellspacing="0" border="0" class="display" id="sales">
   <thead>
    <tr>    
     <th> Sale ID</th>  
-    <th> ID </th>
-    <th colspan="6">&nbsp;</th>      
+    <th> ID </th>    
    </tr>
   </thead>
-  <% even = 0
-  for sale in @sales 
-  even+=1 -%>
-  <tr id="<%= sale.id %>" <%= "class=\"even\"" if (even % 2)==0 %>>
+  <tbody>
+  <% for sale in @sales -%>
+  <tr>
     <td><%= link_to (sale.id), { :action => 'show', :id => sale.id  } %></td>    
     <td><%= link_to 'Show', {:controller => 'users', :action => 'show',:id => sale.user_id} %></td>
   </tr>
-<% end %>
-
+  <% end %>
+  </tbody>
 </table>
 
 <br />

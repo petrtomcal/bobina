@@ -108,10 +108,10 @@ class Admin::ProductsController < ApplicationController
     end
   end
   
-  #takto upravit vsechny metody v controlleru #info
+  #info - rfc method like this
   def new_attachment    
     if params[:product_id].nil?
-      @product = Product.find(session[:product_id]) #info session if going straight
+      @product = Product.find(session[:product_id])
     else
       @product = Product.find(params[:product_id])
     end  

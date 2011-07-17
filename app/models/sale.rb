@@ -9,7 +9,6 @@ class Sale < ActiveRecord::Base
   has_one :user
   
   class << self
-    #info
     def to_sale(_products, _packs)
       debugger
       _products.each{ |p| self.save << p }

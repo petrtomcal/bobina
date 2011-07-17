@@ -4,7 +4,6 @@ class CartsController < ApplicationController
   protect_from_forgery :except => [:create_order]  
   skip_before_filter :verify_authenticity_token, :except => [:create_order]
   
-  #info - cart by URL
   def create_order    
     session[:items]["products"] ||= Hash.new
     session[:items]["collection"] ||= Hash.new    
@@ -56,9 +55,7 @@ class CartsController < ApplicationController
     session[:items]["collection"] ||= Hash.new
     
     @sale = to_sale
-    notify = url_for :controller => 'payment_notifications', :action => 'create'
-    #info - url for empty car - subdomain
-    #subdomain = request.host.split(".").first
+    notify = url_for :controller => 'payment_notifications', :action => 'create'    
     user_id = User.find_by_admin("1").id
     setting = Setting.find_by_user_id(user_id)    
     encrypted_PP = @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", notify,
@@ -71,19 +68,7 @@ class CartsController < ApplicationController
     assigns = {'products' => products, 'cart' => cart, 'packs' => packs}
     assigns = assigns.merge(get_user_hash) if session[:user_id]
     render_liquid_template 'products/cart', assigns, self
-  end
- #info - mail delivery  
- #  def checkout
- #    @cart = Cart.new
- #    @sale = to_sale   
- #    
- #    @domain = request.host    
- #    #info - delivery now, downloading after paymant notification
- #    
- #    NotifierUser.deliver_checkout(@sale.user_id, @sale.token, @domain)
- #    notify = url_for :controller => 'payment_notifications', :action => 'create'
- #    redirect_to @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", notify,                                              #                                   @sale.sales_products + @sale.sales_packs,                                                             #                                    @sale.token)
- #  end  
+  end 
   
   def to_sale    
     @sale = Sale.new
@@ -109,7 +94,6 @@ class CartsController < ApplicationController
   end
   
   private
-  #info 
   def get_unique_token
     token = rand(36**8).to_s(36) + rand(Time.now).to_s(36)
     letter = ("A".."Z").to_a 

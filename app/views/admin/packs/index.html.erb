@@ -1,11 +1,20 @@
 <div class="editation_menu"> 
   <%= link_to 'New package', :action => 'new' %>
 </div>
-<div class="sub-list">
-<table class="common-table" cellpadding="0" cellspacing="0">
+<div class="sub-list"><script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				$('#packages').dataTable();
+			} );
+</script>	  
+<table table cellpadding="0" cellspacing="0" border="0" class="display" id="packages">
   <thead>
    <tr>    
-      <th colspan="6">&nbsp;</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>link</th>
+      <th>link</th>
+      <th>link</th>
+      <th>link</th>
    </tr>
   </thead>
   <% even = 0

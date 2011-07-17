@@ -1,29 +1,38 @@
-<br/>
 <div class="sub-list">
-<table class="common-table" cellpadding="0" cellspacing="0">
+<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				$('#sales').dataTable();
+			} );
+</script>		
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="sales">
   <thead>
    <tr>    
-      <th colspan="5">&nbsp;</th>
+      <th>Sale ID</th>
+      <th>Sold time</th>
+      <th>Invoice ID</th>
+      <th>Paid time</th>      
    </tr>
   </thead>
-{% for sale in sales %}
-{% if sale.user_id != nil %}
-  <tr>
-    <td>{{ sale.id }}</td>
-    <td>{{ sale.created_at }}</td>
-    <td>
-    {% if sale.paid == 1 %}
-      {{ sale.token }}
-    {% endif %}
-    </td>
-    <td>
-    {% if sale.paid == 1 %}
-      {{ sale.purchased_at }}
-    {% else %}
-       Unpaid   
-    {% endif %}
-    </td>    
-  </tr>
-{% endif %}  
-{% endfor %}    
+  <tbody>
+  {% for sale in sales %}
+    {% if sale.user_id != nil %}
+      <tr>
+        <td>{{ sale.id }}</td>
+        <td>{{ sale.created_at }}</td>
+        <td>
+        {% if sale.paid == 1 %}
+          {{ sale.token }}
+        {% endif %}
+        </td>
+        <td>
+        {% if sale.paid == 1 %}
+          {{ sale.purchased_at }}
+        {% else %}
+           Unpaid   
+        {% endif %}
+        </td>    
+      </tr>
+    {% endif %}  
+  {% endfor %}
+  <tbody>    
 </table>

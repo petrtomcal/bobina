@@ -63,9 +63,7 @@ class ProductsController < ApplicationController
     assigns = assigns.merge(get_user_hash) if session[:user_id]
     render_liquid_template 'products/sale_history_list', assigns, self         
   end
-  
-  
-  #logged
+    
   def download_links    
     product = Product.find(params[:id])    
     attachments = product.attachments.all.collect { |attachment| AttachmentDrop.new(attachment) }  
@@ -75,7 +73,7 @@ class ProductsController < ApplicationController
   end
   
   #info - rfc
-  def download#info maybe zip for one link    
+  def download
     @sales = Sale.find(:all, :conditions => { :user_id => session[:user_id] })    
     if !@sales.nil?
       @products ||= []
@@ -109,9 +107,6 @@ class ProductsController < ApplicationController
   end
   
   def get_downloads_links
-    
-    #@sale = Sale.all( :conditions => { :created_at => start_date..end_date }, :joins => [:sales_products], :select => "sales.*, sum(  sales_products.count) as products_count", :group => "sales.id").group_by{ |sale| sale.created_at.strftime("(%y/%d/%m)") }
-    
     sale = Sale.first(:conditions => { :token => params[:text] })
     if sale.nil?
       redirect_to :action => 'index'          
@@ -128,15 +123,12 @@ class ProductsController < ApplicationController
         @attachments = p.attachments.all.collect { |attachment| AttachmentDrop.new(attachment) } + @attachments        
       }
       assigns = {'attachments' => @attachments, 'token' => params[:text]}      
-      #error #info - didn't get content
       render_liquid_template 'products/download_by_token', assigns, self    
     end
   end
   
-  def download_by_token
-    
+  def download_by_token    
     sale = Sale.first(:conditions => { :token => params[:token] })
-    #token = "text=" + params[:token]
       @products ||= []
       packs ||= []
       
@@ -162,7 +154,7 @@ class ProductsController < ApplicationController
       redirect_to :action => 'get_downloads_links', :text => params[:token]
     end        
   end
-  #info private
+
   def get_user_hash
     @user = User.find(session[:user_id])
     user = UserDrop.new(@user)

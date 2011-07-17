@@ -1,6 +1,6 @@
 class Admin::PacksController < ApplicationController
   before_filter :check_authentication
-  #info - full name of controller
+
   def index
     @packs = Pack.all
    

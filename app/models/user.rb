@@ -19,9 +19,13 @@ apply_simple_captcha
      return nil
   end
   
-  #info - if are nil!!
-  def full_name
-    first_name + ' ' + last_name
+  
+  def full_name    
+    if (first_name+last_name).empty?
+      ' '      
+    else  
+      first_name + ' ' + last_name
+    end  
   end
   
   def is_admin

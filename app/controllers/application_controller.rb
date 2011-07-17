@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  include DatabaseHelper #info db helper
+  include DatabaseHelper #database helper
   
   include EshopModule::Liquid::LiquidTemplate  #info comment for cucumber  
   #includnuti metod z liquid_template

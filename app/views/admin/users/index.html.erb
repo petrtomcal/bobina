@@ -2,48 +2,23 @@
   <%= link_to 'New user', :action => 'new' %>
 </div>
 <div class="sub-list">
-<table class="common-table" cellpadding="0" cellspacing="0">
+<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				$('#user').dataTable();
+			} );
+</script>	  
+<table table cellpadding="0" cellspacing="0" border="0" class="display" id="user">
   <thead>
    <tr>    
     <th>Email</th>
     <th>Full name</th>    
-    <th colspan="6">&nbsp;</th>
+    <th>link</th>
+		<th>link</th>
+		<th>link</th>
    </tr>
   </thead>
-<% even = 0
-  for user in @users 
-  even+=1 -%>
-  <tr id="<%= user.id %>" <%= "class=\"even\"" if (even % 2)==0 %>>
-    <td><%= link_to user.email, { :controller => 'users', :action => 'show', :id => user.id  } %></td>
-    <td><%= user.full_name %></td>    
-    <td><%= link_to 'Show', {:action => 'show',:id => user.id} %></td>
-    <td><%= link_to 'Edit', {:action => 'edit', :id => user.id} %></td>
-    <td><%= link_to 'Destroy', {:action => 'destroy',:id => user.id}, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-
-</table>
-
-<br />
-		
-		<title>DataTables example</title>			
-		<script type="text/javascript" charset="utf-8">
-			$(document).ready(function() {
-				$('#example').dataTable();
-			} );
-		</script>	
-<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
-	<thead>
-		<tr>
-			<th>Email</th>
-			<th>Full name</th>
-			<th></th>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<% for user in @users -%>
+  <tbody>
+<% for user in @users -%>
   <tr>
     <td><%= link_to user.email, { :controller => 'users', :action => 'show', :id => user.id  } %></td>
     <td><%= user.full_name %></td>    
@@ -52,8 +27,12 @@
     <td><%= link_to 'Destroy', {:action => 'destroy',:id => user.id}, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
-	</tfoot>
+  <tbody>
 </table>
-	
+<br />
+		
+		
+		
 
-tady neco
+
+	
