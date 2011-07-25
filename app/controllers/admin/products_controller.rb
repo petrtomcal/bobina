@@ -1,5 +1,7 @@
 class Admin::ProductsController < ApplicationController
   before_filter :check_authentication
+  #layout 'upload', :except => [:index, :show, :new, :edit, :create, :update, :destroy, :show_categories, :del_category_from_product, :add_category_to_product, :download, :generate_link]
+  #layout "upload", :only => ['new_attachment', 'upload_attachment']
   
   def index
       @products = Product.all
@@ -131,10 +133,10 @@ class Admin::ProductsController < ApplicationController
     
     if @attachment.save
       status = '<div id="output">success</div>'
-      render :text => "#{status} <div id='message'>Attachment was sucesfully added.</div>"
+      render :text => "#{status} <div id='message'>Attachment was sucesfully added.</div>", :layout => "upload"
     else
       status = '<div id="output">failed</div>'
-      render :text => "#{status} <div id='message'>Sorry something was wrong.</div>"
+      render :text => "#{status} <div id='message'>Sorry something was wrong.</div>", :layout => "upload"
     end
   end  
   
