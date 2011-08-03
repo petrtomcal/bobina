@@ -6,3 +6,4 @@ public/product/*
 tmp/*
 paypal/*
 script/*
+Gemfile.lock
