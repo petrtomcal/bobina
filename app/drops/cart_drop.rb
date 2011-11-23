@@ -12,7 +12,7 @@ class CartDrop < Liquid::Drop
     @product_items
   end
     
-  def get_pack_items
+  def get_pack_items    
     @pack_items
   end
   
@@ -21,7 +21,7 @@ class CartDrop < Liquid::Drop
   end
   
   def total_price
-    @product_items.map{|p| p.price * p.count}.sum + @pack_items.map{|p| p.price * p.count}.sum
+    @product_items.map{|p| p.price * p.count}.sum + @pack_items.map{|p| p.total_price * p.count}.sum
   end  
   
   def encrypted_value

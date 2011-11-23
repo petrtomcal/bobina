@@ -4,7 +4,7 @@ class NotifierUser < ActionMailer::Base
     ae = AdminEshop.find(amdmineshop_id)
     @subject = "Confirmate your registration"
     @recipients = ae.email
-    @from = "NOTIFIER_EMAIL after db create and migratation task#info, link to shop"
+    @from = "NOTIFIER_EMAIL after db create and migratation task"
     @sent_on = Time.now
     @content_type = "text/html" 
     @body = { 'user' => ae }
@@ -27,7 +27,7 @@ class NotifierUser < ActionMailer::Base
     @from = "NOTIFIER_EMAIL"
     @sent_on = Time.now
     @content_type = "text/html" 
-    @body = { 'user' => user } 
+    @body = { 'user' => user, 'sale_token' => sale_token, 'domain' => domain  } 
   end
   
   def password_change(user_id)

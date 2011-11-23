@@ -16,7 +16,6 @@ class Pack < ActiveRecord::Base
     return !tmp.nil?
   end
 
-  #Metoda znici vazbu produktu na balik  
   def remove_product(product_id) 
     if self.has_product?(product_id)
       PacksProduct.find_association(self.id, product_id).destroy

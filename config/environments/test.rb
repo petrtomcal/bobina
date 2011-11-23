@@ -27,11 +27,11 @@ config.action_mailer.delivery_method = :test
 # like if you have constraints or database-specific column types
 # config.active_record.schema_format = :sql
 
-#info setting for setup test  
+
 require 'liquid'
 require 'liquid_templates'
 [LiquidFilters].each { |f| Liquid::Template.register_filter f }
 
-#infobundler
+
 #config.gem 'rspec', :lib => false
 #config.gem 'rspec-rails', :lib => false

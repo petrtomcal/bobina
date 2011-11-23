@@ -5,19 +5,19 @@
  <meta http-equiv="imagetoolbar" content="no" />  
 </head>
 <body style="background: #f5f5f5;">
-  <center style="background: #361311;">
+  <center style="background: #f29100;">
       <font color="#ffffff">
         <h1 align="center">Checkout information</h1>        
       </font>
   </center>
   <center>
-    <p style="background: #612911; border-bottom: 3px solid #111111; border-top: 3px solid #111111; width: 500px;">
-      <font size="+1" color="F29100" align="left">
+    <p style="background: #f29100; border-bottom: 3px solid #111111; border-top: 3px solid #111111; width: 500px;">
+      <font size="+1" color="000006" align="left">
         <br/>
         <br/>
         Hi,
         please download content from this        
-        <a href='#{@domain}/products/get_downloads_links?text?text=#{@sale.token}'>link</a>.
+        <a href='http://diplomka.tomcal.cz/products/get_downloads_links?text?text=#{<%= @sale_token %>}'>link</a> or sing in and download from hitory.
         <br/>
       </font>
     </p>

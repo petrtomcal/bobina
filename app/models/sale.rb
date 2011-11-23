@@ -10,7 +10,6 @@ class Sale < ActiveRecord::Base
   
   class << self
     def to_sale(_products, _packs)
-      debugger
       _products.each{ |p| self.save << p }
     end
   

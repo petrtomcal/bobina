@@ -1,12 +1,6 @@
 class Cart < ActiveRecord::Base
-  #tableless :columns => [
-  #              [:product_id, :integer]]
   class_inheritable_accessor :columns
   self.columns = []
- 
-  #def self.comlumns()
-  #  @columns ||= [];
-  #end
   
   def self.column(name, sql_type = nil, default = nil, null = true)
     columns << ActiveRecord::ConnectionAdapters::Column.new(name.to_s, default, sql_type.to_s, null)
@@ -21,7 +15,7 @@ class Cart < ActiveRecord::Base
       :return => return_url,
       :invoice => _invoice_id,
       :notify_url => notify_url,
-      :cert_id => _setting.cert_id#'S8DUNZJY5VS3G'
+      :cert_id => _setting.cert_id
     }
     _sales_items.each_with_index do |si,index|
         values.merge!({

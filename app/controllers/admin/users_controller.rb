@@ -59,8 +59,9 @@ class Admin::UsersController < ApplicationController
   def create_registration
     @user = User.new(params[:user])
     @user.password_hash = Digest::SHA256.hexdigest(@user.password)
+    @user.authorization = 1
     respond_to do |format|
-      if @user.save_with_captcha #@user.save and simple_captcha_valid?
+      if @user.save_with_captcha 
         flash[:notice] = 'User successfully registered.'
         NotifierUser.deliver_registration_confirmation(@user.id)
         format.html { render :template => 'admin/users/login', :layout => 'access' }
@@ -156,7 +157,7 @@ class Admin::UsersController < ApplicationController
     render :action => 'password', :id => @user.id
   end
   
-  #info captcha validation to form
+  
   def forgotten_password
 	  @user = User.new
 

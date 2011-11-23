@@ -19,7 +19,12 @@
   <% for sale in @sales -%>
   <tr>
     <td><%= link_to (sale.id), { :action => 'show', :id => sale.id  } %></td>    
-    <td><%= link_to 'Show', {:controller => 'users', :action => 'show',:id => sale.user_id} %></td>
+    <td><%= if User.find(sale.user_id).email.nil       
+              "de"
+            else
+              User.find(sale.user_id).email
+            end
+      %></td>
   </tr>
   <% end %>
   </tbody>

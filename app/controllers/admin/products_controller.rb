@@ -1,8 +1,6 @@
 class Admin::ProductsController < ApplicationController
   before_filter :check_authentication
-  #layout 'upload', :except => [:index, :show, :new, :edit, :create, :update, :destroy, :show_categories, :del_category_from_product, :add_category_to_product, :download, :generate_link]
-  #layout "upload", :only => ['new_attachment', 'upload_attachment']
-  
+    
   def index
       @products = Product.all
       respond_to do |format|
@@ -110,7 +108,7 @@ class Admin::ProductsController < ApplicationController
     end
   end
   
-  #info - rfc method like this
+  
   def new_attachment    
     if params[:product_id].nil?
       @product = Product.find(session[:product_id])

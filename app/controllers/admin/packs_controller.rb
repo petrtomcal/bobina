@@ -82,6 +82,9 @@ class Admin::PacksController < ApplicationController
   
   def del_product_from_pack
     Pack.find(params[:pack_id]).remove_product(params[:product_id])
+    pack = Pack.find(params[:pack_id])
+    pack.price = pack.total_price
+    pack.save
     redirect_to :action => 'show_products', :pack_id => params[:pack_id]
   end
   
@@ -92,6 +95,8 @@ class Admin::PacksController < ApplicationController
     @pp.product = product
     @pp.pack = pack
     @pp.save
+    pack.price = pack.total_price
+    pack.save
     redirect_to :action => 'show_products', :pack_id => params[:pack_id]
   end
   
@@ -102,6 +107,6 @@ class Admin::PacksController < ApplicationController
     @pack.weblink = "<a href='#{@url_host}/carts/create_order?type=pack&id=#{@id}'>Your description</a>"
     @pack.save        
     redirect_to :action => 'show', :id => @pack.id
-  end
-  
+  end  
+
 end

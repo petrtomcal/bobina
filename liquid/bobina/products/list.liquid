@@ -28,7 +28,7 @@
   {% for pack in packs %}
     <tr>    
       <td>{{ pack.name | truncate: 20 }}</td>
-      <td>{{ pack.price|number_to_usd }}</td>
+      <td>{{ pack.total_price|number_to_usd }}</td>
       <td>      
         <a href="/packs/show/{{pack.id}}">show</a>
       </td>

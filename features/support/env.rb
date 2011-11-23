@@ -67,14 +67,14 @@ end
 #  include EshopModule::Liquid::LiquidTemplate
 #end
 
-#http://bobina.eshop.cz:3000
+#http://diplomka.eshop.cz:3000
 Before ('@subdomain') do
-  Capybara::Server.manual_host = 'bobina.eshop.cz'
-  Capybara.default_host = 'bobina.eshop.cz'
+  Capybara::Server.manual_host = 'diplomka.eshop.cz'
+  Capybara.default_host = 'diplomka.eshop.cz'
 end
 
 After('@subdomain') do
-  Capybara.default_host = "bobina.eshop.cz"
-  Capybara::Server.manual_host = "bobina.eshop.cz"
+  Capybara.default_host = "diplomka.eshop.cz"
+  Capybara::Server.manual_host = "diplomka.eshop.cz"
 end
 

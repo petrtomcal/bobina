@@ -1,5 +1,5 @@
 module DatabaseHelper
-  #info about subdomain
+
   def set_db
     begin
       if ENV["RAILS_ENV"] == "test"

@@ -1,4 +1,4 @@
-<div id="editform"><!--#info about div-->
+<div id="editform">
 <% form_for(@user, :url => { :action => "update", :id => @user.id }, :html => { :class => 'common-form'}) do |f| %>    
   <% if session[:user_id] %>
     <%= link_to 'Change password', {:action => 'password',:id => @user.id} %>

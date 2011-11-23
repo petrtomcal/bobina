@@ -26,7 +26,7 @@ ENV["RAILS_ENV"] = OPTIONS[:environment]
 require File.join(File.dirname(__FILE__), '/../config/environment')
 require 'digest/sha2'
 #######user
-  subdomain = AdminEshop.new(:name => 'bobina', :domain =>'bobina')
+  subdomain = AdminEshop.new(:name => 'diplomka', :domain =>'diplomka')
    
    if subdomain.save(false)
     puts 'OK' 

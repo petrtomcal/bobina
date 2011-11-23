@@ -1,0 +1,113 @@
+body, h1, h2, h3, h4, h5, h6,ol, ul, li, p, input, textarea, select {
+  font-family: geneva,verdana,arial,sans-serif;
+  font-size: 9pt;
+  line-height: 1.2em;
+  color: #333;
+}
+
+h1,h2,h3 {
+ margin: 0; padding: 0; 
+}
+
+h1 {
+  padding-bottom: 2px;
+	font-size: 14pt;
+	color: #333;
+}
+h2 {font-size: 12pt}
+h3 {font-size: 10pt}
+p {margin: 0}
+
+table {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+td {
+  text-align: left;
+  padding: 0; margin: 0;
+  border: none;
+}
+
+ol, ul, li {
+	margin: 0.2em 0 1em 0;
+	padding-left: 20px;
+}
+	
+ul, ul li {
+	
+}
+
+li {
+	margin: 0;
+	padding-left: 0;
+}
+
+img {
+    border: none;
+}
+
+
+a {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+}
+
+a:link {
+  text-decoration: underline;
+  color: #F29100;
+}
+
+a:visited {
+  color: #F29100;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #333;
+  background: #F7EF73;
+  text-decoration: underline;
+}
+
+a[name] {
+  color: inherit;
+  text-decoration: none;
+}
+
+.clearfix:after {
+  content: "."; 
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden;
+}
+
+.clearfix { display: inline-block; }  
+
+/* Holly Hack Targets IE Win only \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End Holly Hack */ 
+
+.skiplink {  
+  position: absolute;
+	left: -1000px;
+	width: 990px;
+	font-size:1px; line-height:1;
+  border: 1px solid #f00;
+}
+
+.hide {
+	display: none;
+}
+.clear {
+	clear: both;
+}
+
+.hot {
+  border: 1px solid #f00 !important;
+}
+
+

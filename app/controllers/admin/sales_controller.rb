@@ -4,7 +4,7 @@ class Admin::SalesController < ApplicationController
   def index
     @sale = Sale.new
   end
-  #info collection to stats
+  
   def graph      
       begin    
       @sale = Sale.all( :conditions => { :created_at => start_date..end_date }, :joins => [:sales_products], :select => "sales.*, sum(  sales_products.count) as products_count", :group => "sales.id").group_by{ |sale| sale.created_at.strftime("(%y/%d/%m)") }     

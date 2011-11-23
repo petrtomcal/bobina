@@ -2,11 +2,11 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  helper :all # include all helpers, all the time
-  include DatabaseHelper #database helper
+  helper :all 
+  include DatabaseHelper 
   
   include EshopModule::Liquid::LiquidTemplate  #info comment for cucumber  
-  #includnuti metod z liquid_template
+
   
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
     @skin_templates = File.join( RAILS_ROOT, 'liquid', subdomain )
   end
   
-  def check_authentication#info last flash only    
+  def check_authentication
     unless session[:user_id] 
       flash[:notice] = 'Login yourself please.'      
       redirect_to :controller => 'users', :action => 'login'      
@@ -37,7 +37,6 @@ class ApplicationController < ActionController::Base
     end
     unless User.find(session[:user_id]).admin == 1
       flash[:notice] = 'Sorry you, but you should be administrator.'      
-      debugger
       redirect_to :controller => 'users', :action => 'login'      
       return false
     end

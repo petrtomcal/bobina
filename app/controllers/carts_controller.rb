@@ -47,7 +47,7 @@ class CartsController < ApplicationController
     redirect_to :controller => "products", :action => "index"
   end
   
-  #info - rfc
+
   def cart
     session[:items] ||= Hash.new
     @cart = Cart.new
@@ -57,6 +57,7 @@ class CartsController < ApplicationController
     @sale = to_sale
     notify = url_for :controller => 'payment_notifications', :action => 'create'    
     user_id = User.find_by_admin("1").id
+    back_url = request.host.split(".").first + ".tomcal.cz/products/empty_cart"
     setting = Setting.find_by_user_id(user_id)    
     encrypted_PP = @cart.paypal_url("http://bobina.eshop.cz:3000/products/empty_cart", notify,
                                     @sale.sales_products + @sale.sales_packs, @sale.token,    

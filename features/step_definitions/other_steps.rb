@@ -8,9 +8,9 @@ end
 #product steps
 When /^(?:|I )follow product "([^"]*)"(?: within "([^"]*)")? for "(.+)"$/ do |link, selector, name|
   id = Product.find(:first, :conditions => {:name => name}).id
-  #save_and_open_page  
+
   with_scope(selector) do
-    #debugger      
+
     find(:xpath, "//a[@href=\'/admin/products/#{link}/#{id}\']").click
   end  
 end

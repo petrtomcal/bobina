@@ -75,7 +75,7 @@ Feature: Manage products
     When I follow category "destroy" for "fillsomekindofcategory"    
     Then I should not see "fillsomekindofcategory"
 
-    # Destroy product #info not erase product
+    # Destroy product 
     When I follow "Products"
     When I follow product "destroy" for "short"    
     Then I should not see "short" 

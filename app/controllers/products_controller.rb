@@ -13,8 +13,9 @@ class ProductsController < ApplicationController
     session[:items]["products"] ||= Hash.new
     session[:items]["collection"] ||= Hash.new    
     products = (Product.all :joins => :attachments).uniq.collect { |p| ProductDrop.new(p) }
-    packs = Pack.all.collect { |p| PackDrop.new(p) }
+    packs = Pack.all.uniq.collect { |p| PackDrop.new(p) }
     cart = CartDrop.new(session[:items], nil)    
+    
     assigns = {'products' => products, 'cart' => cart, 'packs' => packs}
     assigns = assigns.merge(get_user_hash) if session[:user_id]
     render_liquid_template 'products/list', assigns, self    
@@ -36,9 +37,8 @@ class ProductsController < ApplicationController
     index    
   end
   
-  #info - rfc
   def sale_history_list_download    
-    sales = Sale.find(:all, :conditions => { :user_id => session[:user_id] })    
+    sales = Sale.find(:all, :conditions => { :paid => 1, :user_id => session[:user_id] })    
     @sales = sales.collect { |s| SaleDrop.new(s) }    
     times = sales.size    
     sales.each {|s|    
@@ -72,7 +72,6 @@ class ProductsController < ApplicationController
     render_liquid_template 'products/download_links', assigns, self
   end
   
-  #info - rfc
   def download
     @sales = Sale.find(:all, :conditions => { :user_id => session[:user_id] })    
     if !@sales.nil?
@@ -88,11 +87,9 @@ class ProductsController < ApplicationController
       }
       
       products_id = @products.collect{|p| p.id}
-      #product_id = Product.find(params[:id], :select => 'id').id  #params id is  attachment
       attachment = Attachment.find(params[:id])      
       if products_id.include?(attachment.product_id)
         begin          
-          #attachment = Attachment.find_by_product_id(product_id)
           file_path = File.join(attachment.file.path)          
           send_file(file_path, :filename => attachment.file_file_name , :stream => true)      
         rescue
